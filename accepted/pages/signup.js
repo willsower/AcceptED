@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 export const siteTitle = 'Sign-Up | AcceptED'
 
-// General Nav Layout
-export default function Layout({children, home}) {
+// Sign Up
+export default function SignUp({children, home}) {
     return (
         <div>
             <Head>
