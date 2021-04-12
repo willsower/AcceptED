@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/signup'
+import Layout, { siteTitle } from './signup'
 
 export default function Home() {
   return (
