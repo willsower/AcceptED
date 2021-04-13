@@ -20,15 +20,19 @@ a {
   box-sizing: border-box;
 }
 
+
 /* Dropzone Configure */
 
 .dropzone {
   border: 4px dashed rgba(52, 51, 51, 0.3) !important;
   border-radius: 15px !important;
-  height: 30% !important;
+  height: 200px !important;
   width: 55% !important;
-  margin: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   margin-top: 20px !important;
 }
 
 /* End of Dropzone Configure */
+
+
