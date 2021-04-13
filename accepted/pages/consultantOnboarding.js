@@ -3,6 +3,7 @@ import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import OnboardingOne from '../components/onboardingOne'
 import OnboardingTwo from '../components/onboardingTwo'
+import OnboardingThree from '../components/onboardingThree'
 
 export const siteTitle = 'Consulting Onboarding | AcceptED'
 
@@ -14,7 +15,7 @@ export default function Onboarding({children, home}) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-                <OnboardingTwo />
+                <OnboardingThree />
                 {/* <ProgressBar
                     percent={75}
                     filledBackground="#2563EB"

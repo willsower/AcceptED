@@ -35,4 +35,12 @@ a {
 
 /* End of Dropzone Configure */
 
+/* React Video Player Configure */
+
+.ytp-cued-thumbnail-overlay-image {
+  background-image:url("../public/images/signup.jpg") !important;
+}
+
+/* End Of React Video Player Configure */
+
 
