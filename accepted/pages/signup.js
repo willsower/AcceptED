@@ -47,7 +47,7 @@ export default function SignUp({children, home}) {
                                 <p>Password (6-18 charachters)</p>
                                 <input className='bg-gray-200 rounded p-1 flex-1 mb-4' id='fullName' type='fullName'/>
 
-                                <Link href= {{ pathname:'consultantOnboarding'}}>
+                                <Link href= {{ pathname:'onboarding'}}>
                                     <button className = 'bg-blue-600 text-white rounded w-28 p-1 m-auto'>
                                         Sign Up
                                     </button>
