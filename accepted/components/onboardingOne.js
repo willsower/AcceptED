@@ -4,35 +4,37 @@ import 'dropzone/dist/dropzone.css'
 import Footer from '../components/footer'
 
 function OnboardingOne() {
-  React.useEffect(async () => {
-    const Dropzone = (await import("dropzone")).default;
-    Dropzone.autoDiscover = false;
 
-    let currentSingleFile = undefined;
+    // React Dropzone Configurations
+    React.useEffect(async () => {
+        const Dropzone = (await import("dropzone")).default;
+        Dropzone.autoDiscover = false;
 
-    // Only allow single files
-    // new Dropzone(document.getElementById("dropzone-single"), {
-    //   url: "/",
-    //   thumbnailWidth: null,
-    //   thumbnailHeight: null,
-    //   previewsContainer: document.getElementsByClassName(
-    //     "dz-preview-single"
-    //   )[0],
-    //   previewTemplate: document.getElementsByClassName("dz-preview-single")[0]
-    //     .innerHTML,
-    //   maxFiles: 1,
-    //   acceptedFiles: "image/*",
-    //   init: function () {
-    //     this.on("addedfile", function (file) {
-    //       if (currentSingleFile) {
-    //         this.removeFile(currentSingleFile);
-    //       }
-    //       currentSingleFile = file;
-    //     });
-    //   },
-    // });
-    // document.getElementsByClassName("dz-preview-single")[0].innerHTML = "";
-  }, []);
+        let currentSingleFile = undefined;
+
+        // Only allow single files
+        // new Dropzone(document.getElementById("dropzone-single"), {
+        //   url: "/",
+        //   thumbnailWidth: null,
+        //   thumbnailHeight: null,
+        //   previewsContainer: document.getElementsByClassName(
+        //     "dz-preview-single"
+        //   )[0],
+        //   previewTemplate: document.getElementsByClassName("dz-preview-single")[0]
+        //     .innerHTML,
+        //   maxFiles: 1,
+        //   acceptedFiles: "image/*",
+        //   init: function () {
+        //     this.on("addedfile", function (file) {
+        //       if (currentSingleFile) {
+        //         this.removeFile(currentSingleFile);
+        //       }
+        //       currentSingleFile = file;
+        //     });
+        //   },
+        // });
+        // document.getElementsByClassName("dz-preview-single")[0].innerHTML = "";
+    }, []);
 
     // Consultant Onboarding - Upload Photo
     return (
@@ -61,8 +63,8 @@ function OnboardingOne() {
                     </div>
                 </div>
 
-                <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
-                        Next
+                <button onClick = {onboardOneClick} className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
+                    Next
                 </button>
 
                 <Link href="">
