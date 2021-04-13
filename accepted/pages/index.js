@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from './consultantOnboardingOne'
+import Layout, { siteTitle } from './consultantOnboarding'
 
 export default function Home() {
   return (

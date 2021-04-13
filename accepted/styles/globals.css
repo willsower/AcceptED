@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 html,
 body {
   padding: 0;
@@ -18,3 +19,16 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* Dropzone Configure */
+
+.dropzone {
+  border: 4px dashed rgba(52, 51, 51, 0.3) !important;
+  border-radius: 15px !important;
+  height: 30% !important;
+  width: 55% !important;
+  margin: auto !important;
+  margin-top: 20px !important;
+}
+
+/* End of Dropzone Configure */
