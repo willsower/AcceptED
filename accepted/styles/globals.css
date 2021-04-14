@@ -31,6 +31,28 @@ a {
   margin-left: auto !important;
   margin-right: auto !important;
   margin-top: 20px !important;
+  position: relative !important;
+}
+
+.dropzone .dz-message .dz-button {
+  color: rgba(52, 51, 51, 0.3) !important;
+}
+
+.dropzone .dz-message {
+  /* position: absolute !important; */
+  /* width: fit-content !important;
+  height: fit-content !important; */
+  width: 80% !important;
+  margin: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 20px !important;
+  margin-bottom: 50%;
+}
+
+.dropzone .dz-preview {
+  margin: 16px !important;
+  min-height: 10px !important;
 }
 
 /* End of Dropzone Configure */

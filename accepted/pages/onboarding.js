@@ -4,30 +4,18 @@ import Image from 'next/image';
 import Link from "next/link";
 
 import { ProgressBar, Step } from "react-step-progress-bar";
+import StepProgressBar from 'react-step-progress';
 import ReactPlayer from 'react-player';
 import "react-step-progress-bar/styles.css";
+import 'react-step-progress/dist/index.css';
 import 'dropzone/dist/dropzone.css';
 
 import Footer from '../components/footer';
 
 export const siteTitle = 'Consulting Onboarding | AcceptED';
 
-
 // Consultant Onboarding - Upload Photo
 export default function Onboarding({children, home}) {
-    var temp = 1;
-
-    const onboardOneClick = (e) =>  {
-        temp = 2;
-    }
-    
-    const onboardTwoClick = (e) =>  {
-        temp = 3;
-    }
-    
-    const onboardThreeClick = (e) =>  {
-        temp = 4;
-    }
 
     function OnboardingOne() {
         // React Dropzone Configurations
@@ -38,27 +26,27 @@ export default function Onboarding({children, home}) {
             let currentSingleFile = undefined;
 
             // Only allow single files
-            // new Dropzone(document.getElementById("dropzone-single"), {
-            //   url: "/",
-            //   thumbnailWidth: null,
-            //   thumbnailHeight: null,
-            //   previewsContainer: document.getElementsByClassName(
-            //     "dz-preview-single"
-            //   )[0],
-            //   previewTemplate: document.getElementsByClassName("dz-preview-single")[0]
-            //     .innerHTML,
-            //   maxFiles: 1,
-            //   acceptedFiles: "image/*",
-            //   init: function () {
-            //     this.on("addedfile", function (file) {
-            //       if (currentSingleFile) {
-            //         this.removeFile(currentSingleFile);
-            //       }
-            //       currentSingleFile = file;
-            //     });
-            //   },
-            // });
-            // document.getElementsByClassName("dz-preview-single")[0].innerHTML = "";
+            new Dropzone(document.getElementById("dropzone-single"), {
+              url: "/",
+              thumbnailWidth: null,
+              thumbnailHeight: null,
+              previewsContainer: document.getElementsByClassName(
+                "dz-preview-single"
+              )[0],
+              previewTemplate: document.getElementsByClassName("dz-preview-single")[0]
+                .innerHTML,
+              maxFiles: 1,
+              acceptedFiles: "image/*",
+              init: function () {
+                this.on("addedfile", function (file) {
+                  if (currentSingleFile) {
+                    this.removeFile(currentSingleFile);
+                  }
+                  currentSingleFile = file;
+                });
+              },
+            });
+            document.getElementsByClassName("dz-preview-single")[0].innerHTML = "";
         }, []);
 
         // Consultant Onboarding - Upload Photo
@@ -88,7 +76,7 @@ export default function Onboarding({children, home}) {
                         </div>
                     </div>
 
-                    <button onClick = {onboardOneClick} className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
+                    <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
                         Next
                     </button>
 
@@ -117,7 +105,7 @@ export default function Onboarding({children, home}) {
                         />
                     </div>
 
-                    <button onClick = {onboardTwoClick} className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
+                    <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
                             Next
                     </button>
 
@@ -159,7 +147,7 @@ export default function Onboarding({children, home}) {
                         </div>
                     </div>
 
-                    <button onClick = {onboardThreeClick} className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
+                    <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
                             Next
                     </button>
                 </div>
@@ -192,28 +180,26 @@ export default function Onboarding({children, home}) {
         )
     }
 
-    if (temp == 2) {
-        return (
-            <>
-                {onboardingTwo()}
-            </>
-        )
-    } 
-
-    if (temp == 3) {
-        return (
-            <>
-                {onboardingThree()}
-            </>
-        )
+    const step1Content = OnboardingOne();
+    const step2Content = OnboardingTwo();
+    const step3Content = OnboardingThree();
+    const final = finishedOnboarding();
+     
+    // setup step validators, will be called before proceeding to the next step
+    function step2Validator() {
+      // return a boolean
+      return true;
     }
-
-    if (temp == 4) {
-        return (
-            <>
-                {finishedOnboarding()}
-            </>
-        )
+     
+    function step3Validator() {
+      // return a boolean
+      return true;
+    }
+     
+    function onFormSubmit() {
+      // handle the submit logic here
+      // This function will be executed at the last step
+      // when the submit button (next button in the previous steps) is pressed
     }
 
     return (
@@ -223,36 +209,30 @@ export default function Onboarding({children, home}) {
                 <title>{ siteTitle }</title>
             </Head>
             <main>
-                {OnboardingOne()}
-                {/* <ProgressBar
-                    percent={75}
-                    filledBackground="#2563EB"
-                    className = "w-4/5 m-auto"
-                >
-                    <Step transition="scale">
-                    {({ accomplished }) => (
-                        <div className="rounded-full h-24 w-24 flex items-center justify-center...">Circle</div>
-                    )}
-                    </Step>
-                    <Step transition="scale">
-                    {({ accomplished }) => (
-                        <img
-                        style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-                        width="30"
-                        src="https://vignette.wikia.nocookie.net/pkmnshuffle/images/9/97/Pikachu_%28Smiling%29.png/revision/latest?cb=20170410234508"
-                        />
-                    )}
-                    </Step>
-                    <Step transition="scale">
-                    {({ accomplished }) => (
-                        <img
-                        style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
-                        width="30"
-                        src="https://orig00.deviantart.net/493a/f/2017/095/5/4/raichu_icon_by_pokemonshuffle_icons-db4ryym.png"
-                        />
-                    )}
-                    </Step>
-                </ProgressBar> */}
+                {/* {OnboardingOne()} */}
+                <StepProgressBar
+                    startingStep={0}
+                    onSubmit={onFormSubmit}
+                    steps={[
+                        {
+                        label: 'Upload Photo',
+                        name: 'step 1',
+                        content: step1Content
+                        },
+                        {
+                        label: 'Training',
+                        name: 'step 2',
+                        content: step2Content,
+                        validator: step2Validator
+                        },
+                        {
+                        label: 'Background Check',
+                        name: 'step 3',
+                        content: step3Content,
+                        validator: step3Validator
+                        }
+                    ]}
+                />
             
                 { children }
             </main>
