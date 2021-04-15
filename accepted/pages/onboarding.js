@@ -75,12 +75,8 @@ export default function Onboarding({children, home}) {
                     </div>
                 </div>
 
-                <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
-                    Next
-                </button>
-
                 <Link href="">
-                    <p className = 'text-xs mt-2 underline ml-auto mr-auto'><a className = "text-blue-600">Skip for now</a></p>
+                    <p className = 'text-xs mt-16 underline ml-auto mr-auto'><a className = "text-blue-600">Skip for now</a></p>
                 </Link>
             </div>
         );
@@ -100,12 +96,8 @@ export default function Onboarding({children, home}) {
                     />
                 </div>
 
-                <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
-                        Next
-                </button>
-
                 <Link href="">
-                    <p className = 'text-xs mt-2 underline ml-auto mr-auto'><a className = "text-blue-600">Skip for now</a></p>
+                    <p className = 'text-xs mt-16 underline ml-auto mr-auto'><a className = "text-blue-600">Skip for now</a></p>
                 </Link>
             </div>
         );
@@ -136,11 +128,10 @@ export default function Onboarding({children, home}) {
                             </div>
                         </div>
                     </div>
+                    <Link href="">
+                        <p className = 'invisible text-xs mt-16 underline ml-auto mr-auto'><a className = "text-blue-600">Skip for now</a></p>
+                    </Link>
                 </div>
-
-                <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
-                        Next
-                </button>
             </div>
         );
     }
