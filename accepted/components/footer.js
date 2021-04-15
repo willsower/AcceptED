@@ -1,5 +1,5 @@
 // Onboarding Footer
-const Footer = () => {
+function Footer() {
     return (
         <div className = 'absolute inset-x-0 bottom-0 h-20'>
             <div className = 'border-t-2 border-gray-100'></div>
@@ -11,4 +11,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default Footer;

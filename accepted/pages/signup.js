@@ -1,13 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
 
-export const siteTitle = 'Sign-Up | AcceptED'
+export const siteTitle = 'Sign-Up | AcceptED';
 
 // Sign Up
 export default function SignUp({children, home}) {
     return (
-        <div>
+        <div className = 'h-screen'>
             <Head>
                 <link rel='icon' href='/favicon.ico' />
             </Head>
@@ -64,5 +64,5 @@ export default function SignUp({children, home}) {
                 </div>
             </main>
         </div>
-    )
+    );
 }

@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import SignUp, { siteTitle } from './signup'
+import Head from 'next/head';
+import SignUp, { siteTitle } from './signup';
 
 export default function Home() {
   return (

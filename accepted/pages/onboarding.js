@@ -1,7 +1,7 @@
 import React from "react";
 import Head from 'next/head';
 import Link from "next/link";
-import Router from 'next/router'
+import Router from 'next/router';
 
 import StepProgressBar from 'react-step-progress';
 import ReactPlayer from 'react-player';
@@ -154,7 +154,7 @@ export default function Onboarding({children, home}) {
       // This function will be executed at the last step
       // when the submit button (next button in the previous steps) is pressed
 
-      Router.push('./finishedOnboarding')
+      Router.push('./finishedOnboarding');
     }
 
     return (
@@ -197,5 +197,5 @@ export default function Onboarding({children, home}) {
             </div>
             </main>
         </div>
-    )
+    );
 }

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from "next/link";
-import Head from 'next/head'
+import Head from 'next/head';
 
 // Finished Onboarding Page
 function finishedOnboarding() {
@@ -21,7 +21,7 @@ function finishedOnboarding() {
                             />
                         </div>
                         <h1 className = 'text-4xl font-semibold text-center mt-8'>Onboarding Complete!</h1>
-                        <Link href = '/'>
+                        <Link href = '/dashboardShell'>
                             <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-4'>
                                     Finish
                             </button>
