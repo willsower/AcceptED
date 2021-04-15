@@ -51,41 +51,37 @@ export default function Onboarding({children, home}) {
 
         // Consultant Onboarding - Upload Photo
         return (
-            <div className = 'min-h-screen relative'>
-                <div className = 'm-auto w-4/5 pt-4  flex flex-col pb-20'>
-                    <h1 className = 'text-3xl text-blue-600 mb-2 text-center'>Welcome, [Name]!</h1>
-                    <h3 className = "text-xl font-semibold text-center">Let's upload your photo</h3>
-                    <div className="dropzone dropzone-single" id="dropzone-single">
-                        <div className="fallback">
-                            <div className="custom-file">
-                                <input
-                                className="custom-file-input"
-                                id="projectCoverUploads"
-                                type="file"
-                                />
-                                <label className="custom-file-label m-auto" htmlFor="projectCoverUploads">
-                                Choose file
-                                </label>
-                            </div>
-                        </div>
-
-                        <div className="dz-preview dz-preview-single">
-                            <div className="dz-preview-cover">
-                                <img alt="..." className="dz-preview-img" data-dz-thumbnail="" />
-                            </div>
+            <div className = 'm-auto w-4/5 pt-4  flex flex-col pb-20'>
+                <h1 className = 'text-3xl text-blue-600 mb-2 text-center'>Welcome, [Name]!</h1>
+                <h3 className = "text-xl font-semibold text-center">Let's upload your photo</h3>
+                <div className="dropzone dropzone-single" id="dropzone-single">
+                    <div className="fallback">
+                        <div className="custom-file">
+                            <input
+                            className="custom-file-input"
+                            id="projectCoverUploads"
+                            type="file"
+                            />
+                            <label className="custom-file-label m-auto" htmlFor="projectCoverUploads">
+                            Choose file
+                            </label>
                         </div>
                     </div>
 
-                    <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
-                        Next
-                    </button>
-
-                    <Link href="">
-                        <p className = 'text-xs mt-2 underline ml-auto mr-auto'><a className = "text-blue-600">Skip for now</a></p>
-                    </Link>
+                    <div className="dz-preview dz-preview-single">
+                        <div className="dz-preview-cover">
+                            <img alt="..." className="dz-preview-img" data-dz-thumbnail="" />
+                        </div>
+                    </div>
                 </div>
 
-                <Footer />
+                <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
+                    Next
+                </button>
+
+                <Link href="">
+                    <p className = 'text-xs mt-2 underline ml-auto mr-auto'><a className = "text-blue-600">Skip for now</a></p>
+                </Link>
             </div>
         );
     }
@@ -93,28 +89,24 @@ export default function Onboarding({children, home}) {
     function OnboardingTwo() {
         // Consultant Onboarding - Upload Photo
         return (
-            <div className = 'min-h-screen relative'>
-                <div className = 'm-auto w-4/5 pt-4 flex flex-col pb-20'>
-                    <h1 className = 'text-3xl text-blue-600 mb-2 text-center'>Welcome, [Name]!</h1>
-                    <h3 className = "text-xl font-semibold text-center">Watch a short training video</h3>
-                    <h5 className = 'text-center text-base mt-4'>How to Engage Your Student</h5>
+            <div className = 'm-auto w-4/5 pt-4 flex flex-col pb-20'>
+                <h1 className = 'text-3xl text-blue-600 mb-2 text-center'>Welcome, [Name]!</h1>
+                <h3 className = "text-xl font-semibold text-center">Watch a short training video</h3>
+                <h5 className = 'text-center text-base mt-4'>How to Engage Your Student</h5>
 
-                    <div className= 'm-auto'>
-                        <ReactPlayer 
-                            url="https://www.youtube.com/watch?v=ndsaoMFz9J4" 
-                        />
-                    </div>
-
-                    <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
-                            Next
-                    </button>
-
-                    <Link href="">
-                        <p className = 'text-xs mt-2 underline ml-auto mr-auto'><a className = "text-blue-600">Skip for now</a></p>
-                    </Link>
+                <div className= 'm-auto'>
+                    <ReactPlayer 
+                        url="https://www.youtube.com/watch?v=ndsaoMFz9J4" 
+                    />
                 </div>
 
-                <Footer />
+                <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
+                        Next
+                </button>
+
+                <Link href="">
+                    <p className = 'text-xs mt-2 underline ml-auto mr-auto'><a className = "text-blue-600">Skip for now</a></p>
+                </Link>
             </div>
         );
     }
@@ -122,37 +114,33 @@ export default function Onboarding({children, home}) {
     function OnboardingThree() {
         // Consultant Onboarding - Upload Photo
         return (
-            <div className = 'min-h-screen relative'>
-                <div className = 'm-auto w-4/5 pt-4 flex flex-col pb-20'>
-                    <h3 className = "text-xl font-semibold text-center">Please upload the following documents</h3>
+            <div className = 'm-auto w-4/5 pt-4 flex flex-col pb-20'>
+                <h3 className = "text-xl font-semibold text-center">Please upload the following documents</h3>
 
-                    <div className= 'm-auto'>
-                        <h5 className = 'text-center font-semibold text-base mt-4'>Document #1</h5>
+                <div className= 'm-auto'>
+                    <h5 className = 'text-center font-semibold text-base mt-4'>Document #1</h5>
 
-                        <div className="bg-white px-2">
-                            <div className="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
-                                <div className="md:flex">
-                                    <div className="w-32 p-3 m-auto">
-                                        <div className="relative border-dotted h-24 rounded-lg border-dashed border-2 border-gray-300 bg-gray-100 flex justify-center items-center">
-                                            <div className="absolute">
-                                                <div className="flex flex-col items-center"> 
-                                                    <i className="fa fa-folder-open fa-4x text-blue-700"></i> 
-                                                    <span className="block text-gray-400 font-normal">Upload</span> </div>
-                                            </div> 
-                                            <input type="file" className="h-full w-full opacity-0 cursor-pointer" name=""/>
-                                        </div>
+                    <div className="bg-white px-2">
+                        <div className="max-w-md mx-auto rounded-lg overflow-hidden md:max-w-xl">
+                            <div className="md:flex">
+                                <div className="w-32 p-3 m-auto">
+                                    <div className="relative border-dotted h-24 rounded-lg border-dashed border-2 border-gray-300 bg-gray-100 flex justify-center items-center">
+                                        <div className="absolute">
+                                            <div className="flex flex-col items-center"> 
+                                                <i className="fa fa-folder-open fa-4x text-blue-700"></i> 
+                                                <span className="block text-gray-400 font-normal">Upload</span> </div>
+                                        </div> 
+                                        <input type="file" className="h-full w-full opacity-0 cursor-pointer" name=""/>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
-                            Next
-                    </button>
                 </div>
 
-                <Footer />
+                <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-8'>
+                        Next
+                </button>
             </div>
         );
     }
@@ -209,32 +197,37 @@ export default function Onboarding({children, home}) {
                 <title>{ siteTitle }</title>
             </Head>
             <main>
-                {/* {OnboardingOne()} */}
-                <StepProgressBar
-                    startingStep={0}
-                    onSubmit={onFormSubmit}
-                    steps={[
-                        {
-                        label: 'Upload Photo',
-                        name: 'step 1',
-                        content: step1Content
-                        },
-                        {
-                        label: 'Training',
-                        name: 'step 2',
-                        content: step2Content,
-                        validator: step2Validator
-                        },
-                        {
-                        label: 'Background Check',
-                        name: 'step 3',
-                        content: step3Content,
-                        validator: step3Validator
-                        }
-                    ]}
-                />
-            
-                { children }
+            <div className = 'min-h-screen relative'>
+                <div className = 'm-auto w-4/5 pt-4 flex flex-col pb-20'>
+                    {/* {OnboardingOne()} */}
+                    <StepProgressBar
+                        startingStep={0}
+                        onSubmit={onFormSubmit}
+                        steps={[
+                            {
+                            label: 'Upload Photo',
+                            name: 'step 1',
+                            content: step1Content
+                            },
+                            {
+                            label: 'Training',
+                            name: 'step 2',
+                            content: step2Content,
+                            validator: step2Validator
+                            },
+                            {
+                            label: 'Background Check',
+                            name: 'step 3',
+                            content: step3Content,
+                            validator: step3Validator
+                            }
+                        ]}
+                    />
+                
+                    { children }
+                </div>
+                <Footer />
+            </div>
             </main>
         </div>
     )

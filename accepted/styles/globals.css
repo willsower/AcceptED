@@ -65,4 +65,33 @@ a {
 
 /* End Of React Video Player Configure */
 
+/* React Progress Bar Configure */
+
+._3uApM {
+  position: absolute !important;
+  margin: auto;
+  text-align: center;
+  width: 70%;
+}
+
+._2pGos._2RWmX {
+  display: none;
+}
+
+._3CDiP {
+  display: none;
+}
+
+._hsN1w {
+  /* position: absolute; */
+  border: 1px solid #2563EB !important;
+  background-color: #2563EB !important;
+  width: 7rem !important;
+  padding: 0.25rem !important;
+  text-align: center !important;
+  margin: auto !important;
+}
+
+/* End of React Progress Bar Configure */
+
 
