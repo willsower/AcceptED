@@ -49,7 +49,7 @@ export default function Onboarding({children, home}) {
 
         // Consultant Onboarding - Upload Photo
         return (
-            <div className = 'm-auto w-4/5 pt-4  flex flex-col pb-20'>
+            <div className = 'm-auto w-4/5 flex flex-col'>
                 <h1 className = 'text-3xl text-blue-600 mb-2 text-center'>Welcome, [Name]!</h1>
                 <h3 className = "text-xl font-semibold text-center">Let's upload your photo</h3>
                 <div className="dropzone dropzone-single" id="dropzone-single">
@@ -83,7 +83,7 @@ export default function Onboarding({children, home}) {
     function OnboardingTwo() {
         // Consultant Onboarding - Upload Photo
         return (
-            <div className = 'm-auto w-4/5 pt-4 flex flex-col pb-20'>
+            <div className = 'm-auto w-4/5 flex flex-col'>
                 <h1 className = 'text-3xl text-blue-600 mb-2 text-center'>Welcome, [Name]!</h1>
                 <h3 className = "text-xl font-semibold text-center">Watch a short training video</h3>
                 <h5 className = 'text-center text-base mt-4'>How to Engage Your Student</h5>
@@ -104,7 +104,7 @@ export default function Onboarding({children, home}) {
     function OnboardingThree() {
         // Consultant Onboarding - Upload Photo
         return (
-            <div className = 'm-auto w-4/5 pt-4 flex flex-col pb-20'>
+            <div className = 'm-auto w-4/5 flex flex-col'>
                 <h3 className = "text-xl font-semibold text-center">Please upload the following documents</h3>
 
                 <div className= 'm-auto'>

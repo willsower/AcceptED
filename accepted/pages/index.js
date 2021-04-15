@@ -1,13 +1,12 @@
 import Head from 'next/head'
-// import Layout, { siteTitle } from './consultantOnboarding'
-import Layout, { siteTitle } from './signup'
+import SignUp, { siteTitle } from './signup'
 
 export default function Home() {
   return (
-    <Layout home>
+    <SignUp home>
       <Head>
         <title>{ siteTitle }</title>
       </Head>
-    </Layout>
+    </SignUp>
   )
 }
