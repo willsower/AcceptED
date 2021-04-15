@@ -1,18 +1,16 @@
 import React from "react";
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from "next/link";
+import Router from 'next/router'
 
-import { ProgressBar, Step } from "react-step-progress-bar";
 import StepProgressBar from 'react-step-progress';
 import ReactPlayer from 'react-player';
-import "react-step-progress-bar/styles.css";
 import 'react-step-progress/dist/index.css';
 import 'dropzone/dist/dropzone.css';
 
 import Footer from '../components/footer';
 
-export const siteTitle = 'Consulting Onboarding | AcceptED';
+export const siteTitle = 'Onboarding | AcceptED';
 
 // Consultant Onboarding - Upload Photo
 export default function Onboarding({children, home}) {
@@ -136,33 +134,9 @@ export default function Onboarding({children, home}) {
         );
     }
 
-    // Finished Onboarding Page
-    function finishedOnboarding() {
-        return (
-            <div className = 'relative h-screen flex flex-row'>
-                <div className = 'w-4/5 pt-4 flex flex-col pb-20 m-auto'>
-                    <div className = 'w-60 h-60 relative m-auto'>
-                        <Image
-                            src="/images/temp_onboarding.png"
-                            alt="Picture of blue checkmark"
-                            layout="fill"
-                        />
-                    </div>
-                    <h1 className = 'text-4xl font-semibold text-center mt-8'>Onboarding Complete!</h1>
-                    <Link href = '/'>
-                        <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-4'>
-                                Finish
-                        </button>
-                    </Link>
-                </div>
-            </div>
-        )
-    }
-
     const step1Content = OnboardingOne();
     const step2Content = OnboardingTwo();
     const step3Content = OnboardingThree();
-    const final = finishedOnboarding();
      
     // setup step validators, will be called before proceeding to the next step
     function step2Validator() {
@@ -179,6 +153,8 @@ export default function Onboarding({children, home}) {
       // handle the submit logic here
       // This function will be executed at the last step
       // when the submit button (next button in the previous steps) is pressed
+
+      Router.push('./finishedOnboarding')
     }
 
     return (
@@ -190,7 +166,7 @@ export default function Onboarding({children, home}) {
             <main>
             <div className = 'min-h-screen relative'>
                 <div className = 'm-auto w-4/5 pt-4 flex flex-col pb-20'>
-                    {/* {OnboardingOne()} */}
+
                     <StepProgressBar
                         startingStep={0}
                         onSubmit={onFormSubmit}
