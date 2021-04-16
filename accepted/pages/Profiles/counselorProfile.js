@@ -10,10 +10,10 @@ function CounselorProfile() {
 
                     </div>
                 </div>
-                <div className = 'w-3/5'>
-                    <h3 className = ''>JADEN D. YOUNG</h3>
-                    <p className = ''>Joined September 2020</p>
-                    <p className = ''>Junior at the University of Southern California</p>
+                <div className = 'w-3/5 mt-auto mb-auto'>
+                    <h3 className = 'text-3xl font-semibold text-blue-600'>JADEN D. YOUNG</h3>
+                    <p className = 'font-bold mt-4'>Joined September 2020</p>
+                    <p className = 'font-bold mt-1'>Junior at the University of Southern California</p>
                 </div>
             </div>
             <div className = 'w-4/5 ml-auto mr-auto mt-4'>
