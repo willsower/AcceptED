@@ -2,6 +2,10 @@ import Head from 'next/head';
 import Nav from '../components/nav';
 import Header from '../components/header';
 
+// Test
+import CounselorProfile from './Profiles/counselorProfile';
+import MyStudents from '../components/Cards/myStudents'
+
 export default function DashboardShell() {
   return (
     <>
@@ -26,7 +30,9 @@ export default function DashboardShell() {
 
                     {/* Content Bottom */}
                     <div className='flex-grow h-screen flex flex-col relative bg-gray-200'>
-                        
+                        {/* Test */}
+                        <CounselorProfile />
+                        <MyStudents />
                     </div>
                 </div>
             </div>
