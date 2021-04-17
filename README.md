@@ -9,6 +9,7 @@ This web applicaiton will be built using Next.JS as the main frontend framework,
 2. We are using an active environment, have pipenv installed. Read about it [here](https://pypi.org/project/pipenv/)
 
 **Steps**
-1. Clone the repository `git clone https://github.com/willsower/AcceptED.git`
+1. Clone the repository `git clone https://github.com/willsower/AcceptED.git` then `cd` into it
 2. Create an active environment using pipenv. Run `pipenv shell`
+3. Inside of the `/accepted` directory install next, by running `npm i next`
 3. To run the project run `npm run dev`
