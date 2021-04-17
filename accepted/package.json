@@ -1,0 +1,27 @@
+{
+  "name": "accepted",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "dropzone": "^5.9.2",
+    "next": "10.1.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-dropzone": "^11.3.2",
+    "react-dropzone-uploader": "^2.11.0",
+    "react-player": "^2.9.0",
+    "react-step-progress": "^1.0.3",
+    "react-step-progress-bar": "^1.0.3",
+    "reactstrap": "^8.9.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.10",
+    "tailwindcss": "^2.1.1"
+  }
+}
