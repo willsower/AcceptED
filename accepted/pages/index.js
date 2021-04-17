@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <SignUp home>
       <Head>
-        <title>{ siteTitle }</title>
+        <title> {siteTitle} </title>
       </Head>
     </SignUp>
   )
