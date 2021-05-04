@@ -4,7 +4,6 @@ import Link from "next/link";
 import Router from 'next/router';
 
 import StepProgressBar from 'react-step-progress';
-import ReactPlayer from 'react-player';
 import 'react-step-progress/dist/index.css';
 import 'dropzone/dist/dropzone.css';
 
@@ -84,15 +83,9 @@ export default function Onboarding({children, home}) {
         // Consultant Onboarding - Upload Photo
         return (
             <div className = 'm-auto w-4/5 flex flex-col'>
-                <h1 className = 'text-3xl text-blue-600 mb-2 text-center mt-8'>Welcome, [Name]!</h1>
-                <h3 className = "text-xl font-semibold text-center">Watch a short training video</h3>
-                <h5 className = 'text-center text-base mt-4'>How to Engage Your Student</h5>
+                <h1 className = 'text-3xl font-semibold text-center'>What universities/colleges are you applying to?</h1>
 
-                <div className= 'm-auto'>
-                    <ReactPlayer 
-                        url="https://www.youtube.com/watch?v=ndsaoMFz9J4" 
-                    />
-                </div>
+                <input className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border w-6/12 mt-8 border border-gray-500 m-auto font-semibold' id='fullName' type='fullName' placeholder='Search for Collges/Universities'/>                
 
                 <Link href="">
                     <p className = 'text-xs mt-16 underline ml-auto mr-auto'><a className = "text-blue-600">Skip for now</a></p>
