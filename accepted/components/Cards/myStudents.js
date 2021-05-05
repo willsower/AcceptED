@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Modal from 'react-modal'
 
 function MyStudents() {
     return (

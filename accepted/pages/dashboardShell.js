@@ -29,7 +29,7 @@ export default function DashboardShell() {
                     </div>
 
                     {/* Content Bottom */}
-                    <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pt-12 pb-12'>
+                    <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pt-12 pb-12 z-0'>
                         {/* Test */}
                         <CounselorProfile />
                     </div>
