@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 function StudentColleges() {
     return (
         <>
@@ -72,6 +74,17 @@ function StudentColleges() {
                                 <p className = 'inline-block absolute right-3 lg:right-24 '>Rejected</p>
                             </div>
                         </div>
+                    </div>
+                
+                    {/* Image */}
+                    <div className = 'w-full text-center p-4'>
+                        <Image
+                        priority
+                        src="/images/cat.png"
+                        className = ''
+                        height={100}
+                        width={100}
+                        />
                     </div>
                 </div>
             </div>
