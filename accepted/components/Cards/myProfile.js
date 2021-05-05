@@ -52,12 +52,12 @@ function MyProfile() {
                             <div className='relative w-auto my-6 mx-auto max-w-3xl'>
 
                                 {/* Content */}
-                                <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-96 lg:w-72 bg-white outline-none focus:outline-none'>
+                                <div className='border-0 rounded-lg shadow-lg relative flex flex-col md:w-96 bg-white outline-none focus:outline-none'>
 
                                     {/* Header */}
                                     <div className='flex items-start justify-between pt-4 pl-4 pb-4 rounded-t'>
                                         <h3 className='text-base sm:text-xl font-semibold'>
-                                            Add Student
+                                            Edit Profile
                                         </h3>
                                         <button
                                             className= 'mr-4'
@@ -76,16 +76,19 @@ function MyProfile() {
                                     {/* Body */}
                                     <div className='relative pl-4 pb-4 pr-4 m-auto'>
                                         <form className=''>
-                                            <p className = 'text-xs'>Name of Student <span className = 'text-blue-600	'>*</span></p>
-                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-96' type='studentName' placeholder='Student Name'/>
+                                            <p className = 'text-xs'>Full Name</p>
+                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='studentName' placeholder='replace with name in db'/>
 
-                                            <p className = 'text-xs'>Email of Student <span className = 'text-blue-600	'>*</span></p>
-                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-96' type='studentEmail' aria-label='email address' placeholder='Student Email'/>
+                                            <p className = 'text-xs'>Date Joined</p>
+                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='dateJoined' aria-label='email address' placeholder='replace with date in db'/>
+
+                                            <p className = 'text-xs'>My School</p>
+                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='mySchool' aria-label='email address' placeholder='replace with school in db'/>
 
                                             <div className='flex items-center justify-end rounded-b'>
                                                 <button className = 'w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'
                                                         onClick={() => setShowModal(false)}>
-                                                    Add
+                                                    Edit
                                                 </button>
                                             </div>
                                         </form>
