@@ -1,11 +1,19 @@
+import Image from 'next/image'
+
 function MyStudents() {
     return (
         <>
             <h3 className = 'mb-3 mt-3 font-bold'>My Student(s)</h3>
-            <div className = 'border-2 border-gray-300 rounded pl-6 w-4/5 sm:w-96 relative'>
+            <div className = 'border-1 border-gray-200 rounded pl-6 w-4/5 md:w-72 lg:w-96 relative bg-white shadow-md'>
                 <div className = 'mt-auto mb-auto'>
                     <div className ='absolute top-0 right-0 h-16 w-10 mt-2'>
-                        Add
+                        <Image
+                            priority
+                            src="/images/add_user_temp.png"
+                            className = ''
+                            height={30}
+                            width={30}
+                        />
                     </div>
 
                     {/* Student Card Here */}

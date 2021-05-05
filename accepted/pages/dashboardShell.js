@@ -17,19 +17,19 @@ export default function DashboardShell() {
         <main>
             <div className='flex flex-row'>
                 {/* Navbar - Left */}
-                <div className='w-20 h-screen flex flex-col relative border-r border-gray-200'>
+                <div className='sm:w-36 h-screen flex flex-col relative'>
                     <Nav />
                 </div>
 
                 {/* Right Side of Screen */}
                 <div className='flex-grow h-screen flex flex-col relative'>
                     {/* Header Top */}
-                    <div className='h-20 flex flex-col relative border-b border-gray-200'>
+                    <div className='h-16 flex flex-col relative'>
                         <Header />
                     </div>
 
                     {/* Content Bottom */}
-                    <div className='flex-grow h-screen flex flex-col relative'>
+                    <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pt-12 pb-12'>
                         {/* Test */}
                         <CounselorProfile />
                     </div>
