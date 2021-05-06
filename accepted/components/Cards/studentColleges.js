@@ -6,24 +6,6 @@ function StudentColleges() {
             <h3 className = 'mb-3 font-bold'>My Students' Colleges</h3>
             <div className = 'border-1 border-gray-200 rounded pl-6 w-4/5 md:w-11/12 sm:w-96 relative bg-white shadow-md'>
                 <div className = 'mt-auto mb-auto'>
-                    <div className ='absolute top-0 right-0 h-16 w-10 mt-2'>
-                        <Image
-                        priority
-                        src="/images/edit_temp.png"
-                        className = ''
-                        height={30}
-                        width={30}
-                        />
-                    </div>
-                    <div className ='absolute top-8 right-0 h-16 w-10 mt-2'>
-                        <Image
-                        priority
-                        src="/images/add_temp.png"
-                        className = ''
-                        height={30}
-                        width={30}
-                        />
-                    </div>
 
                     {/* Likely Card Here */}
                     <div className = 'pb-6 pt-6'>
