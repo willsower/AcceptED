@@ -58,7 +58,7 @@ export default function DashboardShell() {
                             <div className = ''>
                                 {/* Home -> 0*/}
                                 <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto align-middle hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none' onClick={() => setCurrentPage('Home')}>
+                                    <button className = 'focus:outline-none active:bg-green-700' onClick={() => setCurrentPage('Home')}>
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
@@ -76,7 +76,7 @@ export default function DashboardShell() {
 
                                 {/* Message */}
                                 <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none' onClick={() => setCurrentPage('Messages')}>
+                                    <button className = 'focus:outline-none active:bg-green-700' onClick={() => setCurrentPage('Messages')}>
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>                                            
                                             <Image
                                                 priority
@@ -182,7 +182,7 @@ export default function DashboardShell() {
                         </div>
 
                         {/* Content Bottom */}
-                        <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pt-12 pb-12 z-0'>
+                        <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pb-12 z-0'>
                             {/* Test */}
                             {/* <CounselorProfile /> */}
                             {/* <Messages /> */}
