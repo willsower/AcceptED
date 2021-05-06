@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function Messages() {
     return(
-        <div className = 'text-center p-2 mt-12'>
+        <div className = 'text-center p-2'>
             <div className = ''>
                 <Image
                     priority

@@ -5,9 +5,11 @@ function Home() {
         <div className = 'w-full h-auto'>
             {/* Module List */}
             <div className = 'border-1 border-gray-200 rounded-lg flex flex-row bg-white shadow-lg w-11/12 h-12 m-auto mt-8'>
+
+                {/* Module Card */}
                 <div className = 'inline-block h-8 w-20 bg-gray-100 rounded text-xs md:text-sm text-center mt-auto mb-auto ml-2 text-gray-400'>
                     <button className = 'mt-2'>
-                        Module 11
+                        Module 1
                     </button>
                 </div>
             </div>

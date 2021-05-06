@@ -10,7 +10,6 @@ function MyStudents() {
             <div className = 'border-1 border-gray-200 rounded pl-6 w-4/5 md:w-72 lg:w-96 relative bg-white shadow-md'>
                 <div className = 'mt-auto mb-auto'>
                     <div className ='absolute top-0 right-0 h-16 w-10 mt-2'>
-                        
                         <button type='button' 
                         onClick={() => setShowModal(true)}>
                             <Image

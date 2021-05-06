@@ -139,6 +139,23 @@
   "resolved" "https://registry.npmjs.org/@opentelemetry/context-base/-/context-base-0.14.0.tgz"
   "version" "0.14.0"
 
+"@prisma/client@^2.22.0":
+  "integrity" "sha512-0KL433vaxlQWyxJEwwvLr277Z0KdGehwon3SrdmeTKrJV1sYI6ogrCFxPXAb30JWFVwwAIS+QhkdklBpwQMLGQ=="
+  "resolved" "https://registry.npmjs.org/@prisma/client/-/client-2.22.0.tgz"
+  "version" "2.22.0"
+  dependencies:
+    "@prisma/engines-version" "2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c"
+
+"@prisma/engines-version@2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c":
+  "integrity" "sha512-OkkVwk6iTzTbwwl8JIKAENyxmh4TFORal55QMKQzrHEY8UzbD0M90mQnmziz3PAopQUZgTFFMlaPAq1WNrLMtA=="
+  "resolved" "https://registry.npmjs.org/@prisma/engines-version/-/engines-version-2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c.tgz"
+  "version" "2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c"
+
+"@prisma/engines@2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c":
+  "integrity" "sha512-KmWdogrsfsSLYvfqY3cS3QcDGzaEFklE+T6dNJf+k/KPQum4A29IwDalafMwh5cMN8ivZobUbowNSwWJrMT08Q=="
+  "resolved" "https://registry.npmjs.org/@prisma/engines/-/engines-2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c.tgz"
+  "version" "2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c"
+
 "@types/node@*":
   "integrity" "sha512-XYmBiy+ohOR4Lh5jE379fV2IU+6Jn4g5qASinhitfyO71b/sCo6MKsMLF5tc7Zf2CE8hViVQyYSobJNke8OvUw=="
   "resolved" "https://registry.npmjs.org/@types/node/-/node-14.14.37.tgz"
@@ -1862,6 +1879,13 @@
   "integrity" "sha1-t+PqQkNaTJsnWdmeDyAesZWALuE="
   "resolved" "https://registry.npmjs.org/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz"
   "version" "1.0.3"
+
+"prisma@*", "prisma@^2.22.0":
+  "integrity" "sha512-rJgjZCl0mxrdCjR6N5Z5Ivm6fy+iPznOQDA4TSiKvzs7tzo4smsBbFZmliylmEeRkuq2f93+/I/jmw64rrFpHQ=="
+  "resolved" "https://registry.npmjs.org/prisma/-/prisma-2.22.0.tgz"
+  "version" "2.22.0"
+  dependencies:
+    "@prisma/engines" "2.22.0-21.60cc71d884972ab4e897f0277c4b84383dddaf6c"
 
 "process-nextick-args@~2.0.0":
   "integrity" "sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag=="

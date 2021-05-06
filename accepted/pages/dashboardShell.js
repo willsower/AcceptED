@@ -12,10 +12,10 @@ const pages = [CounselorProfile, Messages];
 
 export default function DashboardShell() {
     const { useState } = React;
-    const [currentPage, setCurrentPage] = useState('Home');
+    const [currentPage, setCurrentPage] = useState('Dashboard');
 
     const renderPage = () => {
-        if (currentPage == 'Home') {
+        if (currentPage == 'Dashboard') {
             return <Home />
         } else if (currentPage == 'Messages') {
             return <Messages />;
@@ -58,7 +58,7 @@ export default function DashboardShell() {
                             <div className = ''>
                                 {/* Home -> 0*/}
                                 <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto align-middle hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none active:bg-green-700' onClick={() => setCurrentPage('Home')}>
+                                    <button className = 'focus:outline-none active:bg-green-700' onClick={() => setCurrentPage('Dashboard')}>
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
@@ -182,7 +182,7 @@ export default function DashboardShell() {
                         </div>
 
                         {/* Content Bottom */}
-                        <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pb-12 z-0 sm:bg-blue-200 md:bg-red-200 lg:bg-green-200'>
+                        <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pb-12 z-0'>
                             {/* Test */}
                             {/* <CounselorProfile /> */}
                             {/* <Messages /> */}
