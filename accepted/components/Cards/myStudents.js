@@ -10,7 +10,7 @@ function MyStudents() {
             <div className = 'border-1 border-gray-200 rounded pl-6 w-4/5 md:w-72 lg:w-96 relative bg-white shadow-md'>
                 <div className = 'mt-auto mb-auto'>
                     <div className ='absolute top-0 right-0 h-16 w-10 mt-2'>
-                        <button type='button' 
+                        <button type='button' className = 'focus:outline-none'
                         onClick={() => setShowModal(true)}>
                             <Image
                                 priority
@@ -37,7 +37,7 @@ function MyStudents() {
                                                 Add Student
                                             </h3>
                                             <button
-                                                className= 'mr-4'
+                                                className= 'mr-4 focus:outline-none'
                                                 onClick={() => setShowModal(false)}
                                             >
                                                 <Image
@@ -60,7 +60,7 @@ function MyStudents() {
                                                 <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='studentEmail' aria-label='email address' placeholder='Student Email'/>
 
                                                 <div className='flex items-center justify-end rounded-b'>
-                                                    <button className = 'w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'
+                                                    <button className = 'focus:outline-none w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'
                                                             onClick={() => setShowModal(false)}>
                                                         Add
                                                     </button>

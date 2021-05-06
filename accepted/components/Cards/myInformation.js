@@ -10,7 +10,7 @@ function MyInformation() {
             <div className = 'border-1 border-gray-200 rounded pl-6 pt-6 pb-6 w-4/5 md:w-72 lg:w-96 relative bg-white shadow-md'>
                 <div className = 'w-3/5 mt-auto mb-auto'>
                     <div className ='absolute top-0 right-0 h-16 w-10 mt-2'>
-                        <button onClick={() => setShowModal(true)}>
+                        <button className = 'focus:outline-none' onClick={() => setShowModal(true)}>
                             <Image
                                 priority
                                 src="/images/edit_temp.png"
@@ -36,7 +36,7 @@ function MyInformation() {
                                                 Add Student
                                             </h3>
                                             <button
-                                                className= 'mr-4'
+                                                className= 'mr-4 focus:outline-none'
                                                 onClick={() => setShowModal(false)}
                                             >
                                                 <Image
@@ -62,7 +62,7 @@ function MyInformation() {
                                                 <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='password' aria-label='email address' placeholder='replace with pass in db'/>
 
                                                 <div className='flex items-center justify-end rounded-b'>
-                                                    <button className = 'w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'
+                                                    <button className = 'focus:outline-none w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'
                                                             onClick={() => setShowModal(false)}>
                                                         Edit
                                                     </button>

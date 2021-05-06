@@ -4,6 +4,14 @@ import React from 'react';
 function MyProfile() {
     const [showModal, setShowModal] = React.useState(false);
 
+    // Dynamic Data ** TO CHANGE LATER
+    var fname = 'Taichen';
+    var lname = 'Rose';
+    var dateJoined = 'September 2020';
+    var university = 'Western Washington University';
+
+    var fullName = fname + ' ' + lname;
+
     return (
         <div className = 'border-1 border-gray-200 rounded pl-4 pt-3 pb-3 w-4/5 md:w-72 lg:w-96 relative flex flex-row bg-white shadow-md'>
             <div className = 'w-2/5'>
@@ -33,7 +41,7 @@ function MyProfile() {
             {/* Edit Button For My Profile */}
             <div className = 'w-3/5 mt-auto mb-auto'>
                 <div className ='absolute top-0 right-0 h-16 w-10 mt-2 cursor-pointer'>
-                    <button type='button' 
+                    <button type='button' className = 'focus:outline-none'
                         onClick={() => setShowModal(true)}>
                         <Image
                             priority
@@ -60,7 +68,7 @@ function MyProfile() {
                                             Edit Profile
                                         </h3>
                                         <button
-                                            className= 'mr-4'
+                                            className= 'mr-4 focus:outline-none'
                                             onClick={() => setShowModal(false)}
                                         >
                                             <Image
@@ -77,16 +85,16 @@ function MyProfile() {
                                     <div className='relative pl-4 pb-4 pr-4 m-auto'>
                                         <form className=''>
                                             <p className = 'text-xs'>Full Name</p>
-                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='studentName' placeholder='replace with name in db'/>
+                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='studentName' placeholder= {fullName}/>
 
                                             <p className = 'text-xs'>Date Joined</p>
-                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='dateJoined' aria-label='email address' placeholder='replace with date in db'/>
+                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='dateJoined' aria-label='email address' placeholder={dateJoined}/>
 
                                             <p className = 'text-xs'>My School</p>
-                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='mySchool' aria-label='email address' placeholder='replace with school in db'/>
+                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='mySchool' aria-label='email address' placeholder={university}/>
 
                                             <div className='flex items-center justify-end rounded-b'>
-                                                <button className = 'w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'
+                                                <button className = 'w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto focus:outline-none'
                                                         onClick={() => setShowModal(false)}>
                                                     Edit
                                                 </button>
@@ -101,9 +109,9 @@ function MyProfile() {
                     ) : null}
 
                 </div>
-                <h3 className = 'font-bold mb-1'>Taichen Rose</h3>
-                <p className = 'text-xs mb-1'>Joined May 2021</p>
-                <p className = 'text-xs'>Western Washington University</p>
+                <h3 className = 'font-bold mb-1'>{fname} {lname}</h3>
+                <p className = 'text-xs mb-1'>Joined {dateJoined}</p>
+                <p className = 'text-xs'>{university}</p>
             </div>
         </div>
     )
