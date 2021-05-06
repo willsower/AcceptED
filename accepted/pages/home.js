@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 function Home() {
     return (
-        <div className = 'w-full mt-12 sm:bg-blue-200 md:bg-red-200 lg:bg-green-200 h-full'>
+        <div className = 'w-full h-auto'>
             {/* Module List */}
-            <div className = 'border-1 border-gray-200 rounded-lg relative flex flex-row bg-white shadow-md w-11/12 h-12 m-auto mt-8'>
+            <div className = 'border-1 border-gray-200 rounded-lg flex flex-row bg-white shadow-lg w-11/12 h-12 m-auto mt-8'>
                 <div className = 'inline-block h-8 w-20 bg-gray-100 rounded text-xs md:text-sm text-center mt-auto mb-auto ml-2 text-gray-400'>
                     <button className = 'mt-2'>
                         Module 11
@@ -13,13 +13,13 @@ function Home() {
             </div>
 
             {/* Everything Below the Module List */}
-            <div className = 'md:flex md:flex-row md:h-full md:w-11/12 m-auto lg:ml-4 h-auto'>
+            <div className = 'md:flex md:w-11/12 m-auto h-auto'>
                 {/* Left Chunk */}
-                <div className = 'md:w-8/12 lg:w-9/12 md:h-auto md:justify-center md:flex-col md:relative md:items-center'>
+                <div className = 'md:w-8/12 lg:w-9/12 h-auto'>
                     {/*  Recent Essays */}
-                    <div className = 'w-11/12 m-auto'>
+                    <div className = 'w-11/12 md:w-full m-auto'>
                         <h5 className = 'text-sm text-gray-600 mt-4'>Recent Essays</h5>
-                        <div className = 'border-1 border-gray-200 rounded-lg relative flex flex-row bg-white shadow-md w-full h-60 m-auto mt-4'>
+                        <div className = 'border-1 border-gray-200 rounded-lg flex flex-row bg-white shadow-lg w-full h-60 mt-4'>
                             <div className = 'm-auto'>
                                 <Image
                                     priority
@@ -37,12 +37,12 @@ function Home() {
                     </div>
 
                     {/* Split */}
-                    <div className = 'lg:flex lg:flex-row lg:h-96 lg:w-11/12 lg:m-auto'>
+                    <div className = 'lg:flex lg:flex-row lg:w-full lg:m-auto'>
                         {/* Left */}
-                        <div className = 'lg:w-1/2 lg:h-full lg:justify-center lg:flex-col lg:relative lg:items-center w-11/12 m-auto'>
+                        <div className = 'lg:w-1/2 w-11/12 md:w-full m-auto'>
                             {/* Latest Materials */}
                             <h5 className = 'text-sm text-gray-600 mt-4'>Latest Materials</h5>
-                            <div className = 'border-1 border-gray-200 rounded-lg relative flex flex-row bg-white shadow-md w-full h-60 m-auto mt-4'>
+                            <div className = 'border-1 border-gray-200 rounded-lg flex flex-row bg-white shadow-lg w-full h-60 m-auto mt-4'>
                                 <div className = 'm-auto'>
                                     <Image
                                         priority
@@ -60,10 +60,10 @@ function Home() {
                         </div>
 
                         {/* Right */}
-                        <div className = 'lg:w-1/2 lg:h-full lg:justify-center lg:flex-col lg:relative lg:items-center w-11/12 m-auto lg:ml-4'>
+                        <div className = 'lg:w-1/2 w-11/12 md:w-full m-auto lg:ml-4'>
                             {/* Updates */}
                             <h5 className = 'text-sm text-gray-600 mt-4'>Updates</h5>
-                            <div className = 'border-1 border-gray-200 rounded-lg relative flex flex-row bg-white shadow-md w-full h-60 m-auto mt-4'>
+                            <div className = 'border-1 border-gray-200 rounded-lg flex flex-row bg-white shadow-lg w-full h-60 m-auto mt-4'>
                                 <div className = 'm-auto'>
                                     <Image
                                         priority
@@ -79,7 +79,7 @@ function Home() {
                             </div>
 
                             {/* Tasks */}
-                            {/* <div className = 'border-1 border-gray-200 rounded-lg relative flex flex-row bg-white shadow-md w-11/12 h-60 m-auto mt-4'>
+                            {/* <div className = 'border-1 border-gray-200 rounded-lg relative flex flex-row bg-white shadow-lg w-11/12 h-60 m-auto mt-4'>
 
                             </div> */}
                         </div>
@@ -87,15 +87,15 @@ function Home() {
                 </div>
 
                 {/* Right Chunk (this weeks schedule/tasks) */}
-                <div className = 'md:w-4/12 lg:w-3/12 md:h-screen md:flex md:flex-col md:relative'>
+                <div className = 'md:w-4/12 lg:w-3/12 md:ml-4'>
                     <h5 className = 'text-sm text-gray-600 md:ml-0 ml-6 mt-4'>This Week's Schedule</h5>
                     {/* Calendar */}
-                    <div className = 'border-1 border-gray-200 rounded-lg relative flex flex-row bg-white shadow-md w-11/12 h-40 m-auto mt-4 md:ml-0'>
-
+                    <div className = 'border-1 border-gray-200 rounded-lg bg-white shadow-lg w-11/12 md:w-full h-36 mt-4 m-auto'>
+                            Stuff
                     </div>
 
                     {/* Meetings? */}
-                    <div className = 'border-1 border-gray-200 rounded-lg relative flex flex-row bg-white shadow-md w-11/12 h-52 m-auto mt-4 md:ml-0'>
+                    <div className = 'border-1 border-gray-200 rounded-lg flex flex-row bg-white shadow-lg w-11/12 md:w-full h-52 mt-4 m-auto'>
                         <div className = 'm-auto'>
                             <Image
                                 priority
@@ -113,7 +113,7 @@ function Home() {
 
                     {/* My Tasks */}
                     <h5 className = 'text-sm text-gray-600 ml-6 mt-4 md:ml-0'>My Tasks</h5>
-                    <div className = 'border-1 border-gray-200 rounded-lg relative flex flex-row bg-white shadow-md w-11/12 h-52 m-auto mt-4 md:ml-0'>
+                    <div className = 'border-1 border-gray-200 rounded-lg flex flex-row bg-white shadow-lg w-11/12 md:w-full h-52 mt-4 m-auto'>
                         <div className = 'm-auto'>
                             <Image
                                 priority

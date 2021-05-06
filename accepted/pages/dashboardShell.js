@@ -168,7 +168,7 @@ export default function DashboardShell() {
                     </div>
 
                     {/* Right Side of Screen */}
-                    <div className='flex-grow h-screen flex flex-col relative'>
+                    <div className='flex-grow h-auto flex flex-col relative'>
 
                         {/* Header Top */}
                         <div className='h-16 flex flex-col relative'>
@@ -182,7 +182,7 @@ export default function DashboardShell() {
                         </div>
 
                         {/* Content Bottom */}
-                        <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pb-12 z-0'>
+                        <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pb-12 z-0 sm:bg-blue-200 md:bg-red-200 lg:bg-green-200'>
                             {/* Test */}
                             {/* <CounselorProfile /> */}
                             {/* <Messages /> */}
