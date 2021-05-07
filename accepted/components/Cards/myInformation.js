@@ -3,6 +3,9 @@ import React from 'react';
 
 function MyInformation() {
     const [showModal, setShowModal] = React.useState(false);
+    var email = 'jatr812@gmail.com';
+    var majors = 'Computer Science';
+    var password = 'secretPass';
 
     return (
         <>
@@ -53,13 +56,13 @@ function MyInformation() {
                                         <div className='relative pl-4 pb-4 pr-4 m-auto'>
                                             <form className=''>
                                                 <p className = 'text-xs'>Email Address</p>
-                                                <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='email' aria-label='email address' placeholder='replace with email in db'/>
+                                                <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='email' aria-label='email address' placeholder={email}/>
 
                                                 <p className = 'text-xs'>My Major</p>
-                                                <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='major' aria-label='email address' placeholder='replace with major in db'/>
+                                                <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='major' aria-label='email address' placeholder={majors}/>
 
                                                 <p className = 'text-xs'>Password</p>
-                                                <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='password' aria-label='email address' placeholder='replace with pass in db'/>
+                                                <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='password' aria-label='email address' placeholder= {password}/>
 
                                                 <div className='flex items-center justify-end rounded-b'>
                                                     <button className = 'focus:outline-none w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'
@@ -79,18 +82,18 @@ function MyInformation() {
                     <div className = 'text-xs'>
                         <div className = 'mb-3'>
                             <p className = 'inline-block mr-1'>Email:</p>
-                            <p className = 'inline-block'>jatr912@gmail.com</p>
+                            <p className = 'inline-block'>{email}</p>
                         </div>
 
                         <div className = 'mb-2'>
                             <p className = 'inline-block mr-1'>Major(s):</p>
-                            <p className = 'inline-block'>Computer Science</p>
+                            <p className = 'inline-block'>{majors}</p>
                         </div>
 
                         <div className = 'align-middle'>
 
                             <p className = 'inline-block mr-1 align-middle'>Password:</p>
-                            <p className = 'inline-block mr-2 align-middle'>mypassword</p>
+                            <p className = 'inline-block mr-2 align-middle'>{password}</p>
 
                             <div className = 'inline-block align-middle'>
                                 <Image
@@ -106,7 +109,7 @@ function MyInformation() {
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default MyInformation;

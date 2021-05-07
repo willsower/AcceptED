@@ -7,10 +7,6 @@ import StudentColleges from '../../components/Cards/studentColleges'
 import Image from 'next/image'
 
 function CounselorProfile() {
-    var email = 'jatr812@gmail.com'
-    var majors = 'Computer Science and Economics'
-    var password = 'secretPass';
-
     return (
         <div className = 'mt-12 md:flex md:flex-row ml-14'>
             <div className = 'md:w-72 lg:w-96 mb-4'>
