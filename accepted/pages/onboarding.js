@@ -18,7 +18,6 @@ const maxPage = 5;
 export default function Onboarding() {
     const { useState } = React;
     const [currentPage, setCurrentPage] = useState('1');
-
     var percentage = 100 - ((100 / maxPage) * (maxPage - currentPage));
 
     // Next/Skip Button Helper
@@ -38,6 +37,56 @@ export default function Onboarding() {
         );
     }
 
+// Helper method for uploading 
+function fileUploadOnboard(title, page) {
+    // React.useEffect(async () => {
+    //     // we make a dynamic import for the Dropzone, as this component is not made to work on SSR
+    //     const Dropzone = (await import("dropzone")).default;
+    //     Dropzone.autoDiscover = false;
+    //     // this variable is to delete the previous image from the dropzone state
+    //     // it is just to make the HTML DOM a bit better, and keep it light
+    //     let currentSingleFile = undefined;
+    //     // single dropzone file - accepts only images
+    //     new Dropzone(document.getElementById("dropzone-single"), {
+    //       url: "/",
+    //       thumbnailWidth: null,
+    //       thumbnailHeight: null,
+    //       previewsContainer: document.getElementsByClassName(
+    //         "dz-preview-single"
+    //       )[0],
+    //       previewTemplate: document.getElementsByClassName("dz-preview-single")[0]
+    //         .innerHTML,
+    //       maxFiles: 1,
+    //       acceptedFiles: "image/*",
+    //       init: function () {
+    //         this.on("addedfile", function (file) {
+    //           if (currentSingleFile) {
+    //             this.removeFile(currentSingleFile);
+    //           }
+    //           currentSingleFile = file;
+    //         });
+    //       },
+    //     });
+    //     document.getElementsByClassName("dz-preview-single")[0].innerHTML = "";
+    //   }, []);
+
+    return (
+        <div className = 'm-auto w-4/5 flex flex-col mt-14 mb-8'>
+            <h3 className = "text-xl font-semibold text-center">{title}</h3>
+            <div className="dropzone dropzone-single" id="dropzone-single">
+                <div className="dz-preview dz-preview-single">
+                    <div className="dz-preview-cover">
+                        <img alt="..." className="dz-preview-img hidden" data-dz-thumbnail="" />
+                    </div>
+                </div>
+            </div>
+
+            {/* Next Skip Buttons */}
+            {nextSkip(page)}
+        </div>
+    );
+}
+
     // Helper video onboard shell
     function videoOnboard(videoName, video, page) {
         return (
@@ -50,38 +99,6 @@ export default function Onboarding() {
                 {/* Video Portion */}
                 <div className = 'text-center'>
                     {video}
-                </div>
-
-                {/* Next Skip Buttons */}
-                {nextSkip(page)}
-            </div>
-        );
-    }
-
-    // Helper method for uploading 
-    function fileUploadOnboard(title, page) {
-        return (
-            <div className = 'm-auto w-4/5 flex flex-col'>
-                <h3 className = "text-xl font-semibold text-center">{title}</h3>
-                <div className="dropzone dropzone-single" id="dropzone-single">
-                    <div className="fallback">
-                        <div className="custom-file">
-                            <input
-                            className="custom-file-input"
-                            id="projectCoverUploads"
-                            type="file"
-                            />
-                            <label className="custom-file-label m-auto" htmlFor="projectCoverUploads">
-                            Choose file
-                            </label>
-                        </div>
-                    </div>
-
-                    <div className="dz-preview dz-preview-single">
-                        <div className="dz-preview-cover">
-                            <img alt="..." className="dz-preview-img" data-dz-thumbnail="" />
-                        </div>
-                    </div>
                 </div>
 
                 {/* Next Skip Buttons */}
@@ -132,16 +149,17 @@ export default function Onboarding() {
     function finishedOnboarding() {
         return (
             <div>
-                <div className = 'w-4/5 pt-4 flex flex-col pb-20 m-auto'>
-                    <div className = 'w-60 h-60 relative m-auto'>
-                        <Image
-                            src="/images/temp_onboarding.png"
-                            alt="Picture of blue checkmark"
-                            layout="fill"
-                        />
+                <div className = 'w-full pt-4 flex flex-col pb-20 m-auto'>
+                    <div className = 'w-full h-60 relative m-auto'>
+                    <Image
+                        src="/images/onboardingComplete1.png"
+                        alt=""
+                        layout="fill"
+                    />
                     </div>
 
                     <h3 className = 'text-4xl font-semibold text-center mt-8'>Onboarding Complete!</h3>
+                    <p>Note: This page img will be fixed later</p>
                     <Link href = '/dashboard'>
                         <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-4'>
                                 Finish
@@ -176,24 +194,37 @@ export default function Onboarding() {
             <main>
                 <div className = 'min-h-screen relative'>
                     <div className = 'm-auto w-4/5 pt-16 flex flex-col pb-20'>
-                        {/* Progress Bar */}
-                        <div>
-                            <ProgressBar
-                            percent={percentage}
-                            filledBackground="linear-gradient(to right, #1E5DD6, #0AB0A5)"
-                            >
-                            </ProgressBar>
+                        {currentPage != 5 ?
+                            (
+                                <>
+                                {/* Progress Bar */}
+                                <div>
+                                    <ProgressBar
+                                    percent={percentage}
+                                    filledBackground="linear-gradient(to right, #1E5DD6, #0AB0A5)"
+                                    >
+                                    </ProgressBar>
 
-                            {/* Progress Bar Sections */}
-                            <div className = 'mt-3 font-black text-sm'>
-                                <h5 className = 'inline-block float-left w-1/3'>Training</h5>
-                                <h5 className = 'inline-block w-1/3 text-center'>Upload Files</h5>
-                                <h5 className = 'inline-block float-right w-1/3 text-right'>Background Check</h5>
-                            </div>
-                        </div>
+                                    {/* Progress Bar Sections */}
+                                    <div className = 'mt-3 font-black text-sm'>
+                                        <h5 className = 'inline-block float-left w-1/3'>Training</h5>
+                                        <h5 className = 'inline-block w-1/3 text-center'>Upload Files</h5>
+                                        <h5 className = 'inline-block float-right w-1/3 text-right'>Background Check</h5>
+                                    </div>
+                                </div>
 
-                        {/* Renders page content */}
-                        {renderPage()}
+                                {/* Renders page content */}
+                                {renderPage()}
+                                </>
+                            )
+                            :
+                            (
+                                <>
+                                    {/* Renders page content */}
+                                    {renderPage()}
+                                </>
+                            )
+                        }
                     </div>
                     <Footer />
                 </div>
