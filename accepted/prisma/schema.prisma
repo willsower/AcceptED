@@ -10,18 +10,15 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id Int @id @default(autoincrement())
-  fName String 
-  lName String
-  email String
-  joinDate DateTime @default(now())
-}
-
 model user_table {
   id Int @id @default(autoincrement())
   fname String 
   lname String
   email String
   joinDate DateTime @default(now())
+}
+
+model tasks {
+  id Int @id @default(autoincrement())
+  taskList String[]
 }

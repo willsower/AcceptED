@@ -1,7 +1,21 @@
 import Image from 'next/image';
+import React from 'react'
 
 function Home() {
-    var myTasks = true;
+    const { useState } = React;
+    const [task, setMyTask] = useState('');
+
+    var myTasks = []; //Here I'd fetch from database
+
+    // Add mytasks to database
+    const addMyTasks = (e) => {
+        console.log(task)
+        if (task != '') {
+            // Add task to DB
+            myTasks.push(task);
+            console.log(myTasks)
+        }
+    }
 
     return (
         <div className = 'w-full h-auto'>
@@ -118,60 +132,56 @@ function Home() {
                     {/* My Tasks */}
                     <h5 className = 'text-sm text-gray-600 ml-6 mt-4 md:ml-0'>My Tasks</h5>
                     <div className = 'border-1 border-gray-200 rounded-lg flex flex-row bg-white shadow-lg w-11/12 md:w-full h-auto mt-4 m-auto'>
-                        {myTasks ? 
-                            // Tasks to Display
-                            <div className = 'p-2'>
-                                {/* My Tasks Header */}
-                                <div className = 'algin-middle'>
-                                    <div className = 'inline-block align-middle'>
-                                        <Image
-                                            priority
-                                            src="/images/mytasksico_temp.png"
-                                            className = ''
-                                            height={30}
-                                            width={30}
-                                        />
-                                    </div>
-
-                                    <h5 className = 'text-xs ml-3 pb-1 inline-block align-middle mr-1'>Today</h5>
-
-                                    <div className = 'inline-block align-bottom pb-1'>
-                                        <Image
-                                            priority
-                                            src="/images/goto_temp.png"
-                                            className = ''
-                                            height={20}
-                                            width={20}
-                                        />
-                                    </div>
+                        {/* Tasks to Display */}
+                        <div className = 'p-2'>
+                            {/* My Tasks Header */}
+                            <div className = 'algin-middle'>
+                                <div className = 'inline-block align-middle'>
+                                    <Image
+                                        priority
+                                        src="/images/mytasksico_temp.png"
+                                        className = ''
+                                        height={30}
+                                        width={30}
+                                    />
                                 </div>
 
-                                {/* Add a task */}
-                                <div className = ''>
+                                <h5 className = 'text-xs ml-3 pb-1 inline-block align-middle mr-1'>Today</h5>
 
-                                </div>
-
-                                {/* Display tasks */}
-                                <div className = ''>
-                                    
+                                <div className = 'inline-block align-bottom pb-1'>
+                                    <Image
+                                        priority
+                                        src="/images/goto_temp.png"
+                                        className = ''
+                                        height={20}
+                                        width={20}
+                                    />
                                 </div>
                             </div>
-                                :
-                            // Empty
-                            <div className = 'm-auto p-2'>
-                                <Image
-                                    priority
-                                    src="/images/mytasks_temp.png"
-                                    className = ''
-                                    height={140}
-                                    width={200}
-                                />
-                                <div className = 'text-center'>
-                                    <h3 className = 'font-semibold text-gray-600'>No tasks yet</h3>
-                                    <p className = 'text-xs text-blue-600 font-semibold'>Add a Task &gt;</p>
-                                </div>
+
+                            {/* Add a task */}
+                            <div className = ''>
+                                <button className = 'inline-block align-middle focus:outline-none' onClick = {addMyTasks}>
+                                    <Image
+                                        priority
+                                        src="/images/add_temp.png"
+                                        className = ''
+                                        height={20}
+                                        width={20}
+                                    />                                        
+                                </button>
+
+                                <input type = 'text' name = 'task' placeholder = 'Add a new task here...' className = 'focus:outline-none text-xs ml-2 inline-block' onChange = {event => setMyTask(event.target.value)}></input>
                             </div>
-                        }
+
+
+                            {/* Display tasks */}
+                            <div className = ''>
+                                {myTasks.map(function(task) {
+                                    return (<li>{task}</li>)
+                                })}
+                            </div>
+                        </div>
                     </div>              
                 </div>
             </div>
