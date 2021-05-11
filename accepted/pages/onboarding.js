@@ -15,11 +15,28 @@ export const siteTitle = 'Onboarding | AcceptED';
 const maxPage = 5;
 
 // Consultant Onboarding - Upload Photo
-export default function Onboarding({children, home}) {
+export default function Onboarding() {
     const { useState } = React;
     const [currentPage, setCurrentPage] = useState('1');
 
     var percentage = 100 - ((100 / maxPage) * (maxPage - currentPage));
+
+    // Next/Skip Button Helper
+    function nextSkip(page) {
+        return (
+            <>
+                {/* Next/Skip For Now */}
+                <div className = 'm-auto text-center'>
+                    <button className = 'bg-blue-600 text-white rounded w-full p-1 mt-4' onClick={() => setCurrentPage(page)}>
+                        Next
+                    </button>
+                    <button className = '' onClick={() => setCurrentPage(page)}>
+                        <p className = 'text-xs mt-3 hover:underline hover:cursor-pointer'><a className = "text-blue-600 font-black">Skip for now</a></p>
+                    </button>
+                </div>
+            </>
+        );
+    }
 
     // Helper video onboard shell
     function videoOnboard(videoName, video, page) {
@@ -35,15 +52,40 @@ export default function Onboarding({children, home}) {
                     {video}
                 </div>
 
-                {/* Next/Skip For Now */}
-                <div className = 'm-auto text-center'>
-                    <button className = 'bg-blue-600 text-white rounded w-full p-1 mt-4' onClick={() => setCurrentPage(page)}>
-                        Next
-                    </button>
-                    <button className = '' onClick={() => setCurrentPage(page)}>
-                        <p className = 'text-xs mt-3 hover:underline hover:cursor-pointer'><a className = "text-blue-600 font-black">Skip for now</a></p>
-                    </button>
+                {/* Next Skip Buttons */}
+                {nextSkip(page)}
+            </div>
+        );
+    }
+
+    // Helper method for uploading 
+    function fileUploadOnboard(title, page) {
+        return (
+            <div className = 'm-auto w-4/5 flex flex-col'>
+                <h3 className = "text-xl font-semibold text-center">{title}</h3>
+                <div className="dropzone dropzone-single" id="dropzone-single">
+                    <div className="fallback">
+                        <div className="custom-file">
+                            <input
+                            className="custom-file-input"
+                            id="projectCoverUploads"
+                            type="file"
+                            />
+                            <label className="custom-file-label m-auto" htmlFor="projectCoverUploads">
+                            Choose file
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className="dz-preview dz-preview-single">
+                        <div className="dz-preview-cover">
+                            <img alt="..." className="dz-preview-img" data-dz-thumbnail="" />
+                        </div>
+                    </div>
                 </div>
+
+                {/* Next Skip Buttons */}
+                {nextSkip(page)}
             </div>
         );
     }
@@ -71,78 +113,18 @@ export default function Onboarding({children, home}) {
     // Uploading Profile Image
     function onboardThree() {
         return (
-            <div className = 'm-auto w-4/5 flex flex-col'>
-                <h3 className = "text-xl font-semibold text-center">Let's upload your profile photo</h3>
-                <div className="dropzone dropzone-single" id="dropzone-single">
-                    <div className="fallback">
-                        <div className="custom-file">
-                            <input
-                            className="custom-file-input"
-                            id="projectCoverUploads"
-                            type="file"
-                            />
-                            <label className="custom-file-label m-auto" htmlFor="projectCoverUploads">
-                            Choose file
-                            </label>
-                        </div>
-                    </div>
-
-                    <div className="dz-preview dz-preview-single">
-                        <div className="dz-preview-cover">
-                            <img alt="..." className="dz-preview-img" data-dz-thumbnail="" />
-                        </div>
-                    </div>
-                </div>
-
-                {/* Next/Skip For Now */}
-                <div className = 'm-auto text-center'>
-                    <button className = 'bg-blue-600 text-white rounded w-full p-1 mt-4' onClick={() => setCurrentPage('4')}>
-                        Next
-                    </button>
-                    <button className = '' onClick={() => setCurrentPage('4')}>
-                        <p className = 'text-xs mt-3 hover:underline hover:cursor-pointer'><a className = "text-blue-600 font-black">Skip for now</a></p>
-                    </button>
-                </div>
-            </div>
+            <>
+                {fileUploadOnboard("Let's upload your profile photo", 4)}
+            </>
         );
     }
 
     // Upload a valid ID
     function onboardFour() {
         return (
-            <div className = 'm-auto w-4/5 flex flex-col'>
-                <h3 className = "text-xl font-semibold text-center">Upload a valid ID</h3>
-                <div className="dropzone dropzone-single" id="dropzone-single">
-                    <div className="fallback">
-                        <div className="custom-file">
-                            <input
-                            className="custom-file-input"
-                            id="projectCoverUploads"
-                            type="file"
-                            />
-                            <label className="custom-file-label m-auto" htmlFor="projectCoverUploads">
-                            Choose file
-                            </label>
-                        </div>
-                    </div>
-
-                    <div className="dz-preview dz-preview-single">
-                        <div className="dz-preview-cover">
-                            <img alt="..." className="dz-preview-img" data-dz-thumbnail="" />
-                        </div>
-                    </div>
-                </div>
-
-                {/* Next/Skip For Now */}
-                <div className = 'm-auto text-center'>
-                    <button className = 'bg-blue-600 text-white rounded w-full p-1 mt-4' onClick={() => setCurrentPage('5')}>
-                        Next
-                    </button>
-                    <button className = '' onClick={() => setCurrentPage('5')}>
-                        <p className = 'text-xs mt-3 hover:underline hover:cursor-pointer'><a className = "text-blue-600 font-black">Skip for now</a></p>
-                    </button>
-                </div>
-            </div>
+            <>
+                {fileUploadOnboard('Upload a valid ID', 5)}
+            </>
         );
     }
 
@@ -170,6 +152,7 @@ export default function Onboarding({children, home}) {
         );
     }
 
+    // Function to facilitate correct page renders
     const renderPage = () => {
         if (currentPage == '1') {
             return onboardOne();
@@ -208,8 +191,9 @@ export default function Onboarding({children, home}) {
                                 <h5 className = 'inline-block float-right w-1/3 text-right'>Background Check</h5>
                             </div>
                         </div>
+
+                        {/* Renders page content */}
                         {renderPage()}
-                        { children }
                     </div>
                     <Footer />
                 </div>
