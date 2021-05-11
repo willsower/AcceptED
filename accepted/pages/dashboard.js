@@ -39,8 +39,8 @@ export default function DashboardShell() {
                 <div className='flex flex-row'>
 
                     {/* Navbar - Left */}
-                    <div className='sm:w-36 h-screen flex flex-col relative'>
-                        <div className = 'fixed border-r border-gray-200 sm:w-36 h-screen'>
+                    <div className='sm:w-40 h-screen flex flex-col relative'>
+                        <div className = 'fixed border-r border-gray-200 sm:w-40 h-screen'>
                             {/* AcceptED Logo */}
                             <div className = 'mt-2'>
                                 <div className = 'p-4 sm:pl-9 sm:pr-9'>
