@@ -2,11 +2,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react'
 
-import Home from './home'
-import Messages from './messages';
-import Materials from './materials'
-import Tasks from './tasks'
-import CounselorProfile from './Profiles/counselorProfile';
+import Home from '../components/PageComponent/home'
+import Messages from '../components/PageComponent/messages';
+import Materials from '../components/PageComponent/materials'
+import Tasks from '../components/PageComponent/tasks'
+import CounselorProfile from '../components/PageComponent/Profiles/counselorProfile';
 
 const pages = [CounselorProfile, Messages];
 

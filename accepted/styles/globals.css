@@ -106,4 +106,12 @@ a {
 
 /* End of React Progress Bar Configure */
 
+/* Progress Bar CSS */
+
+#progress_gradient {
+  background: linear-gradient(0.25turn, #1E5DD6, #0AB0A5);
+}
+
+/* End of Progress Bar CSS */
+
 
