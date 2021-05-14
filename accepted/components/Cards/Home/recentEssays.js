@@ -1,10 +1,11 @@
 import Image from 'next/image'
-import Essay from './essay'
 
-function RecentEssays() {
-    // Change with dynamic essays
-    var essays = ['Name'];
+function RecentEssays({essays}) {
 
+    // Should be a max of 3 essays here
+    // Get using dynamic call
+    var essays = ['Obj1', 'Obj2', 'Obj3'];
+    var tempStatus = 'Done';
     return (
         <div className = 'w-11/12 md:w-full m-auto'>
             <h5 className = 'text-sm text-gray-600 mt-4'>Recent Essays</h5>
@@ -28,9 +29,76 @@ function RecentEssays() {
                 </>
                 :
                 <div className = ''>
-                    <Essay />
-                    <Essay />
-                    <Essay />
+                    {essays.map((es) => (
+                        <div className = 'w-1/3 border-1 border-gray-200 rounded-lg bg-white shadow-lg h-60 mt-4 inline-block'>
+                            {/* Doc Image */}
+                            <div className = 'text-center'>
+                                <Image
+                                    priority
+                                    src="/images/sampleDoc_temp.png"
+                                    className = ''
+                                    height={90}
+                                    width={170}
+                                />
+                            </div>
+
+                            {/* Doc Details */}
+                            <div className = 'p-2'>
+                                <p className = 'text-xs text-gray-400'>{/*es.type*/}Supplement</p>
+                                <h5 className = 'text-xs lg:text-base mt-1 sm:mt-0 md:mt-1 lg:mt-0'>{/*es.name*/}Western Washington University</h5>
+
+                                {/* Essay Status / Dude Date */}
+                                <div className = 'mt-1 lg:mt-1'>
+                                    {/* Due date Image */}
+                                    <div className = 'w-14 h-6 bg-indigo-100 rounded inline-block'>
+                                        <div className = 'text-center h-full'>
+                                            <div className = 'inline-block h-full'>
+                                                <Image
+                                                    priority
+                                                    src="/images/clock.png"
+                                                    className = ''
+                                                    height={10}
+                                                    width={10}
+                                                />
+                                            </div>
+
+                                            <p className = 'text-xxs inline-block ml-1 text-blue-700 align-middle'>{/*es.due*/}2 days</p>
+                                        </div>
+                                    </div>
+                                    {/* Status of Essay */}
+                                    {/* Done */}
+                                    {/*es.status*/ tempStatus == 'Done' && (
+                                        <div className = 'w-10 h-6 border rounded inline-block ml-2 align-middle text-center'>
+                                            <div className = 'text-green-700 text-xxs align-middle inline-block'>
+                                                Done
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* In Progress */}
+                                    {/*es.status*/ tempStatus == 'In Progress' && (
+                                        <div className = 'w-14 h-6 border rounded inline-block ml-2 align-middle text-center'>
+                                            <div className = 'text-yellow-500 text-xxs align-middle inline-block'>
+                                                In Progress
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Not Started */}
+                                    {/*es.status*/ tempStatus == 'Not Started' && (
+                                        <div className = 'w-16 h-6 border rounded inline-block ml-2 align-middle text-center'>
+                                            <div className = 'text-red-600 text-xxs align-middle inline-block'>
+                                                Not Started
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Task Details */}
+                                <button className = 'w-full m-auto mt-3 rounded bg-blue-600 text-white text-xs p-2 sm:mt-2 md:mt-3 lg:mt-1'>See Task Details</button>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             }
         </div>
