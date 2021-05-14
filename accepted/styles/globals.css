@@ -26,6 +26,10 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
+.text-xxs {
+  font-size: 0.5rem;
+}
+
 
 /* Dropzone Configure */
 

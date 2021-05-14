@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react'
+import RecentEssays from '../Cards/Home/recentEssays'
 
 function Home() {
     const { useState } = React;
@@ -35,24 +36,7 @@ function Home() {
                 {/* Left Chunk */}
                 <div className = 'md:w-8/12 lg:w-9/12 h-auto'>
                     {/*  Recent Essays */}
-                    <div className = 'w-11/12 md:w-full m-auto'>
-                        <h5 className = 'text-sm text-gray-600 mt-4'>Recent Essays</h5>
-                        <div className = 'border-1 border-gray-200 rounded-lg flex flex-row bg-white shadow-lg w-full h-60 mt-4'>
-                            <div className = 'm-auto'>
-                                <Image
-                                    priority
-                                    src="/images/recent_essays_temp.png"
-                                    className = ''
-                                    height={140}
-                                    width={140}
-                                />
-                                <div className = 'text-center'>
-                                    <h3 className = 'font-semibold text-gray-600'>No essays assigned yet.</h3>
-                                    <p className = 'text-xs text-blue-600 font-semibold'>Assign an Essay in Tasks &gt;</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <RecentEssays />
 
                     {/* Split */}
                     <div className = 'lg:flex lg:flex-row lg:w-full lg:m-auto'>
