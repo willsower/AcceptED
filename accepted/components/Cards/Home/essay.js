@@ -38,27 +38,6 @@ function Essay() {
                             <p className = 'text-xxs inline-block ml-1 text-blue-700 align-middle mb-1'>{due} days</p>
                         </div>
                     </div>
-                    {/* <div className = 'absolute'>
-                        <Image
-                            priority
-                            src="/images/blue_rect_home.png"
-                            className = ''
-                            height={20}
-                            width={50}
-                        />
-                        <div className = 'relative bottom-7 left-1'>
-                            <Image
-                                priority
-                                src="/images/clock.png"
-                                className = 'inline-block'
-                                height={10}
-                                width={10}
-                            />
-
-                            <p className = 'text-xxs inline-block ml-1 align-middle text-blue-700'>{due} days</p>
-                        </div>
-                    </div> */}
-
                     {/* Status of Essay */}
                     <div>
 
