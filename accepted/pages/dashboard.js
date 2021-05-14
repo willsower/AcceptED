@@ -57,8 +57,8 @@ export default function DashboardShell() {
                             {/* Navigation */}
                             <div className = ''>
                                 {/* Home -> 0*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto align-middle hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none active:bg-green-700' onClick={() => setCurrentPage('Dashboard')}>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto align-middle hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer' onClick={() => setCurrentPage('Dashboard')}>
+                                    <button className = 'focus:outline-none active:bg-green-700'>
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
@@ -75,8 +75,8 @@ export default function DashboardShell() {
                                 </div>
 
                                 {/* Message */}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none active:bg-green-700' onClick={() => setCurrentPage('Messages')}>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50' onClick={() => setCurrentPage('Messages')}>
+                                    <button className = 'focus:outline-none active:bg-green-700'>
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>                                            
                                             <Image
                                                 priority
@@ -93,8 +93,8 @@ export default function DashboardShell() {
                                 </div>
 
                                 {/* Materials */}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none' onClick={() => setCurrentPage('Materials')}>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50' onClick={() => setCurrentPage('Materials')}>
+                                    <button className = 'focus:outline-none'>
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
@@ -111,8 +111,8 @@ export default function DashboardShell() {
                                 </div>
 
                                 {/* Tasks */}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none' onClick={() => setCurrentPage('Tasks')}>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50' onClick={() => setCurrentPage('Tasks')}>
+                                    <button className = 'focus:outline-none'>
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
@@ -129,8 +129,8 @@ export default function DashboardShell() {
                                 </div>
 
                                 {/* Profile*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none' onClick={() => setCurrentPage('Profile')}>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50' onClick={() => setCurrentPage('Profile')}>
+                                    <button className = 'focus:outline-none'>
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>                                            
                                             <Image
                                                 priority
@@ -147,8 +147,8 @@ export default function DashboardShell() {
                                 </div>
 
                                 {/* Logout*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none' onClick={() => setCurrentPage('Logout')}>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50' onClick={() => setCurrentPage('Logout')}>
+                                    <button className = 'focus:outline-none'>
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
@@ -182,11 +182,7 @@ export default function DashboardShell() {
                         </div>
 
                         {/* Content Bottom */}
-                        <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pb-12 z-0'>
-                            {/* Test */}
-                            {/* <CounselorProfile /> */}
-                            {/* <Messages /> */}
-                            
+                        <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pb-12 z-0'>                            
                             {renderPage()}
                         </div>
                     </div>

@@ -4,8 +4,9 @@ function RecentEssays({essays}) {
 
     // Should be a max of 3 essays here
     // Get using dynamic call
-    var essays = ['Obj1', 'Obj2', 'Obj3'];
+    var essays = ['one', 'two', ''];
     var tempStatus = 'Done';
+
     return (
         <div className = 'w-11/12 md:w-full m-auto'>
             <h5 className = 'text-sm text-gray-600 mt-4'>Recent Essays</h5>
@@ -28,9 +29,11 @@ function RecentEssays({essays}) {
                     </div>
                 </>
                 :
-                <div className = ''>
+                <div className = 'w-11/12 md:w-full flex'>
+
+                    {/* Loop through all 3 recent essays populating information under variable 'es' */}
                     {essays.map((es) => (
-                        <div className = 'w-1/3 border-1 border-gray-200 rounded-lg bg-white shadow-lg h-60 mt-4 inline-block'>
+                        <div className = 'ml-2 border-1 border-gray-200 rounded-lg bg-white shadow-lg h-60 mt-4 inline-block'>
                             {/* Doc Image */}
                             <div className = 'text-center'>
                                 <Image

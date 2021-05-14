@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import React from 'react'
-import RecentEssays from '../Cards/Home/recentEssays'
+import React from 'react';
+import RecentEssays from '../Cards/Home/recentEssays';
+import LatestMaterials from '../Cards/Home/latestMaterials';
 
 function Home() {
     const { useState } = React;
@@ -43,22 +44,7 @@ function Home() {
                         {/* Left */}
                         <div className = 'lg:w-1/2 w-11/12 md:w-full m-auto'>
                             {/* Latest Materials */}
-                            <h5 className = 'text-sm text-gray-600 mt-4'>Latest Materials</h5>
-                            <div className = 'border-1 border-gray-200 rounded-lg flex flex-row bg-white shadow-lg w-full h-60 m-auto mt-4'>
-                                <div className = 'm-auto'>
-                                    <Image
-                                        priority
-                                        src="/images/resources_temp.png"
-                                        className = ''
-                                        height={140}
-                                        width={200}
-                                    />
-                                    <div className = 'text-center'>
-                                        <h3 className = 'font-semibold text-gray-600'>No resources or curriculum yet.</h3>
-                                        <p className = 'text-xs text-blue-600 font-semibold'>Upload them in Materials &gt;</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <LatestMaterials />
                         </div>
 
                         {/* Right */}
