@@ -10,12 +10,29 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model user_table {
+model User {
   id Int @id @default(autoincrement())
-  fname String 
+  fname String
   lname String
   email String
+  password String
+  universityCode Int
+  profileImage Bytes?
   joinDate DateTime @default(now())
+  educationConsultant EducationConsultant?
+  student Student?
+}
+
+model EducationConsultant {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model Student {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId Int
 }
 
 model tasks {
