@@ -1,6 +1,9 @@
 import Image from 'next/image'
 import React from 'react';
 
+
+prisma = new 
+
 function MyProfile() {
     const [showModal, setShowModal] = React.useState(false);
 
