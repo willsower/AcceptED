@@ -27,6 +27,8 @@ model EducationConsultant {
   id Int @id @default(autoincrement())
   user User @relation(fields: [userId], references: [id])
   userId Int
+
+
 }
 
 model Student {
@@ -35,7 +37,21 @@ model Student {
   userId Int
 }
 
-model tasks {
+model University {
   id Int @id @default(autoincrement())
-  taskList String[]
+  name String
+}
+
+model Task {
+  id Int @id @default(autoincrement())
+  documentName String
+  assignedDate DateTime
+  dueDate DateTime
+  Status TaskStatus
+  Description String
+}
+enum TaskStatus {
+  NOTSTARTED
+  INPROGRESS
+  COMPLETE
 }
