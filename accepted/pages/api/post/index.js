@@ -1,9 +1,6 @@
 import { getSession } from 'next-auth/client'
 import { PrismaClient } from '@prisma/client'
 
-
-
-
 // POST /api/post
 // Required fields in body: title
 // Optional fields in body: content
@@ -18,6 +15,7 @@ export default async function handle(req, res) {
   console.log(firstName);
   console.log(LastName)
   // const session = await getSession({ req })
+
   const newUser = await prisma.user.create({
     data: {
       fname: firstName,
@@ -28,13 +26,8 @@ export default async function handle(req, res) {
       student: {
         create: { }
       }
-
-
-
-
     },
   })
   
-
-  res.json(newUser)
+  res.json(newUser);
 }

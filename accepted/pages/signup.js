@@ -2,43 +2,35 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from "react";
-// import { useRouter } from 'next/router'
 
 export const siteTitle = 'Sign-Up | AcceptED';
 
 // Sign Up
-
 export default function SignUp ({children, home}) {
-
-    
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [universityCode, setUniversityCpde] = useState('')
     const [password, setPassword] = useState('')
 
-    
     const submitSignUpData = async (e) => {
         console.log("Line 20");
         
         e.preventDefault()
         try {
-            // const router = useRouter()
             const body = { fullName, email, universityCode, password }
             await fetch('/api/post', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(body),
+            }).then(json =>{
+                window.location.href = '/onboarding'
             })
-            // await Router.push('/drafts')
-            // router.push('/onboarding')
           } catch (error) {
             console.error(error)
           }
-          
-
     };
 
-    console.log("line 37")
+    console.log("line 36")
 
     return (
         <div className = 'h-screen'>
