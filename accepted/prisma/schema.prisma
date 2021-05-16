@@ -29,6 +29,7 @@ model EducationConsultant {
     userId Int
   tasks Task[]
   students Student[]
+  documents Document[]
 }
 
 model Student {
@@ -75,14 +76,14 @@ model Task {
   id Int @id @default(autoincrement())
   educationConsultants EducationConsultant[]
   students Student[]
-  documentName String
   assignedDate DateTime
   dueDate DateTime
-  status TaskStatus
-  description String
+  status TaskStatus?
+  school String?
+  description String?
   moduleNumber Int
   type TaskType
-  document Document @relation(fields: [docId], references: [id])
+  document Document? @relation(fields: [docId], references: [id])
     docId Int
   subtasks Task[] @relation("TaskSubtasks")
   superTask Task @relation("TaskSubtasks", fields: [superTaskId], references: [id])
@@ -98,9 +99,25 @@ enum TaskType {
   ESSAY
 }
 
+model Material {
+  id Int @id @default(autoincrement())
+  document Document @relation(fields: [docId], references: [id])
+    docId Int
+  type MaterialType
+  description String?
+}
+enum MaterialType {
+  CIRRICULUM
+  RESOURCE
+}
+
 model Document {
   id Int @id @default(autoincrement())
+  creator EducationConsultant @relation(fields: [creatorId], references: [id])
+    creatorId Int
   tasks Task[]
+  materials Material[]
+  creationDate DateTime @default(now())
   name String
   link String
 }
