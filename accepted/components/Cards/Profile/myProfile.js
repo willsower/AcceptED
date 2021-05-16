@@ -3,7 +3,6 @@ import React from 'react';
 
 function MyProfile() {
     const [showModal, setShowModal] = React.useState(false);
-    const prisma = new PrismaClient();
 
     // Dynamic Data ** TO CHANGE LATER
     var fname = 'Taichen';
