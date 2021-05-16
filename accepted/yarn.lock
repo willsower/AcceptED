@@ -1779,10 +1779,10 @@
   dependencies:
     "querystring" "^0.2.0"
 
-"next-auth@^3.1.0", "next-auth@^3.17.2", "next-auth@^3.22.0":
-  "integrity" "sha512-yt2ffhSKumjbBZMZr34Ccm1XoJaQbiLDZE3K8GCmiwLnAwuKTp447uZIAMVzALN/g3yu4dpvNXVxDXjsyi0NGw=="
-  "resolved" "https://registry.npmjs.org/next-auth/-/next-auth-3.22.0.tgz"
-  "version" "3.22.0"
+"next-auth@^3.1.0", "next-auth@^3.17.2", "next-auth@^3.23.0":
+  "integrity" "sha512-bjgse0nHQ/HVKbVwCVA7h2ZVwJZaKRPu+3tgvQdlznlZp6hhHfVTx1yXhI2NopHas3dq3juFBxGCh8Ex2kc45g=="
+  "resolved" "https://registry.npmjs.org/next-auth/-/next-auth-3.23.0.tgz"
+  "version" "3.23.0"
   dependencies:
     "@babel/runtime" "^7.14.0"
     "@next-auth/prisma-legacy-adapter" "canary"
