@@ -26,32 +26,81 @@ model User {
 model EducationConsultant {
   id Int @id @default(autoincrement())
   user User @relation(fields: [userId], references: [id])
-  userId Int
-
-
+    userId Int
+  tasks Task[]
+  students Student[]
 }
 
 model Student {
   id Int @id @default(autoincrement())
   user User @relation(fields: [userId], references: [id])
-  userId Int
+    userId Int
+  educationConsultant EducationConsultant @relation(fields: [ecId], references: [id])
+    ecId Int
+  preferredLanguage String
+  major String
+  interests String[]
+  universityOptions UniversityOption[]
+
+  assignedTasks Task[]
+}
+
+model UniversityOption {
+  id Int @id @default(autoincrement())
+  student Student @relation(fields: [studentId], references: [id])
+    studentId Int
+  university University @relation(fields: [universityId], references: [id])
+    universityId Int
+  likelihood Likelihood
+  status UniversityStatus
+}
+enum Likelihood {
+  LIKELY
+  POSSIBLE
+  REACH
+}
+enum UniversityStatus {
+  WAITING
+  ACCEPTED
+  REJECTED
 }
 
 model University {
   id Int @id @default(autoincrement())
+  universityOptions UniversityOption[]
   name String
 }
 
 model Task {
   id Int @id @default(autoincrement())
+  educationConsultants EducationConsultant[]
+  students Student[]
   documentName String
   assignedDate DateTime
   dueDate DateTime
-  Status TaskStatus
-  Description String
+  status TaskStatus
+  description String
+  moduleNumber Int
+  type TaskType
+  document Document @relation(fields: [docId], references: [id])
+    docId Int
+  subtasks Task[] @relation("TaskSubtasks")
+  superTask Task @relation("TaskSubtasks", fields: [superTaskId], references: [id])
+    superTaskId Int
 }
 enum TaskStatus {
   NOTSTARTED
   INPROGRESS
   COMPLETE
+}
+enum TaskType {
+  FORM
+  ESSAY
+}
+
+model Document {
+  id Int @id @default(autoincrement())
+  tasks Task[]
+  name String
+  link String
 }
