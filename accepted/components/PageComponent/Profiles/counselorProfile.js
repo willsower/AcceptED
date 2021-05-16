@@ -6,11 +6,11 @@ import StudentColleges from '../../Cards/Profile/studentColleges'
 
 import Image from 'next/image'
 
-function CounselorProfile() {
+function CounselorProfile( {counselorUserID } ) {
     return (
         <div className = 'mt-12 md:flex md:flex-row ml-14'>
             <div className = 'md:w-72 lg:w-96 mb-4'>
-                <MyProfile />
+                <MyProfile counselorID={counselorUserID} />
                 <MyInformation />
                 <MyStudents />
 

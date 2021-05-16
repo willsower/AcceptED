@@ -1,14 +1,31 @@
 import Image from 'next/image'
 import React from 'react';
 
-function MyProfile() {
+import { PrismaClient } from '@prisma/client'
+
+
+function MyProfile({ counselorID }) {
     const [showModal, setShowModal] = React.useState(false);
+    const prisma = new PrismaClient()
 
     // Dynamic Data ** TO CHANGE LATER
-    var fname = 'Taichen';
-    var lname = 'Rose';
-    var dateJoined = 'September 2020';
-    var university = 'Western Washington University';
+    const conselor = prisma.user.findUnique({
+        where: { id: counselorID },
+        select: {
+            fname: true,
+            lname: true,
+            universityCode: true,
+            dateJoined: true,
+
+        },
+    })
+    console.log("ConselorID is " + counselorID)
+    console.log(conselor)
+    var fname = conselor[fname];
+    var lname = conselor[lname];
+    var dateJoined = conselor[dateJoined];
+    var university =  "USC";
+    
 
     var fullName = fname + ' ' + lname;
 
@@ -118,3 +135,5 @@ function MyProfile() {
 }
 
 export default MyProfile;
+
+
