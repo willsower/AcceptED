@@ -160,7 +160,7 @@ function fileUploadOnboard(title, page) {
 
                 <div className = 'w-full pt-4 flex flex-col pb-20 m-auto mt-72'>
                     <h3 className = 'text-4xl font-semibold text-center bg-white'>Onboarding Complete!</h3>
-                    <Link href = '/dashboard'>
+                    <Link href = '/home'>
                         <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-4 z-50'>
                                 Finish
                         </button>
