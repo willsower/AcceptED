@@ -2,7 +2,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import React from 'react'
 import {useRouter} from 'next/router'
-import { prisma, PrismaClient } from '@prisma/client'
+import {  PrismaClient } from '@prisma/client'
+
+// import prisma from '../../../../lib/prisma'
 
 import Home from '../../../components/PageComponent/home'
 import Messages from '../../../components/PageComponent/messages';
@@ -12,20 +14,26 @@ import CounselorProfile from '../../../components/PageComponent/Profiles/counsel
 
 const pages = [CounselorProfile, Messages];
 
-export default function DashboardShell({id}) {
-    // prisma = new PrismaClient()
+export default function DashboardShell({conselor}) {
+    
     const { useState } = React;
     const [currentPage, setCurrentPage] = useState('Profile');
+    // change initial state in the () to 'Profile' to see EC Profile page 
+
+    var fname = conselor.fname
+    var lname = conselor.lname
+    var uniCode = conselor.universityCode
+    // var joinDate = conselor.joinDate
 
     // const router = useRouter()
     // const {id} = router.query
     // const id = params.id
-    console.log("id is " + id)
+    // console.log("id is " + id)
     // get the id of this URL, which indicates the specific user
     // const conselor = await prisma.user.findUnique({
     //     where: { id: id },
     // })
-
+    console.log(fname)
     
 
 
@@ -39,7 +47,7 @@ export default function DashboardShell({id}) {
         } else if (currentPage == 'Tasks') {
             return <Tasks />;
         } else if (currentPage == 'Profile') {
-            return <CounselorProfile counselorUserID={id} />;
+            return <CounselorProfile counselorFname={fname} counselorLname={lname} counselorUniCode={uniCode} counselorJoinDate="2020"/>;
         }
     }
 
@@ -213,28 +221,45 @@ export default function DashboardShell({id}) {
 
 
 export const getServerSideProps = async (context) => {
-        // getServerSideProps can pass in a context param, which allow us to get 
-        // the current URL(i think)
-        prisma = new PrismaClient()
-        const id = context.params.id
-        const conselor = prisma.user.findUnique({
-            where: { id: counselorID },
+    const prisma = new PrismaClient()
+    const id = context.params.id
+    // 1. find the user(counselor) associated with this [id] and find its f,l name and university code
+    const conselor = await prisma.user.findUnique({ // determine the f,l name, school of counselor and pass into myProfile component
+        where: { id: Number(id)},  
+        select: {
+            fname: true,
+            lname: true,
+            universityCode: true,
+            joinDate: true,
+            student: true,
+        },
+    })
+    // sorry, bad naming, conselor is just a generic user
+
+    // 2. find the tasks associated with this user, if this user is a student
+    const mytasks = {} // mytasks start out empty, ECs don't have tasks
+    if(conselor.student !== null){
+        // query tasks by finding frm student or finding from tasks table. 
+        mytasks = await prisma.student.findMany({
+            where: { id: Number(id)},
             select: {
-                fname: true,
-                lname: true,
-                universityCode: true,
-                dateJoined: true,
-    
+                
+                assignedTasks: {
+                    select:{
+                        description: true,
+                    },
+                },
             },
+
         })
-        // console.log(context)
-        // const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${context.params.id}`)
-    
-        // const article = await res.json()
-    
-        return {
-            props: {
-                id
-            }
+    }
+
+
+    console.log(conselor)
+    conselor.joinDate = conselor.joinDate.toString()
+    return {
+        props: {
+            conselor
         }
     }
+}

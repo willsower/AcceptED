@@ -4,27 +4,27 @@ import React from 'react';
 import { PrismaClient } from '@prisma/client'
 
 
-function MyProfile({ counselorID }) {
+function MyProfile({ counselorFirstName, counselorLastName, counselorUniversityCode, conselorJoinDate }) {
     const [showModal, setShowModal] = React.useState(false);
     const prisma = new PrismaClient()
 
     // Dynamic Data ** TO CHANGE LATER
-    const conselor = prisma.user.findUnique({
-        where: { id: counselorID },
-        select: {
-            fname: true,
-            lname: true,
-            universityCode: true,
-            dateJoined: true,
+    // const conselor = prisma.user.findUnique({
+    //     where: { id: counselorID },
+    //     select: {
+    //         fname: true,
+    //         lname: true,
+    //         universityCode: true,
+    //         dateJoined: true,
 
-        },
-    })
-    console.log("ConselorID is " + counselorID)
-    console.log(conselor)
-    var fname = conselor[fname];
-    var lname = conselor[lname];
-    var dateJoined = conselor[dateJoined];
-    var university =  "USC";
+    //     },
+    // })
+    console.log("Conselor Name is " + counselorFirstName + counselorLastName)
+ 
+    var fname = counselorFirstName;
+    var lname = counselorLastName;
+    var dateJoined = "2021 - 5 -000"
+    var university =  "My School Code is " + counselorUniversityCode
     
 
     var fullName = fname + ' ' + lname;
