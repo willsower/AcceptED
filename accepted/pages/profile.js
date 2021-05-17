@@ -25,7 +25,7 @@ export async function getStaticProps() {
     };
 }
 
-export default function Profile({profile}) {
+export default function Profile({ profile }) {
 
     function nav(link, img, name) {
         return (
@@ -128,7 +128,7 @@ export default function Profile({profile}) {
                                 <div className = 'md:w-72 lg:w-96 mb-4'>
                                     {/* <MyProfile counselorID={counselorUserID} /> */}
                                     <MyProfile profile={profile}/>
-                                    <MyInformation />
+                                    <MyInformation profile = {profile}/>
                                     <MyStudents />
 
                                     <h3 className = 'mb-3 mt-3 font-bold'>Directory</h3>
