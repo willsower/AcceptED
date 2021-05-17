@@ -1,33 +1,15 @@
 import Image from 'next/image'
 import React from 'react';
 
-import { PrismaClient } from '@prisma/client'
-
 
 function MyProfile({ counselorID }) {
     const [showModal, setShowModal] = React.useState(false);
-    const prisma = new PrismaClient()
 
     // Dynamic Data ** TO CHANGE LATER
-    const conselor = prisma.user.findUnique({
-        where: { id: counselorID },
-        select: {
-            fname: true,
-            lname: true,
-            universityCode: true,
-            dateJoined: true,
-
-        },
-    })
-    console.log("ConselorID is " + counselorID)
-    console.log(conselor)
-    var fname = conselor[fname];
-    var lname = conselor[lname];
-    var dateJoined = conselor[dateJoined];
-    var university =  "USC";
-    
-
-    var fullName = fname + ' ' + lname;
+    var fname = 'Taichen';
+    var lname = 'Rose';
+    var dateJoined = 'September 2020';
+    var university = 'Western Washington University';
 
     return (
         <div className = 'border-1 border-gray-200 rounded pl-4 pt-3 pb-3 w-4/5 md:w-72 lg:w-96 relative flex flex-row bg-white shadow-md'>
@@ -102,7 +84,7 @@ function MyProfile({ counselorID }) {
                                     <div className='relative pl-4 pb-4 pr-4 m-auto'>
                                         <form className=''>
                                             <p className = 'text-xs'>Full Name</p>
-                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='studentName' placeholder= {fullName}/>
+                                            <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='studentName' placeholder= {fname + lname}/>
 
                                             <p className = 'text-xs'>Date Joined</p>
                                             <input className='text-sm bg-white rounded p-2 mb-4 border w-72 lg:w-80' type='dateJoined' aria-label='email address' placeholder={dateJoined}/>
