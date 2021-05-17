@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 
 html,
 body {
@@ -23,15 +23,6 @@ a {
 
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-.text-xxs {
-  font-size: 0.5rem;
-}
-
-.w-31 {
-  width: 31%;
 }
 
 
@@ -73,8 +64,46 @@ a {
 
 /* React Video Player Configure */
 
-/* .ytp-cued-thumbnail-overlay-image {
+.ytp-cued-thumbnail-overlay-image {
   background-image:url("../public/images/signup.jpg") !important;
-} */
+}
 
 /* End Of React Video Player Configure */
+
+/* React Progress Bar Configure */
+
+._53Ji7 {
+  position: relative;
+}
+
+._3uApM {
+  margin-top: 0 !important;
+  margin: auto;
+  text-align: center;
+  width: 70%;
+}
+
+._2pGos._2RWmX {
+  display: none;
+}
+
+._3CDiP {
+  display: none;
+}
+
+._hsN1w {
+  position: absolute;
+  border: 1px solid #2563EB !important;
+  background-color: #2563EB !important;
+  width: 7rem !important;
+  padding: 0.25rem !important;
+  bottom: 70px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+/* End of React Progress Bar Configure */
+
+
