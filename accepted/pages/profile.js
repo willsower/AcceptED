@@ -12,7 +12,14 @@ import { PrismaClient } from '@prisma/client';
 
 export async function getStaticProps() {
     const prisma = new PrismaClient()
-    const profile = await prisma.user.findMany()
+    const profile = await prisma.user.findMany({
+        where: {
+            id: {
+                equals: 1
+            }
+        },
+    })
+    
     return {
       props : { profile }
     };
@@ -120,7 +127,7 @@ export default function Profile({profile}) {
                             <div className = 'mt-12 md:flex md:flex-row ml-14'>
                                 <div className = 'md:w-72 lg:w-96 mb-4'>
                                     {/* <MyProfile counselorID={counselorUserID} /> */}
-                                    <MyProfile {profile}/>
+                                    <MyProfile profile={profile}/>
                                     <MyInformation />
                                     <MyStudents />
 
