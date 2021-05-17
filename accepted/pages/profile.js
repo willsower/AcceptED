@@ -3,12 +3,22 @@ import Image from 'next/image';
 import Link from 'next/Link';
 import React from 'react';
 
-import MyStudents from '../components/Cards/Profile/my_students'
-import MyProfile from '../components/Cards/Profile/my_profile'
-import MyInformation from '../components/Cards/Profile/my_information'
-import StudentColleges from '../components/Cards/Profile/student_colleges'
+import MyStudents from '../components/Cards/Profile/my_students';
+import MyProfile from '../components/Cards/Profile/my_profile';
+import MyInformation from '../components/Cards/Profile/my_information';
+import StudentColleges from '../components/Cards/Profile/student_colleges';
 
-export default function Profile() {
+import { PrismaClient } from '@prisma/client';
+
+export async function getStaticProps() {
+    const prisma = new PrismaClient()
+    const profile = await prisma.user.findMany()
+    return {
+      props : { profile }
+    };
+}
+
+export default function Profile({profile}) {
 
     function nav(link, img, name) {
         return (
@@ -94,7 +104,6 @@ export default function Profile() {
 
                     {/* Right Side of Screen */}
                     <div className='flex-grow h-auto flex flex-col relative'>
-
                         {/* Header Top */}
                         <div className='h-16 flex flex-col relative'>
                             <div className = 'border-b border-gray-200 h-16 w-full z-10 fixed bg-white'>
@@ -111,7 +120,7 @@ export default function Profile() {
                             <div className = 'mt-12 md:flex md:flex-row ml-14'>
                                 <div className = 'md:w-72 lg:w-96 mb-4'>
                                     {/* <MyProfile counselorID={counselorUserID} /> */}
-                                    <MyProfile />
+                                    <MyProfile {profile}/>
                                     <MyInformation />
                                     <MyStudents />
 
