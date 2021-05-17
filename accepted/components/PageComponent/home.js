@@ -55,7 +55,7 @@ function Home() {
                                 <div className = 'm-auto'>
                                     <Image
                                         priority
-                                        src="/images/updates_temp.png"
+                                        src="/images/Home/updates_empty.svg"
                                         className = ''
                                         height={140}
                                         width={200}
@@ -87,7 +87,7 @@ function Home() {
                         <div className = 'm-auto'>
                             <Image
                                 priority
-                                src="/images/events_temp.png"
+                                src="/images/Home/events_empty.svg"
                                 className = ''
                                 height={100}
                                 width={140}

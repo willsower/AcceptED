@@ -4,7 +4,7 @@ function RecentEssays({essays}) {
 
     // Should be a max of 3 essays here
     // Get using dynamic call
-    var essays = ['one', 'two', ''];
+    var essays = [];
     var tempStatus = 'Done';
 
     return (
@@ -16,7 +16,7 @@ function RecentEssays({essays}) {
                         <div className = 'm-auto'>
                             <Image
                                 priority
-                                src="/images/recent_essays_temp.png"
+                                src="/images/Home/recent_essay_empty.svg"
                                 className = ''
                                 height={140}
                                 width={140}
