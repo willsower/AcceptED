@@ -74,7 +74,7 @@ function StudentColleges() {
                     <div className = 'w-full text-center p-4'>
                         <Image
                         priority
-                        src="/images/stud_college_temp.png"
+                        src="/images/Profile/grad_hat.svg"
                         className = ''
                         height={300}
                         width={300}

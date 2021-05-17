@@ -14,10 +14,10 @@ function MyStudents() {
                         onClick={() => setShowModal(true)}>
                             <Image
                                 priority
-                                src="/images/add_user_temp.png"
+                                src="/images/Icon/add_user_ico.svg"
                                 className = ''
-                                height={30}
-                                width={30}
+                                height={25}
+                                width={25}
                             />
                         </button>
 

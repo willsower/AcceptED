@@ -19,7 +19,7 @@ function MyProfile() {
                 <div className = ''>
                     <Image
                         priority
-                        src='/images/profile_pic_temp.png'
+                        src='/images/Profile/blue_elipse.svg'
                         className = 'rounded-full'
                         height={120}
                         width={115}
@@ -45,10 +45,10 @@ function MyProfile() {
                         onClick={() => setShowModal(true)}>
                         <Image
                             priority
-                            src='/images/edit_temp.png'
+                            src='/images/Icon/pencil_ico.svg'
                             className = ''
-                            height={30}
-                            width={30}
+                            height={25}
+                            width={25}
                         />
                     </button>
 
