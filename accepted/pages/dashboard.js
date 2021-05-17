@@ -62,7 +62,7 @@ export default function DashboardShell() {
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
-                                                src="/images/home_temp.png"
+                                                src="/images/Shell/home_ico.svg"
                                                 className = ''
                                                 height={20}
                                                 width={20}
@@ -80,7 +80,7 @@ export default function DashboardShell() {
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>                                            
                                             <Image
                                                 priority
-                                                src="/images/messages_temp.png"
+                                                src="/images/Shell/message_ico.svg"
                                                 className = ''
                                                 height={20}
                                                 width={20}
@@ -98,7 +98,7 @@ export default function DashboardShell() {
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
-                                                src="/images/materials_temp.png"
+                                                src="/images/Shell/materials_ico.svg"
                                                 className = ''
                                                 height={20}
                                                 width={20}
@@ -116,7 +116,7 @@ export default function DashboardShell() {
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
-                                                src="/images/tasks_temp.png"
+                                                src="/images/Shell/tasks_ico.svg"
                                                 className = ''
                                                 height={20}
                                                 width={20}
@@ -134,7 +134,7 @@ export default function DashboardShell() {
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>                                            
                                             <Image
                                                 priority
-                                                src="/images/profileico_temp.png"
+                                                src="/images/Shell/profile_ico.svg"
                                                 className = ''
                                                 height={20}
                                                 width={20}
@@ -152,7 +152,7 @@ export default function DashboardShell() {
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
-                                                src="/images/logout_temp.png"
+                                                src="/images/Shell/logout_ico.svg"
                                                 className = ''
                                                 height={20}
                                                 width={20}
