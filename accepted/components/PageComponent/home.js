@@ -55,7 +55,7 @@ function Home() {
                                 <div className = 'm-auto'>
                                     <Image
                                         priority
-                                        src="/images/updates_temp.png"
+                                        src="/images/Home/updates_empty.svg"
                                         className = ''
                                         height={140}
                                         width={200}
@@ -87,7 +87,7 @@ function Home() {
                         <div className = 'm-auto'>
                             <Image
                                 priority
-                                src="/images/events_temp.png"
+                                src="/images/Home/events_empty.svg"
                                 className = ''
                                 height={100}
                                 width={140}
@@ -109,7 +109,7 @@ function Home() {
                                 <div className = 'inline-block align-middle'>
                                     <Image
                                         priority
-                                        src="/images/mytasksico_temp.png"
+                                        src="/images/Home/myTasks_ico.svg"
                                         className = ''
                                         height={30}
                                         width={30}
@@ -121,7 +121,7 @@ function Home() {
                                 <div className = 'inline-block align-bottom pb-1'>
                                     <Image
                                         priority
-                                        src="/images/goto_temp.png"
+                                        src="/images/Icon/arrow_ico.svg"
                                         className = ''
                                         height={20}
                                         width={20}
@@ -134,7 +134,7 @@ function Home() {
                                 <button className = 'inline-block align-middle focus:outline-none' onClick = {addMyTasks}>
                                     <Image
                                         priority
-                                        src="/images/add_temp.png"
+                                        src="/images/Icon/add_ico.svg"
                                         className = ''
                                         height={20}
                                         width={20}

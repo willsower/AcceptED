@@ -16,10 +16,10 @@ function MyInformation() {
                         <button className = 'focus:outline-none' onClick={() => setShowModal(true)}>
                             <Image
                                 priority
-                                src="/images/edit_temp.png"
+                                src="/images/Icon/pencil_ico.svg"
                                 className = ''
-                                height={30}
-                                width={30}
+                                height={25}
+                                width={25}
                             />
                         </button>
 
@@ -98,10 +98,10 @@ function MyInformation() {
                             <div className = 'inline-block align-middle'>
                                 <Image
                                     priority
-                                    src="/images/eye_temp.png"
+                                    src="/images/Icon/eye_ico.svg"
                                     className = ''
-                                    height={30}
-                                    width={30}
+                                    height={20}
+                                    width={20}
                                 />
                             </div>
                         </div>

@@ -149,19 +149,19 @@ function fileUploadOnboard(title, page) {
     function finishedOnboarding() {
         return (
             <div>
-                <div className = 'w-full pt-4 flex flex-col pb-20 m-auto'>
-                    <div className = 'w-full h-60 relative m-auto'>
+                <div className = 'h-4/5'>
                     <Image
-                        src="/images/onboardingComplete1.png"
-                        alt=""
-                        layout="fill"
+                        src='/images/SignUp/OnboardingComplete-C.svg'
+                        alt=''
+                        layout = 'fill'
+                        objectFit = 'cover'
                     />
-                    </div>
+                </div>
 
-                    <h3 className = 'text-4xl font-semibold text-center mt-8'>Onboarding Complete!</h3>
-                    <p>Note: This page img will be fixed later</p>
+                <div className = 'w-full pt-4 flex flex-col pb-20 m-auto mt-72'>
+                    <h3 className = 'text-4xl font-semibold text-center bg-white'>Onboarding Complete!</h3>
                     <Link href = '/dashboard'>
-                        <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-4'>
+                        <button className = 'bg-blue-600 text-white rounded w-28 p-1 ml-auto mr-auto mt-4 z-50'>
                                 Finish
                         </button>
                     </Link>
@@ -224,7 +224,7 @@ function fileUploadOnboard(title, page) {
                                     {renderPage()}
                                 </>
                             )
-                        }
+                        } 
                     </div>
                     <Footer />
                 </div>

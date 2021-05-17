@@ -9,7 +9,7 @@ function LatestMaterials() {
                 <div className = 'm-auto'>
                     <Image
                         priority
-                        src="/images/resources_temp.png"
+                        src="/images/Home/latest_materials_empty.svg"
                         className = ''
                         height={140}
                         width={200}

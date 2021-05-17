@@ -39,21 +39,58 @@ export default function SignUp ({children, home}) {
             </Head>
             <main>
                 <div className='flex flex-row h-full'>
-                    {/* Image - Left */}
-                    <div className='w-2/5 h-screen flex justify-center flex-col relative items-center'>
-                        <Image
-                            src='/images/signupTemp.jpeg'
-                            alt='Picture of the author'
-                            layout='fill'
-                            objectFit='cover'
-                        />
-                        <div className = 'absolute relative block'>
-                            <div className = 'block mb-12 sm:mb-16 md:mb-24'>
-                                <h1 className = 'text-xl md:text-3xl lg:text-4xl text-gray-50 font-semibold'>Welcome Student!</h1>
-                                <h3 className = 'text-base md:text-xl text-gray-50 mt-4 font-semibold'>Let's get you started!</h3>
-                                <h4 className = 'text-base md:text-xl text-gray-50 mt-12'>Sign Up</h4>
-                                <h4 className = 'text-base md:text-xl text-gray-50 mt-7'>Watch Training Videos</h4>
-                                <h4 className = 'text-base md:text-xl text-gray-50 mt-7'>Upload Onboarding Files</h4>
+                    {/* Left side of Sign Up Page */}
+                    <div className='w-2/5 h-screen flex justify-center flex-col relative items-center bg-blue-600'>
+                        {/* Image */}
+                        <div className = 'absolute bottom-1 right-0 h-1/2 w-1/2'>
+                            <Image
+                                src='/images/SignUp/signup.svg'
+                                alt='Signup'
+                                layout = 'fill'
+                                objectFit = ''
+                            />
+                        </div>
+
+                        {/* Content */}
+                        <div className = 'mb-24'>
+                            <h1 className = 'text-xl md:text-3xl lg:text-4xl text-gray-50 font-semibold'>Welcome Consultant!</h1>
+                            <h3 className = 'text-base md:text-xl text-gray-50 mt-4 font-semibold'>Let's get you started!</h3>
+
+                            <div clasName = ''>
+                                <div className = 'inline-block mr-4'>
+                                    <Image
+                                        src='/images/SignUp/FileText.svg'
+                                        alt='Signup'
+                                        height = '20'
+                                        width = '20'
+                                    />
+                                </div>
+                                <h4 className = 'text-base md:text-xl text-gray-50 mt-12 inline-block'>Sign Up</h4>
+                            </div>
+
+
+                            <div className = ''>
+                                <div className = 'inline-block mr-4'>
+                                    <Image
+                                        src='/images/SignUp/MonitorPlay.svg'
+                                        alt='Signup'
+                                        height = '20'
+                                        width = '20'
+                                    />
+                                </div>
+                                <h4 className = 'text-base md:text-xl text-gray-50 mt-7 inline-block'>Watch Training Videos</h4>
+                            </div>
+
+                            <div className = ''>
+                                <div className = 'inline-block mr-4'>
+                                    <Image
+                                        src='/images/SignUp/FileArrowUp.svg'
+                                        alt='Signup'
+                                        height = '20'
+                                        width = '20'
+                                    />
+                                </div>
+                                <h4 className = 'text-base md:text-xl text-gray-50 mt-7 inline-block'>Upload Onboarding Files</h4>
                             </div>
                         </div>
                     </div>

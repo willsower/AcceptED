@@ -20,7 +20,7 @@ function CounselorProfile( {counselorUserID } ) {
                     <div className = 'inline-block align-middle'>
                         <Image
                             priority
-                            src="/images/goto_temp.png"
+                            src="/images/Icon/arrow_ico.svg"
                             className = ''
                             height={20}
                             width={20}

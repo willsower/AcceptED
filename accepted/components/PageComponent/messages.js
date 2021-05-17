@@ -7,10 +7,10 @@ function Messages() {
             <div className = ''>
                 <Image
                     priority
-                    src='/images/messages_page_temp.png'
+                    src='/images/Messages/message.svg'
                     className = ''
-                    width = {500}
-                    height = {500}
+                    width = {400}
+                    height = {400}
                 />
             </div>
 
