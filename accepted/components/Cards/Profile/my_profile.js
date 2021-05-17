@@ -7,7 +7,7 @@ import { PrismaClient } from '@prisma/client'
 function MyProfile({ counselorID }) {
     const [showModal, setShowModal] = React.useState(false);
     const prisma = new PrismaClient()
-
+    console.log("TEST")
     // Dynamic Data ** TO CHANGE LATER
     const conselor = prisma.user.findUnique({
         where: { id: counselorID },

@@ -1,38 +1,35 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import React from 'react'
+import Link from 'next/Link';
+import React from 'react';
 
-import Home from '../components/PageComponent/home'
-import Messages from '../components/PageComponent/messages';
-import Materials from '../components/PageComponent/materials'
-import Tasks from '../components/PageComponent/tasks'
-import CounselorProfile from '../components/PageComponent/Profiles/counselor_profile';
+export default function Tasks() {
 
-const pages = [CounselorProfile, Messages];
-
-export default function DashboardShell() {
-    const { useState } = React;
-    const [currentPage, setCurrentPage] = useState('Dashboard');
-
-    const renderPage = () => {
-        if (currentPage == 'Dashboard') {
-            return <Home />
-        } else if (currentPage == 'Messages') {
-            return <Messages />;
-        } else if (currentPage == 'Materials') {
-            return <Materials />;
-        } else if (currentPage == 'Tasks') {
-            return <Tasks />;
-        } else if (currentPage == 'Profile') {
-            return <CounselorProfile />;
-        }
+    function nav(link, img, name) {
+        return (
+            <Link href = {link} className = ''>
+                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer'>
+                    <div className = 'inline-block align-middle mr-1 sm:mr-3'>
+                        <Image
+                            priority
+                            src={img}
+                            className = ''
+                            height={20}
+                            width={20}
+                        />
+                    </div>
+                    <div className = 'text-xs sm:text-base inline-block text-gray-400'>
+                        {name}
+                    </div>
+                </div>
+            </Link>
+        );
     }
 
     return (
         <>
             <Head>
-            {/* <title>{ siteTitle }</title> */}
-                <title>{currentPage} | AcceptED</title>
+                <title>Materials | AcceptED</title>
                 <link rel='icon' href='/favicon.ico' />
             </Head>
             <main>
@@ -56,112 +53,35 @@ export default function DashboardShell() {
 
                             {/* Navigation */}
                             <div className = ''>
-                                {/* Home -> 0*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto align-middle hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer' onClick={() => setCurrentPage('Dashboard')}>
-                                    <button className = 'focus:outline-none active:bg-green-700'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>
-                                            <Image
-                                                priority
-                                                src="/images/Shell/home_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Home
-                                        </div>
-                                    </button>
-                                </div>
+                                {/* Home */}
+                                {nav('/home', '/images/Shell/home_ico.svg', 'Home')}
 
                                 {/* Message */}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50' onClick={() => setCurrentPage('Messages')}>
-                                    <button className = 'focus:outline-none active:bg-green-700'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>                                            
-                                            <Image
-                                                priority
-                                                src="/images/Shell/message_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Messages
-                                        </div>
-                                    </button>
-                                </div>
+                                {nav('/messages', '/images/Shell/message_ico.svg', 'Messages')}
 
                                 {/* Materials */}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50' onClick={() => setCurrentPage('Materials')}>
-                                    <button className = 'focus:outline-none'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>
-                                            <Image
-                                                priority
-                                                src="/images/Shell/materials_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Materials
-                                        </div>
-                                    </button>
-                                </div>
+                                {nav('/materials', '/images/Shell/materials_ico.svg', 'Materials')}
 
                                 {/* Tasks */}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50' onClick={() => setCurrentPage('Tasks')}>
-                                    <button className = 'focus:outline-none'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>
-                                            <Image
-                                                priority
-                                                src="/images/Shell/tasks_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Tasks
-                                        </div>
-                                    </button>
-                                </div>
+                                {nav('/tasks', '/images/Shell/tasks_blue_ico.svg', 'Tasks')}
 
                                 {/* Profile*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50' onClick={() => setCurrentPage('Profile')}>
-                                    <button className = 'focus:outline-none'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>                                            
-                                            <Image
-                                                priority
-                                                src="/images/Shell/profile_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Profile
-                                        </div>
-                                    </button>
-                                </div>
+                                {nav('/profile', '/images/Shell/profile_ico.svg', 'Profile')}
 
                                 {/* Logout*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50' onClick={() => setCurrentPage('Logout')}>
-                                    <button className = 'focus:outline-none'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>
-                                            <Image
-                                                priority
-                                                src="/images/Shell/logout_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Log Out
-                                        </div>
-                                    </button>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer'>
+                                    <div className = 'inline-block align-middle mr-1 sm:mr-3'>
+                                        <Image
+                                            priority
+                                            src= '/images/Shell/logout_ico.svg'
+                                            className = ''
+                                            height={20}
+                                            width={20}
+                                        />
+                                    </div>
+                                    <div className = 'text-xs sm:text-base inline-block text-gray-400'>
+                                        Logout
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -175,15 +95,15 @@ export default function DashboardShell() {
                             <div className = 'border-b border-gray-200 h-16 w-full z-10 fixed bg-white'>
                                 <div className = 'mt-auto mb-auto p-3 ml-2'>                
                                     <div className = 'text-2xl font-semibold inline-block'>
-                                        {currentPage}
+                                        Tasks
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Content Bottom */}
-                        <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pb-12 z-0'>                            
-                            {renderPage()}
+                        <div className='flex-grow h-auto flex flex-col relative bg-gray-50 pb-12 z-0'>                               
+                            <h1>Tasks Page</h1>
                         </div>
                     </div>
                 </div>
