@@ -46,7 +46,7 @@ export default function DashboardShell() {
                                 <div className = 'p-4 sm:pl-9 sm:pr-9'>
                                     <Image
                                         priority
-                                        src="/images/logo_temp.png"
+                                        src="/images/accepted_logo.svg"
                                         className = ''
                                         height={100}
                                         width={100}

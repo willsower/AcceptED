@@ -38,10 +38,10 @@ function RecentEssays({essays}) {
                             <div className = 'text-center'>
                                 <Image
                                     priority
-                                    src="/images/sampleDoc_temp.png"
+                                    src="/images/Home/recent_essay.svg"
                                     className = ''
                                     height={90}
-                                    width={170}
+                                    width={180}
                                 />
                             </div>
 
@@ -58,7 +58,7 @@ function RecentEssays({essays}) {
                                             <div className = 'inline-block h-full'>
                                                 <Image
                                                     priority
-                                                    src="/images/clock.png"
+                                                    src="/images/Home/clock.svg"
                                                     className = ''
                                                     height={10}
                                                     width={10}
