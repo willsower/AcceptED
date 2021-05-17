@@ -109,7 +109,7 @@ function Home() {
                                 <div className = 'inline-block align-middle'>
                                     <Image
                                         priority
-                                        src="/images/mytasksico_temp.png"
+                                        src="/images/Home/myTasks_ico.svg"
                                         className = ''
                                         height={30}
                                         width={30}
@@ -121,7 +121,7 @@ function Home() {
                                 <div className = 'inline-block align-bottom pb-1'>
                                     <Image
                                         priority
-                                        src="/images/goto_temp.png"
+                                        src="/images/arrow_ico.svg"
                                         className = ''
                                         height={20}
                                         width={20}
@@ -134,7 +134,7 @@ function Home() {
                                 <button className = 'inline-block align-middle focus:outline-none' onClick = {addMyTasks}>
                                     <Image
                                         priority
-                                        src="/images/add_temp.png"
+                                        src="/images/add_ico.svg"
                                         className = ''
                                         height={20}
                                         width={20}
