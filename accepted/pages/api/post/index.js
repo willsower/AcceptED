@@ -1,5 +1,6 @@
 import { getSession } from 'next-auth/client'
 import { PrismaClient } from '@prisma/client'
+import AES from "crypto-js/aes";
 
 // POST /api/post
 // Required fields in body: title
@@ -15,6 +16,9 @@ export default async function handle(req, res) {
   console.log(firstName);
   console.log(LastName)
   // const session = await getSession({ req })
+  const encryptWithAES = (text, passphrase) => {
+    return AES.encrypt(text, passphrase).toString();
+  };
 
   const newUser = await prisma.user.create({
     data: {
@@ -22,7 +26,7 @@ export default async function handle(req, res) {
       lname: LastName,
       email: email,
       universityCode: parseInt(universityCode, 10),
-      password: password,
+      password: encryptWithAES(password, "123"),
       student: {
         create: { }
       }

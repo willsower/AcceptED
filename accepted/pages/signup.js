@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from "react";
+import { session, signIn, signOut, useSession } from 'next-auth/client'
 
 export const siteTitle = 'Sign-Up | AcceptED';
 
@@ -12,11 +13,23 @@ export default function SignUp ({children, home}) {
     const [universityCode, setUniversityCpde] = useState('')
     const [password, setPassword] = useState('')
 
+    const [ session, loading ] = useSession()
+
+    // testing if a user is signed in for testing purpose
+    
+
     const submitSignUpData = async (e) => {
         console.log("Line 20");
         
         e.preventDefault()
         try {
+            // if(session){
+            //     console.log("user signed in")
+            //     console.log( "user email is: " + session.user.email)
+            // }
+            // else{
+            //     console.log("user not signed in")
+            // }
             const body = { fullName, email, universityCode, password }
             await fetch('/api/post', {
               method: 'POST',
@@ -25,6 +38,7 @@ export default function SignUp ({children, home}) {
             }).then(json =>{
                 window.location.href = '/onboarding'
             })
+            
           } catch (error) {
             console.error(error)
           }
@@ -32,8 +46,26 @@ export default function SignUp ({children, home}) {
 
     console.log("line 36")
 
+    let signInStatus = null;
+    if(session){
+        signInStatus = ( <h3>user is Signed in as {session.user.email}</h3> );
+    }
+    else if(!session){
+        signInStatus = ( <h3>user is NOT Signed in</h3> );
+    }
+
     return (
+        
+
+        // { (session) && (<>
+        //     Signed in as {session.user.email} <br/>
+        //     <button onClick={() => signOut()}>Sign out</button>
+        //   </>)
+        // }
+
+
         <div className = 'h-screen'>
+            {signInStatus}
             <Head>
                 <link rel='icon' href='/favicon.ico' />
             </Head>

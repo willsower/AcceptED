@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@prisma/client": "^2.22.1",
+    "crypto-js": "^3.1.9-1",
     "dropzone": "^5.9.2",
     "next": "^10.2.0",
     "next-auth": "^3.23.0",
