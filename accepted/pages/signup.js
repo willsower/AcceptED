@@ -20,8 +20,8 @@ export default function SignUp({children, home}) {
                             <Image
                                 src='/images/SignUp/signup.svg'
                                 alt='Signup'
-                                layout = "fill"
-                                objectFit = ""
+                                layout = 'fill'
+                                objectFit = ''
                             />
                         </div>
 
