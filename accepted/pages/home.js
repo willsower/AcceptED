@@ -1,11 +1,33 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import React from 'react'
+import Link from 'next/Link';
+import React from 'react';
 
-import RecentEssays from '../components/Cards/Home/recentEssays'
-import LatestMaterials from '../components/Cards/Home/latestMaterials'
+import RecentEssays from '../components/Cards/Home/recent_essays';
+import LatestMaterials from '../components/Cards/Home/latest_materials'
 
 export default function Home() {
+
+    function nav(link, img, name) {
+        return (
+            <Link href = {link} className = ''>
+                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer'>
+                    <div className = 'inline-block align-middle mr-1 sm:mr-3'>
+                        <Image
+                            priority
+                            src={img}
+                            className = ''
+                            height={20}
+                            width={20}
+                        />
+                    </div>
+                    <div className = 'text-xs sm:text-base inline-block text-gray-400'>
+                        {name}
+                    </div>
+                </div>
+            </Link>
+        );
+    }
 
     return (
         <>
@@ -34,112 +56,35 @@ export default function Home() {
 
                             {/* Navigation */}
                             <div className = ''>
-                                {/* Home -> 0*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto align-middle hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer'>
-                                    <button className = 'focus:outline-none active:bg-green-700'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>
-                                            <Image
-                                                priority
-                                                src="/images/Shell/home_blue_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Home
-                                        </div>
-                                    </button>
-                                </div>
+                                {/* Home */}
+                                {nav('/home', '/images/Shell/home_blue_ico.svg', 'Home')}
 
                                 {/* Message */}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none active:bg-green-700'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>                                            
-                                            <Image
-                                                priority
-                                                src="/images/Shell/message_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Messages
-                                        </div>
-                                    </button>
-                                </div>
+                                {nav('/messages', '/images/Shell/message_ico.svg', 'Messages')}
 
                                 {/* Materials */}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>
-                                            <Image
-                                                priority
-                                                src="/images/Shell/materials_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Materials
-                                        </div>
-                                    </button>
-                                </div>
+                                {nav('/materials', '/images/Shell/materials_ico.svg', 'Materials')}
 
                                 {/* Tasks */}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>
-                                            <Image
-                                                priority
-                                                src="/images/Shell/tasks_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Tasks
-                                        </div>
-                                    </button>
-                                </div>
+                                {nav('/tasks', '/images/Shell/tasks_ico.svg', 'Tasks')}
 
                                 {/* Profile*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>                                            
-                                            <Image
-                                                priority
-                                                src="/images/Shell/profile_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Profile
-                                        </div>
-                                    </button>
-                                </div>
+                                {nav('/profile', '/images/Shell/profile_ico.svg', 'Profile')}
 
                                 {/* Logout*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50'>
-                                    <button className = 'focus:outline-none'>
-                                        <div className = 'inline-block align-middle mr-1 sm:mr-3'>
-                                            <Image
-                                                priority
-                                                src="/images/Shell/logout_ico.svg"
-                                                className = ''
-                                                height={20}
-                                                width={20}
-                                            />
-                                        </div>
-                                        <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                                            Log Out
-                                        </div>
-                                    </button>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer'>
+                                    <div className = 'inline-block align-middle mr-1 sm:mr-3'>
+                                        <Image
+                                            priority
+                                            src= '/images/Shell/logout_ico.svg'
+                                            className = ''
+                                            height={20}
+                                            width={20}
+                                        />
+                                    </div>
+                                    <div className = 'text-xs sm:text-base inline-block text-gray-400'>
+                                        Logout
+                                    </div>
                                 </div>
                             </div>
                         </div>

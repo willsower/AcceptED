@@ -6,7 +6,7 @@ import Home from '../components/PageComponent/home'
 import Messages from '../components/PageComponent/messages';
 import Materials from '../components/PageComponent/materials'
 import Tasks from '../components/PageComponent/tasks'
-import CounselorProfile from '../components/PageComponent/Profiles/counselorProfile';
+import CounselorProfile from '../components/PageComponent/Profiles/counselor_profile';
 
 const pages = [CounselorProfile, Messages];
 

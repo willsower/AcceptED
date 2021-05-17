@@ -1,8 +1,8 @@
 // Counselor profile information
-import MyStudents from '../../Cards/Profile/myStudents'
-import MyProfile from '../../Cards/Profile/myProfile'
-import MyInformation from '../../Cards/Profile/myInformation'
-import StudentColleges from '../../Cards/Profile/studentColleges'
+import MyStudents from '../../Cards/Profile/my_students'
+import MyProfile from '../../Cards/Profile/my_profile'
+import MyInformation from '../../Cards/Profile/my_information'
+import StudentColleges from '../../Cards/Profile/student_colleges'
 
 import Image from 'next/image'
 
