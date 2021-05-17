@@ -40,7 +40,7 @@ export default function Home() {
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority
-                                                src="/images/Shell/home_ico.svg"
+                                                src="/images/Shell/home_blue_ico.svg"
                                                 className = ''
                                                 height={20}
                                                 width={20}
