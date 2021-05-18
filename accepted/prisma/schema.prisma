@@ -18,7 +18,7 @@ model User {
   password String
   universityCode Int
   profileImage Bytes?
-  joinDate DateTime @default(now())
+  // joinDate DateTime @default(now())
   educationConsultant EducationConsultant?
   student Student?
 }
