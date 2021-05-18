@@ -1,13 +1,12 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/Link';
-import React from 'react';
-
+import Link from 'next/link';
+import React, { Component } from 'react'
 import MyStudents from '../components/Cards/Profile/my_students';
 import MyProfile from '../components/Cards/Profile/my_profile';
 import MyInformation from '../components/Cards/Profile/my_information';
 import StudentColleges from '../components/Cards/Profile/student_colleges';
-
+import { nav } from './helper'
 import { PrismaClient } from '@prisma/client';
 
 export async function getStaticProps() {
@@ -25,31 +24,11 @@ export async function getStaticProps() {
     };
 }
 
-export default function Profile({ profile }) {
 
-    function nav(link, img, name) {
-        return (
-            <Link href = {link} className = ''>
-                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer'>
-                    <div className = 'inline-block align-middle mr-1 sm:mr-3'>
-                        <Image
-                            priority
-                            src={img}
-                            className = ''
-                            height={20}
-                            width={20}
-                        />
-                    </div>
-                    <div className = 'text-xs sm:text-base inline-block text-gray-400'>
-                        {name}
-                    </div>
-                </div>
-            </Link>
-        );
-    }
-
-    return (
-        <>
+class Profile extends Component {
+    render(){
+        return(
+            <div>
             <Head>
                 <title>Profile | AcceptED</title>
                 <link rel='icon' href='/favicon.ico' />
@@ -127,8 +106,8 @@ export default function Profile({ profile }) {
                             <div className = 'mt-12 md:flex md:flex-row ml-14'>
                                 <div className = 'md:w-72 lg:w-96 mb-4'>
                                     {/* <MyProfile counselorID={counselorUserID} /> */}
-                                    <MyProfile profile={profile}/>
-                                    <MyInformation profile = {profile}/>
+                                    <MyProfile profile={this.props.profile}/>
+                                    <MyInformation profile = {this.props.profile}/>
                                     <MyStudents />
 
                                     <h3 className = 'mb-3 mt-3 font-bold'>Directory</h3>
@@ -154,6 +133,10 @@ export default function Profile({ profile }) {
                     </div>
                 </div>
             </main>
-        </>
-    );
+            </div>
+        )
+    }
 }
+
+
+export default Profile;
