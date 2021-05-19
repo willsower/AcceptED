@@ -27,6 +27,7 @@ model EducationConsultant {
   id Int @id @default(autoincrement())
   user User @relation(fields: [userId], references: [id])
     userId Int
+  majors String[]
   tasks Task[]
   students Student[]
   documents Document[]
@@ -39,7 +40,6 @@ model Student {
   educationConsultant EducationConsultant @relation(fields: [ecId], references: [id])
     ecId Int
   preferredLanguage String
-  major String
   interests String[]
   universityOptions UniversityOption[]
 
