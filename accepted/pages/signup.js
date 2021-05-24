@@ -23,13 +23,7 @@ export default function SignUp ({children, home}) {
         
         e.preventDefault()
         try {
-            // if(session){
-            //     console.log("user signed in")
-            //     console.log( "user email is: " + session.user.email)
-            // }
-            // else{
-            //     console.log("user not signed in")
-            // }
+            
             const body = { fullName, email, universityCode, password }
             await fetch('/api/post', {
               method: 'POST',
@@ -43,6 +37,11 @@ export default function SignUp ({children, home}) {
             console.error(error)
           }
     };
+
+    
+
+
+
 
     console.log("line 36")
 

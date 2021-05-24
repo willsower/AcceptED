@@ -11,6 +11,7 @@
     "@prisma/client": "^2.22.1",
     "crypto-js": "^3.1.9-1",
     "dropzone": "^5.9.2",
+    "googleapis": "^73.0.0",
     "next": "^10.2.0",
     "next-auth": "^3.23.0",
     "nodejs": "0.0.0",
@@ -18,6 +19,7 @@
     "react-dom": "^17.0.2",
     "react-dropzone": "^11.3.2",
     "react-dropzone-uploader": "^2.11.0",
+    "react-google-calendar-api": "^1.4.0",
     "react-modal": "^3.13.1",
     "react-player": "^2.9.0",
     "react-step-progress": "^1.0.3",
@@ -29,6 +31,8 @@
     "postcss": "^8.2.10",
     "prisma": "^2.22.0",
     "tailwindcss": "^2.1.1",
-    "tailwindcss-pseudo-elements": "^2.0.0"
+    "tailwindcss-pseudo-elements": "^2.0.0",
+    "typescript": "^4.2.4"
   }
+  
 }
