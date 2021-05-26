@@ -1,290 +1,142 @@
-import React, { ReactNode, SyntheticEvent, useState } from 'react';
-
-import ApiCalendar from 'react-google-calendar-api';
-
-export default class DoubleButton extends React.Component {
+import React, { useState, useEffect } from 'react';
 
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      eventTitle: '',
-      eventDescription: ''
+function Calendar() {
 
-    }
-    this.handleItemClick = this.handleItemClick.bind(this);
-  }
-  handlechange(evt) {
-    this.setState({ [evt.target.name]: evt.target.value })
-  }
+  const [eventTitle, setEventTitle] = useState('')
+  const [eventDescription, setEventDescription] = useState('')
+  const [eventStartDate, setEventStartDate] = useState('')
+  const [eventEndDate, setEventEndDate] = useState('')
+  const [eventStartTime, setEventStartTime] = useState('')
+  const [eventEndTime, setEventEndTime] = useState('')
 
-  async handleItemClick(event, name) {
-    if (name === 'sign-in') {
-      ApiCalendar.handleAuthClick();
-    } else if (name === 'sign-out') {
-      ApiCalendar.handleSignoutClick();
-    }
-  }
+  var gapi 
 
-  listEvents() {
-    if (ApiCalendar.sign){
-      ApiCalendar.listUpcomingEvents(10).then(({ result }) => {
-        console.log(result.items);
-      });
-    }
-  }
-
-  static Event = {
-    'summary': 'Google I/O 2015',
-    'location': '800 Howard St., San Francisco, CA 94103',
-    'description': 'A chance to hear more about Google\'s developer products.',
-    'start': {
-      'dateTime': '2021-05-27T09:00:00-07:00',
-      'timeZone': 'America/Los_Angeles'
-    },
-    'end': {
-      'dateTime': '2021-05-27T17:00:00-07:00',
-      'timeZone': 'America/Los_Angeles'
-    },
-    'recurrence': [
-      'RRULE:FREQ=DAILY;COUNT=2'
-    ],
-    'attendees': [
-      { 'email': 'lpage@example.com' },
-      { 'email': 'sbrin@example.com' }
-    ],
-
-  }
-
-  // ApiCalendar.createEvent(Event)
+  var CLIENT_ID = process.env.GOOGLE_CLIENT_ID
+  var API_KEY = process.env.API_KEY
+  var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]
+  var SCOPES = "https://www.googleapis.com/auth/calendar.events"
 
 
+  const handleClick = () => {
+    gapi = window.gapi
+    console.log("line 24")
+    gapi.load('client:auth2', () => {
+      console.log('loaded client')
 
+      gapi.client.init({
+        apiKey: API_KEY,
+        clientId: CLIENT_ID,
+        discoveryDocs: DISCOVERY_DOCS,
+        scope: SCOPES,
+      })
+      
+      gapi.client.load('calendar', 'v3', () => console.log('bam!'))
+      
+      gapi.auth2.getAuthInstance().signIn()
+      .then(() => {
 
-
-  render() {
-    return (
-      <>
-
-        <p className='text-sm md:text-base font-semibold'>Event Title</p>
-        <input name="eventTitle" autoFocus onChange={this.handlechange} value={this.state.eventTitle} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Event Title' />
-
-        <p className='text-sm md:text-base font-semibold'>Event Description</p>
-        <input name="eventDescription" autoFocus onChange={this.handlechange} value={this.state.eventDescription} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Dinner with...' />
-
-        <br />
-        <br />
-
-        <button
-          onClick={this.listEvents}
-        >
-          Submit
-                </button>
+        var startDateTime = eventStartDate + 'T' + eventStartTime + '-07:00' // 
+        var endDateTime = eventEndDate + 'T' + eventEndTime + '-07:00'
+        
+        var event = {
+          'summary': eventTitle,
+          'location': '800 Howard St., San Francisco, CA 94103',
+          'description': eventDescription,
+          'start': {
+            'dateTime': startDateTime,
+            'timeZone': 'America/Los_Angeles'
+          },
+          'end': {
+            'dateTime': endDateTime,
+            'timeZone': 'America/Los_Angeles'
+          },
+          'recurrence': [
+            'RRULE:FREQ=DAILY;COUNT=1'
+          ],
+          'attendees': [
+            {'email': 'lpage@example.com'},
+            {'email': 'sbrin@example.com'}
+          ],
+          'reminders': {
+            'useDefault': false,
+            'overrides': [
+              {'method': 'email', 'minutes': 24 * 60},
+              {'method': 'popup', 'minutes': 10}
+            ]
+          }
+        }
+        
+        var request = gapi.client.calendar.events.insert({ // add event
+          'calendarId': 'primary',
+          'resource': event,
+        })
 
         
-        <br/>
 
+        request.execute(event => {
+          console.log(event)
+          window.open(event.htmlLink)
+        })
+    
 
-        <button
-          onClick={(e) => this.handleItemClick(e, 'sign-in')}
-        >
-          sign-in
-                </button>
-        <button
-          onClick={(e) => this.handleItemClick(e, 'sign-out')}
-        >
-          sign-out
-                </button>
-      </>
-    );
+      })
+    })
   }
+
+
+  return (
+    <>
+
+      {/* <button style={{width: 100, height: 50}} onClick={handleClick}>Add Event</button> */}
+
+      <p className='text-sm md:text-base font-semibold'>Event Title</p>
+      <input name="eventTitle" autoFocus onChange={(e) => setEventTitle(e.target.value)} value={eventTitle} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Event Title' />
+
+      <p className='text-sm md:text-base font-semibold'>Event Description</p>
+      <input name="eventDescription" autoFocus onChange={(e) => setEventDescription(e.target.value)} value={eventDescription} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Dinner with...' />
+
+      <p className='text-sm md:text-base font-semibold'>Start Date(YYYY-MM-DD, ex: 2021-05-30 ) </p>
+      <input name="eventStatyDate" autoFocus onChange={(e) => setEventStartDate(e.target.value)} value={eventStartDate} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Event Title' />
+
+      <p className='text-sm md:text-base font-semibold'>End Date(YYYY-MM-DD, ex: 2021-05-30) </p>
+      <input name="eventEndDate" autoFocus onChange={(e) => setEventEndDate(e.target.value)} value={eventEndDate} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Event Title' />
+      
+      <p className='text-sm md:text-base font-semibold'>Start Time(HH:MM:SS, ex: 09:00:00) </p>
+      <input name="eventStartTime" autoFocus onChange={(e) => setEventStartTime(e.target.value)} value={eventStartTime} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Event Title' />
+      
+      <p className='text-sm md:text-base font-semibold'>End Time(HH:MM:SS, ex: 14:00:00) </p>
+      <input name="eventEndTime" autoFocus onChange={(e) => setEventEndTime(e.target.value)} value={eventEndTime} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Event Title' />
+
+
+      
+      <br />
+      <br />
+
+      <button
+        onClick={handleClick}
+      >
+        Submit
+              </button>
+
+      
+      {/* <br/>
+
+
+      <button
+        onClick={(e) => this.handleItemClick(e, 'sign-in')}
+      >
+        sign-in
+              </button>
+      <button
+        onClick={(e) => this.handleItemClick(e, 'sign-out')}
+      >
+        sign-out
+              </button> */}
+    </>
+  );
+
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // If modifying these scopes, delete token.json.
-// import { google } from 'googleapis'
-
-// export default function Home({ calendar }) {
-
-//     const createEvent = async () => {
-//         var event = {
-//             'summary': 'Google I/O 2015',
-//             'location': '800 Howard St., San Francisco, CA 94103',
-//             'description': 'A chance to hear more about Google\'s developer products.',
-//             'start': {
-//                 'dateTime': '2021-05-28T09:00:00-07:00',
-//                 'timeZone': 'America/Los_Angeles'
-//             },
-//             'end': {
-//                 'dateTime': '2021-05-28T17:00:00-07:00',
-//                 'timeZone': 'America/Los_Angeles'
-//             },
-//             'recurrence': [
-//                 'RRULE:FREQ=DAILY;COUNT=2'
-//             ],
-//             'attendees': [
-//                 { 'email': 'zahgz4011@gmail.com' },
-
-//             ],
-//             'reminders': {
-//                 'useDefault': false,
-//                 'overrides': [
-//                     { 'method': 'email', 'minutes': 24 * 60 },
-//                     { 'method': 'popup', 'minutes': 10 }
-//                 ]
-//             }
-//         };
-
-//         const calendar = google.calendar({ version: 'v3', oauth2Client });
-//         // const calendar = google.calendar_v3(oauth2Client)
-
-//         calendar.events.insert({
-//             auth: oauth2Client,
-//             calendarId: 'primary',
-//             resource: event,
-//         }, function (err, event) {
-//             if (err) {
-//                 console.log('There was an error contacting the Calendar service: ' + err);
-//                 return;
-//             }
-//             console.log('Event created: %s', event.htmlLink);
-//         });
-
-//     }
-
-//     return (
-//         <button onClick={createEvent} className='w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'>
-//             Add Event
-//         </button>
-//     )
-
-
-// }
-
-
-
-
-
-// export const getServerSideProps = async () => {
-
-//     console.log('Line 68')
-//     const oauth2Client = new google.auth.OAuth2(
-//         process.env.GOOGLE_CLIENT_ID,
-//         process.env.GOOGLE_CLIENT_SECRET,
-//         // 'http://localhost:3000/api/post/',   // YOUR_REDIRECT_URL_
-//     );
-//     console.log('Line 74')
-
-//     // generate a url that asks permissions for Blogger and Google Calendar scopes
-//     const scopes = [
-//         'https://www.googleapis.com/auth/calendar.events',
-//         'https://www.googleapis.com/auth/calendar'
-//     ];
-
-//     console.log('Line 82')
-//     const url = oauth2Client.generateAuthUrl({
-//         // 'online' (default) or 'offline' (gets refresh_token)
-//         access_type: 'offline',
-
-//         // If you only need one scope you can pass it as a string
-//         scope: scopes
-//     });
-
-//     console.log('Line 91')
-
-//     // const qs = new url.URL(req.url, 'http://localhost:3000').searchParams;
-//     // const code = qs.get('code');
-//     // console.log('code is ' + code)
-
-//     // const { tokens } = await oauth2Client.getToken(code) // issue in this line
-//     // console.log('Line 94')
-//     // oauth2Client.setCredentials(tokens);
-
-
-//     // var event = {
-//     //     'summary': 'Google I/O 2015',
-//     //     'location': '800 Howard St., San Francisco, CA 94103',
-//     //     'description': 'A chance to hear more about Google\'s developer products.',
-//     //     'start': {
-//     //         'dateTime': '2021-05-28T09:00:00-07:00',
-//     //         'timeZone': 'America/Los_Angeles'
-//     //     },
-//     //     'end': {
-//     //         'dateTime': '2021-05-28T17:00:00-07:00',
-//     //         'timeZone': 'America/Los_Angeles'
-//     //     },
-//     //     'recurrence': [
-//     //         'RRULE:FREQ=DAILY;COUNT=2'
-//     //     ],
-//     //     'attendees': [
-//     //         { 'email': 'zahgz4011@gmail.com' },
-
-//     //     ],
-//     //     'reminders': {
-//     //         'useDefault': false,
-//     //         'overrides': [
-//     //             { 'method': 'email', 'minutes': 24 * 60 },
-//     //             { 'method': 'popup', 'minutes': 10 }
-//     //         ]
-//     //     }
-//     // };
-
-//     const calendar = google.calendar({ version: 'v3', oauth2Client });
-//     // const calendar = google.calendar_v3(oauth2Client)
-
-//     // calendar.events.insert({
-//     //     auth: oauth2Client,
-//     //     calendarId: 'primary',
-//     //     resource: event,
-//     // }, function (err, event) {
-//     //     if (err) {
-//     //         console.log('There was an error contacting the Calendar service: ' + err);
-//     //         return;
-//     //     }
-//     //     console.log('Event created: %s', event.htmlLink);
-//     // });
-
-//     return {
-//         props: {
-//             calendar
-//         }
-//     }
-
-
-//     // request.execute(function (event) {
-//     //     appendPre('Event created: ' + event.htmlLink);
-//     // });
-
-
-// }
+export default Calendar;

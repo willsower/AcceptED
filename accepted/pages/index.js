@@ -11,6 +11,7 @@ export default function Home() {
     
   
     <SignUp home>
+      <script src="https://apis.google.com/js/api.js" type="text/javascript"></script>
       <Head>
         <title> {siteTitle} </title>
       </Head>
