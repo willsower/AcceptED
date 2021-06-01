@@ -1,0 +1,10 @@
+{
+    "web": {
+        "client_id": "668996147738-ceu2kjosbugl4vb0dsq6q12el7vi1oct.apps.googleusercontent.com",
+        "project_id": "axial-module-314713",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret": "4_bholiYWW1qI5F7ZOWHpXgZ"
+    }
+}
