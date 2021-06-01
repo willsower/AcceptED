@@ -12,7 +12,7 @@ function Calendar() {
 
   var gapi
 
-  var CLIENT_ID = '1013947570489-qr8ogo147dbp2216ce2cmoviaib0nmfl.apps.googleusercontent.com'
+  
   var MY_API_KEY = process.env.API_KEY
 
   var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]
