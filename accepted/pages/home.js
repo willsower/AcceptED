@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 import { nav } from './helper';
 import React, { Component } from 'react'
 import RecentEssays from '../components/Cards/Home/recent_essays';
