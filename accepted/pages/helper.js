@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-
 function nav(link, img, name) {
     return (
         <Link href = {link} className = ''>

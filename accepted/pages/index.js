@@ -2,16 +2,15 @@ import Head from 'next/head';
 import SignUp, { siteTitle } from './signup';
 import React, { Component } from 'react'
 
-
 class Index extends Component {
-  render(){
-    return(
+  render() {
+    return (
       <div>
-      <SignUp home>
-      <Head>
-        <title> {siteTitle} </title>
-      </Head>
-      </SignUp>
+        <SignUp home>
+          <Head>
+            <title> {siteTitle} </title>
+          </Head>
+        </SignUp>
       </div>
     )
   }
