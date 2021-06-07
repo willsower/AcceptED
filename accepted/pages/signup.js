@@ -37,6 +37,7 @@ export default function SignUp ({children, home}) {
             </Head>
             <main>
                 <div className='flex flex-row h-full'>
+                <button onClick={signIn}>Log in.</button>
                     {/* Left side of Sign Up Page */}
                     <div className='w-2/5 h-screen flex justify-center flex-col relative items-center bg-blue-600'>
                         {/* Image */}
