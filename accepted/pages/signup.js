@@ -30,6 +30,11 @@ export default function SignUp ({children, home}) {
         }
     };
 
+    const handleSignin = (e) => {
+        e.preventDefault()
+        signIn()
+    } 
+
     return (
         <div className = 'h-screen'>
             <Head>
@@ -37,12 +42,6 @@ export default function SignUp ({children, home}) {
             </Head>
             <main>
                 <div className='flex flex-row h-full'>
-                <h2>You're currently {session ? 'logged in.' : 'logged out.'}</h2>
-        {session ? (
-          <button onClick={signOut}>Log out.</button>
-        ) : (
-          <button onClick={signIn}>Log in.</button>
-        )}
                     {/* Left side of Sign Up Page */}
                     <div className='w-2/5 h-screen flex justify-center flex-col relative items-center bg-blue-600'>
                         {/* Image */}
@@ -71,7 +70,6 @@ export default function SignUp ({children, home}) {
                                 </div>
                                 <h4 className = 'text-base md:text-xl text-gray-50 mt-12 inline-block'>Sign Up</h4>
                             </div>
-
 
                             <div className = ''>
                                 <div className = 'inline-block mr-4'>
