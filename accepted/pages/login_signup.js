@@ -2,30 +2,17 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { Component , useState } from 'react'
+import { useSession, signIn, signOut } from 'next-auth/client';
 
 export const siteTitle = 'Create Account | AcceptED';
 
-export default function CreateAccount ({children, home}) {
-    const [fullName, setFullName] = useState('')
-    const [email, setEmail] = useState('')
-    const [universityCode, setUniversityCpde] = useState('')
-    const [password, setPassword] = useState('')
+export default function LoginSignup ({children, home}) {
+    const [session] = useSession();
 
-    const submitSignUpData = async (e) => {
-        e.preventDefault();
-        try {
-            const body = { fullName, email, universityCode, password }
-            await fetch('/api/post', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body),
-            }).then(json =>{
-                window.location.href = '/onboarding'
-            })
-        } catch (error) {
-            console.error(error)
-        }
-    };
+    const handleSignin = (e) => {
+        e.preventDefault()
+        signIn()
+    } 
 
     return (
         <div className = 'h-screen'>
@@ -96,32 +83,9 @@ export default function CreateAccount ({children, home}) {
                             LOGO
                         </div>
                         <div className = 'm-auto w-8/12'>
+                            <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Login</h3>
+
                             <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Sign Up</h3>
-
-                            {/* Sign-Up Form */}
-                            <form className='flex flex-col mt-2' onSubmit={submitSignUpData}>
-                                <p className = 'text-sm md:text-base font-semibold'>Full Name</p>
-                                <input autoFocus onChange={(e) => setFullName(e.target.value)} value={fullName} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter first and last name'/>
-
-                                <p className = 'text-sm md:text-base font-semibold'>Email</p>
-                                <input autoFocus onChange={(e) => setEmail(e.target.value)} value={email} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='email' type='email' aria-label='email address' placeholder='Enter school email address'/>
-
-                                <p className = 'text-sm md:text-base font-semibold'>University Code</p>
-                                <input autoFocus onChange={(e) => setUniversityCpde(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter 4 digit university code'/>
-
-                                <p className = 'text-sm md:text-base font-semibold'>Password</p>
-                                <input autoFocus onChange={(e) => setPassword(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter password(6-8 charachters)'/>
-
-                                <Link href= {{ pathname:'onboarding'}}>
-                                    <button onClick={submitSignUpData} className = 'w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'>
-                                        Sign Up
-                                    </button>
-                                </Link>
-
-                                <Link href=''>
-                                    <p className = 'm-auto text-xs mt-2'>Already have an account? <a className = 'text-blue-600'>Sign in</a></p>
-                                </Link>
-                            </form>
                         </div>
                     </div>
                 
