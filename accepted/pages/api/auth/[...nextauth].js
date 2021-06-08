@@ -9,23 +9,15 @@ export default NextAuth({
         }),
     ],
     callbacks: {
-        redirect: async (url, baseUrl) => {
-            console.log("\nHERER " + url)
-          return Promise.resolve(url)
-        }
+        redirect: async (url, _) => {
+            if (url === '/api/auth/signin') {
+                return Promise.resolve('/onboarding');
+            }
+
+            return Promise.resolve('/home');
+        },
     },
     pages: {
         error: '/signup',
     },
-    // callbacks: {
-    //     redirect: async (url, _) => {
-    //         console.log("\n\nHERERE " + url)
-    //         if (url === '/api/auth/signin') {
-    //             return Promise.resolve('/onboarding');
-    //         }
-    //         console.log("TEST");
-    //         // return Promise.resolve('/home');
-    //         return '/home';
-    //     },
-    // },
 })
