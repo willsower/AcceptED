@@ -1,16 +1,16 @@
 import Head from 'next/head';
-import SignUp, { siteTitle } from './signup';
+import CreateAccount, { siteTitle } from './create_account';
 import React, { Component } from 'react'
 
 class Index extends Component {
   render() {
     return (
       <div>
-        <SignUp home>
+        <CreateAccount home>
           <Head>
             <title> {siteTitle} </title>
           </Head>
-        </SignUp>
+        </CreateAccount>
       </div>
     )
   }

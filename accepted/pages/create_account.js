@@ -4,9 +4,9 @@ import Link from 'next/link';
 import React, { Component , useState } from 'react'
 import { useSession, signIn, signOut } from 'next-auth/client';
 
-export const siteTitle = 'Sign-Up | AcceptED';
+export const siteTitle = 'Create Account | AcceptED';
 
-export default function SignUp ({children, home}) {
+export default function CreateAccount ({children, home}) {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [universityCode, setUniversityCpde] = useState('')
