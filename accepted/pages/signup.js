@@ -102,18 +102,18 @@ export default function SignUp ({children, home}) {
                                 <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Sign Up</h3>
 
                                 {/* Sign-Up Form */}
-                                <form className='flex flex-col mt-2' onSubmit={this.handleSubmit}>
+                                <form className='flex flex-col mt-2' onSubmit={submitSignUpData}>
                                     <p className = 'text-sm md:text-base font-semibold'>Full Name</p>
-                                    <input name="fullName" autoFocus onChange={this.handlechange} value={this.state.fullName} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='text' placeholder='Enter first and last name'/>
+                                    <input name="fullName" autoFocus onChange={(e) => setFullName(e.target.value)} value={fullName} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='text' placeholder='Enter first and last name'/>
 
                                     <p className = 'text-sm md:text-base font-semibold'>Email</p>
-                                    <input name="email" autoFocus onChange={this.handlechange} value={this.state.email} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='email' type='email' aria-label='email address' placeholder='Enter school email address'/>
+                                    <input name="email" autoFocus onChange={(e) => setEmail(e.target.value)} value={email} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='email' type='email' aria-label='email address' placeholder='Enter school email address'/>
 
                                     <p className = 'text-sm md:text-base font-semibold'>University Code</p>
-                                    <input name="universityCode" autoFocus onChange={this.handlechange} value={this.state.universityCode} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='text' placeholder='Enter 4 digit university code'/>
+                                    <input name="universityCode" autoFocus onChange={(e) => setUniversityCpde(e.target.value)} value={universityCode} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='text' placeholder='Enter 4 digit university code'/>
 
                                     <p className = 'text-sm md:text-base font-semibold'>Password</p>
-                                    <input name="password" autoFocus onChange={this.handlechange} value={this.state.password} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='password' placeholder='Enter password(6-8 charachters)'/>
+                                    <input name="password" autoFocus onChange={(e) => setPassword(e.target.value)} value={password} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='password' placeholder='Enter password(6-8 charachters)'/>
 
                                     <Link href= {{ pathname:'onboarding'}}>
                                         <button className = 'w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'>
@@ -128,7 +128,7 @@ export default function SignUp ({children, home}) {
                             </div>
                         </div>
                     
-                        { this.props.children }
+                        { children }
                     </div>
                 </main>
             </div>
