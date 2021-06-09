@@ -7,12 +7,7 @@ import { useSession, signIn, signOut } from 'next-auth/client';
 export const siteTitle = 'Create Account | AcceptED';
 
 export default function LoginSignup ({children, home}) {
-    const [session] = useSession();
-
-    const handleSignin = (e) => {
-        e.preventDefault()
-        signIn()
-    } 
+    const [session, loading] = useSession();
 
     return (
         <div className = 'h-screen'>
@@ -84,8 +79,16 @@ export default function LoginSignup ({children, home}) {
                         </div>
                         <div className = 'm-auto w-8/12'>
                             <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Login</h3>
+                            {!session && <>
+                                Not signed in <br/>
+                                <button className = 'signInButton' onClick={() => signIn()}>Login</button>
+                                </>}
 
                             <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Sign Up</h3>
+                            {!session && <>
+                                Not signed in <br/>
+                                <button className = 'signInButton' onClick={() => signIn()}>Signup</button>
+                                </>}
                         </div>
                     </div>
                 
