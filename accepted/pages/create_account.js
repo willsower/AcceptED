@@ -19,7 +19,7 @@ export default function CreateAccount ({children, home}) {
     const [fName, setFirstName] = useState('');
     const [lName, setLastName] = useState('');
     const [universityCode, setUniversityCpde] = useState('');
-    const [password, setPassword] = useState('');
+    // const [password, setPassword] = useState('');
     const [ session ] = useSession()
     const email = session.user.email;
 
@@ -27,7 +27,7 @@ export default function CreateAccount ({children, home}) {
         e.preventDefault();;
 
         try {
-            const body = { fName, lName, email, universityCode, password }
+            const body = { fName, lName, email, universityCode }
             await fetch('/api/post', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -122,8 +122,8 @@ export default function CreateAccount ({children, home}) {
                                 <p className = 'text-sm md:text-base font-semibold'>University Code</p>
                                 <input autoFocus onChange={(e) => setUniversityCpde(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter 4 digit university code'/>
 
-                                <p className = 'text-sm md:text-base font-semibold'>Password</p>
-                                <input autoFocus onChange={(e) => setPassword(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter password(6-8 charachters)'/>
+                                {/* <p className = 'text-sm md:text-base font-semibold'>Password</p>
+                                <input autoFocus onChange={(e) => setPassword(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter password(6-8 charachters)'/> */}
 
                                 <Link href= {{ pathname:'onboarding'}}>
                                     <button onClick={submitSignUpData} className = 'w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'>
