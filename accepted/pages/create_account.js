@@ -20,17 +20,17 @@ export default function CreateAccount ({children, home}) {
     const [lName, setLastName] = useState('');
     const [universityCode, setUniversityCode] = useState('');
     const [consultantCode, setConsultantCode] = useState('');
+    const [educationConsultant, setEducationConsultant] = useState('');
     const [ session ] = useSession()
     const email = session.user.email;
-    const educationConsultant = false;
 
     const handleRadioChange = e => {
         const { value } = e.target;
 
         if (value == 'ec') {
-            educationConsultant = true;
+            setEducationConsultant(true)
         } else {
-            educationConsultant = false;
+            setEducationConsultant(false)
         }
     };
 
@@ -123,33 +123,33 @@ export default function CreateAccount ({children, home}) {
                             <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Sign Up</h3>
 
                             {/* Sign-Up Form */}
-                            <form className='flex flex-col mt-2' onSubmit={submitSignUpData}>
+                            <form className='flex flex-col mt-2' method = "POST" onSubmit={submitSignUpData}>
                                 <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
-                                <input autoFocus onChange={(e) => setFirstName(e.target.value)} value={fName} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fName' type='fName' placeholder='Enter preferred first name'/>
+                                <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='fName' placeholder='Enter preferred first name' required/>
 
                                 <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
-                                <input autoFocus onChange={(e) => setLastName(e.target.value)} value={lName} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='lName' type='lName' aria-label='lName' placeholder='Enter last name'/>
+                                <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='lName' aria-label='lName' placeholder='Enter last name' required/>
 
                                 <p className = 'text-sm md:text-base font-semibold'>University Code</p>
-                                <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter 4 digit university code'/>
+                                <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='fullName' placeholder='Enter 4 digit university code' required/>
 
                                 <p className = 'text-sm md:text-base font-semibold'>Who are you?</p>
                                 <p className = 'text-xs md:text-sm mt-1 mb-1'>I am a(n)...</p>
-                                <div className = 'radio-buttons'>
+                                <div className = 'radio-buttons mb-2'>
                                     <input
-                                        id = 'student'
                                         value = 'student'
                                         type = 'radio'
                                         className = 'mr-2'
+                                        name = 'type'
                                         onChange = {handleRadioChange}
                                     />
                                     Student 
                                     <br/>
                                     <input
-                                        id = 'ec'
                                         value = 'ec'
                                         type = 'radio'
                                         className = 'mr-2'
+                                        name = 'type'
                                         onChange = {handleRadioChange}
                                     />
                                     Education Consultant
@@ -157,8 +157,8 @@ export default function CreateAccount ({children, home}) {
 
                                 {educationConsultant &&
                                     <>
-                                        <p className = 'text-sm md:text-base font-semibold'>Enter Consultant Code</p>
-                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='consultantCode' type='consultantCode' placeholder='Enter code given to you by admin'/>
+                                        <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
+                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='consultantCode' type='consultantCode' placeholder='Enter code given to you by admin' required/>
                                     </>
                                 }
 
