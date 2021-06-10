@@ -125,13 +125,13 @@ export default function CreateAccount ({children, home}) {
                             {/* Sign-Up Form */}
                             <form className='flex flex-col mt-2' method = "POST" onSubmit={submitSignUpData}>
                                 <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
-                                <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='fName' placeholder='Enter preferred first name' required/>
+                                <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter preferred first name' required/>
 
                                 <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
-                                <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='lName' aria-label='lName' placeholder='Enter last name' required/>
+                                <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter last name' required/>
 
                                 <p className = 'text-sm md:text-base font-semibold'>University Code</p>
-                                <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='fullName' placeholder='Enter 4 digit university code' required/>
+                                <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' required/>
 
                                 <p className = 'text-sm md:text-base font-semibold'>Who are you?</p>
                                 <p className = 'text-xs md:text-sm mt-1 mb-1'>I am a(n)...</p>
@@ -158,7 +158,7 @@ export default function CreateAccount ({children, home}) {
                                 {educationConsultant &&
                                     <>
                                         <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
-                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='consultantCode' type='consultantCode' placeholder='Enter code given to you by admin' required/>
+                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' required/>
                                     </>
                                 }
 
