@@ -2,14 +2,16 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { getSession, useSession } from 'next-auth/client'
+import { useSession, getSession } from 'next-auth/client'
 
 export const siteTitle = 'Create Account | AcceptED';
 
-async function getCurrentSession() {
-    const session = await getSession();
+// Export the `session` prop to use sessions with Server Side Rendering
+export async function getServerSideProps(context) {
     return {
-        props: { session }
+      props: {
+        session: await getSession(context)
+      }
     }
 }
 
@@ -18,17 +20,8 @@ export default function CreateAccount ({children, home}) {
     const [lName, setLastName] = useState('');
     const [universityCode, setUniversityCpde] = useState('');
     const [password, setPassword] = useState('');
-
-    const session = getCurrentSession();
-
-    // const email = session.user.email;
-
-    if (session) {
-        console.log("TEST");
-        console.log(JSON.stringify(session, null, 2))
-    } else {
-        console.log("FAIL");
-    }
+    const [ session ] = useSession()
+    const email = session.user.email;
 
     const submitSignUpData = async (e) => {
         e.preventDefault();;
