@@ -4,8 +4,6 @@ export default async function handle(req, res) {
   const prisma = new PrismaClient();
   const { fName, lName, email, universityCode } = req.body;
 
-  console.log(fName);
-  console.log(email);
   const newUser = await prisma.user.create({
     data: {
       fname: fName,
