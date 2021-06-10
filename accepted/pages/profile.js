@@ -7,6 +7,7 @@ import MyInformation from '../components/Cards/Profile/my_information';
 import StudentColleges from '../components/Cards/Profile/student_colleges';
 import { nav } from './helper'
 import { PrismaClient } from '@prisma/client';
+import {signOut} from 'next-auth/client';
 
 export async function getStaticProps() {
     const prisma = new PrismaClient()
@@ -68,7 +69,7 @@ class Profile extends Component {
                                     {nav('/profile', '/images/Shell/profile_blue_ico.svg', 'Profile')}
 
                                     {/* Logout*/}
-                                    <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer'>
+                                    <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer' onClick = {() => signOut()}>
                                         <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                             <Image
                                                 priority

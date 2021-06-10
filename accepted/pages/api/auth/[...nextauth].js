@@ -14,6 +14,10 @@ export default NextAuth({
                 return Promise.resolve('/onboarding');
             }
 
+            console.log("\n\n" + url);
+            if (url === '/profile') {
+                console.log("Hiiiii")
+            }
             return Promise.resolve('/home');
         },
     },

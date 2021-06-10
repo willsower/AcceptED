@@ -3,7 +3,8 @@ import Image from 'next/image';
 import { nav } from './helper';
 import React, { Component } from 'react'
 import RecentEssays from '../components/Cards/Home/recent_essays';
-import LatestMaterials from '../components/Cards/Home/latest_materials'
+import LatestMaterials from '../components/Cards/Home/latest_materials';
+import {signOut} from 'next-auth/client';
 
 class Home extends Component {
     render(){
@@ -50,7 +51,7 @@ class Home extends Component {
                                 {nav('/profile', '/images/Shell/profile_ico.svg', 'Profile')}
 
                                 {/* Logout*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer'>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer' onClick = {() => signOut()}>
                                     <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                         <Image
                                             priority
