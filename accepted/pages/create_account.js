@@ -25,7 +25,12 @@ export default function CreateAccount ({children, home}) {
 
     const handleRadioChange = e => {
         const { value } = e.target;
-        educationConsultant = value;
+
+        if (value == 'ec') {
+            educationConsultant = true;
+        } else {
+            educationConsultant = false;
+        }
     };
 
     const submitSignUpData = async (e) => {
@@ -127,8 +132,27 @@ export default function CreateAccount ({children, home}) {
                                 <p className = 'text-sm md:text-base font-semibold'>University Code</p>
                                 <input autoFocus onChange={(e) => setUniversityCpde(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter 4 digit university code'/>
 
-                                {/* <p className = 'text-sm md:text-base font-semibold'>Password</p>
-                                <input autoFocus onChange={(e) => setPassword(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter password(6-8 charachters)'/> */}
+                                <p className = 'text-sm md:text-base font-semibold'>Who are you?</p>
+                                <p className = 'text-xs md:text-sm mt-1 mb-1'>I am a(n)...</p>
+                                <div className = 'radio-buttons'>
+                                    <input
+                                        id = 'student'
+                                        value = 'student'
+                                        type = 'radio'
+                                        className = 'mr-2'
+                                        onChange = {handleRadioChange}
+                                    />
+                                    Student 
+                                    <br/>
+                                    <input
+                                        id = 'ec'
+                                        value = 'ec'
+                                        type = 'radio'
+                                        className = 'mr-2'
+                                        onChange = {handleRadioChange}
+                                    />
+                                    Education Consultant
+                                </div>
 
                                 <Link href= {{ pathname:'onboarding'}}>
                                     <button onClick={submitSignUpData} className = 'w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'>
