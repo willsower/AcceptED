@@ -18,7 +18,8 @@ export async function getServerSideProps(context) {
 export default function CreateAccount ({children, home}) {
     const [fName, setFirstName] = useState('');
     const [lName, setLastName] = useState('');
-    const [universityCode, setUniversityCpde] = useState('');
+    const [universityCode, setUniversityCode] = useState('');
+    const [consultantCode, setConsultantCode] = useState('');
     const [ session ] = useSession()
     const email = session.user.email;
     const educationConsultant = false;
@@ -37,7 +38,7 @@ export default function CreateAccount ({children, home}) {
         e.preventDefault();;
 
         try {
-            const body = { fName, lName, email, universityCode, educationConsultant }
+            const body = { fName, lName, email, universityCode, consultantCode, educationConsultant }
             await fetch('/api/db_scripts/create_user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -130,7 +131,7 @@ export default function CreateAccount ({children, home}) {
                                 <input autoFocus onChange={(e) => setLastName(e.target.value)} value={lName} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='lName' type='lName' aria-label='lName' placeholder='Enter last name'/>
 
                                 <p className = 'text-sm md:text-base font-semibold'>University Code</p>
-                                <input autoFocus onChange={(e) => setUniversityCpde(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter 4 digit university code'/>
+                                <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter 4 digit university code'/>
 
                                 <p className = 'text-sm md:text-base font-semibold'>Who are you?</p>
                                 <p className = 'text-xs md:text-sm mt-1 mb-1'>I am a(n)...</p>
@@ -153,6 +154,13 @@ export default function CreateAccount ({children, home}) {
                                     />
                                     Education Consultant
                                 </div>
+
+                                {educationConsultant &&
+                                    <>
+                                        <p className = 'text-sm md:text-base font-semibold'>Enter Consultant Code</p>
+                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='consultantCode' type='consultantCode' placeholder='Enter code given to you by admin'/>
+                                    </>
+                                }
 
                                 <Link href= {{ pathname:'onboarding'}}>
                                     <button onClick={submitSignUpData} className = 'w-20 bg-blue-600 text-white rounded md:w-28 p-1 m-auto'>
