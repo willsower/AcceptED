@@ -2,7 +2,15 @@ import { PrismaClient } from "@prisma/client";
 
 export default async function handle(req, res) {
   const prisma = new PrismaClient();
-  const { fName, lName, email, universityCode, educationConsultant } = req.body;
+  const { fName, lName, email, universityCode, consultantCode, educationConsultant } = req.body;
+
+  // Check consultant code first, if code is not found
+  // Return error
+  if (educationConsultant) {
+    // This depends on how we do it, are we going to have a table
+    // Where admins can enter consultant codes?
+    // Will admin just input the associated email ?
+  }
 
   const newUser = await prisma.user.create({
     data: {
