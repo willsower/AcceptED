@@ -19,15 +19,20 @@ export default function CreateAccount ({children, home}) {
     const [fName, setFirstName] = useState('');
     const [lName, setLastName] = useState('');
     const [universityCode, setUniversityCpde] = useState('');
-    // const [password, setPassword] = useState('');
     const [ session ] = useSession()
     const email = session.user.email;
+    const educationConsultant = false;
+
+    const handleRadioChange = e => {
+        const { value } = e.target;
+        educationConsultant = value;
+    };
 
     const submitSignUpData = async (e) => {
         e.preventDefault();;
 
         try {
-            const body = { fName, lName, email, universityCode }
+            const body = { fName, lName, email, universityCode, educationConsultant }
             await fetch('/api/db_scripts/create_user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
