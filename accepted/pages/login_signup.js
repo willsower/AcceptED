@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
-import React, { Component , useState } from 'react'
-import { useSession, signIn, signOut } from 'next-auth/client';
+import { useSession, signIn } from 'next-auth/client';
 
 export const siteTitle = 'Create Account | AcceptED';
 

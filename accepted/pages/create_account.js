@@ -1,20 +1,40 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { Component , useState } from 'react'
+import React, { useState } from 'react';
+import { getSession, useSession } from 'next-auth/client'
 
 export const siteTitle = 'Create Account | AcceptED';
 
+async function getCurrentSession() {
+    const session = await getSession();
+    return {
+        props: { session }
+    }
+}
+
 export default function CreateAccount ({children, home}) {
-    const [fullName, setFullName] = useState('')
-    const [email, setEmail] = useState('')
-    const [universityCode, setUniversityCpde] = useState('')
-    const [password, setPassword] = useState('')
+    const [fName, setFirstName] = useState('');
+    const [lName, setLastName] = useState('');
+    const [universityCode, setUniversityCpde] = useState('');
+    const [password, setPassword] = useState('');
+
+    const session = getCurrentSession();
+
+    // const email = session.user.email;
+
+    if (session) {
+        console.log("TEST");
+        console.log(JSON.stringify(session, null, 2))
+    } else {
+        console.log("FAIL");
+    }
 
     const submitSignUpData = async (e) => {
-        e.preventDefault();
+        e.preventDefault();;
+
         try {
-            const body = { fullName, email, universityCode, password }
+            const body = { fName, lName, email, universityCode, password }
             await fetch('/api/post', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -100,11 +120,11 @@ export default function CreateAccount ({children, home}) {
 
                             {/* Sign-Up Form */}
                             <form className='flex flex-col mt-2' onSubmit={submitSignUpData}>
-                                <p className = 'text-sm md:text-base font-semibold'>Full Name</p>
-                                <input autoFocus onChange={(e) => setFullName(e.target.value)} value={fullName} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter first and last name'/>
+                                <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
+                                <input autoFocus onChange={(e) => setFirstName(e.target.value)} value={fName} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fName' type='fName' placeholder='Enter preferred first name'/>
 
-                                <p className = 'text-sm md:text-base font-semibold'>Email</p>
-                                <input autoFocus onChange={(e) => setEmail(e.target.value)} value={email} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='email' type='email' aria-label='email address' placeholder='Enter school email address'/>
+                                <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
+                                <input autoFocus onChange={(e) => setLastName(e.target.value)} value={lName} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='lName' type='lName' aria-label='lName' placeholder='Enter last name'/>
 
                                 <p className = 'text-sm md:text-base font-semibold'>University Code</p>
                                 <input autoFocus onChange={(e) => setUniversityCpde(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' id='fullName' type='fullName' placeholder='Enter 4 digit university code'/>
