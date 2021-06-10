@@ -8,20 +8,7 @@ export default NextAuth({
         clientSecret: process.env.GOOGLE_CLIENT_SECRET
         }),
     ],
-    callbacks: {
-        redirect: async (url, _) => {
-            if (url === '/api/auth/signin') {
-                return Promise.resolve('/onboarding');
-            }
-
-            console.log("\n\n" + url);
-            if (url === '/profile') {
-                console.log("Hiiiii")
-            }
-            return Promise.resolve('/home');
-        },
-    },
     pages: {
-        error: '/signup',
+        error: '/login_signup',
     },
 })

@@ -81,17 +81,13 @@ export default function LoginSignup ({children, home}) {
                             <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Login</h3>
                             {!session && <>
                                 Not signed in <br/>
-                                <button className = 'signInButton' onClick={() => signIn('google')}>Login</button>
+                                <button className = 'signInButton' onClick={() => signIn('google', { callbackUrl: 'http://localhost:3000/home' })}>Login</button>
                             </>}
-                                {session && <>
-      Signed in as {session.user.email} <br/>
-      <button onClick={() => signOut()}>Sign out</button>
-    </>}
 
                             <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Sign Up</h3>
                             {!session && <>
                                 Not signed in <br/>
-                                <button className = 'signInButton' onClick={() => signIn('google')}>Signup</button>
+                                <button className = 'signInButton' onClick={() => signIn('google', { callbackUrl: 'http://localhost:3000/create_account' })}>Signup</button>
                             </>}
                         </div>
                     </div>
