@@ -28,7 +28,7 @@ export default function CreateAccount ({children, home}) {
 
         try {
             const body = { fName, lName, email, universityCode }
-            await fetch('/api/createUser', {
+            await fetch('/api/db_scripts/create_user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),
