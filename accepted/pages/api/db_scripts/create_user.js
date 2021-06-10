@@ -11,23 +11,19 @@ export default async function handle(req, res) {
       consultantCode,
       educationConsultant,
     } = req.body;
-    console.log("Line 14");
+
     // Check if the user is already in the database,
     // if they are, don't let them create a new account
-    try {
-      const userInTable = await prisma.user.findUnique({
-        where: {
-          email: email,
-        },
-      })
-    } catch (err) {
-      console.log("Line 24 " + err)
-    }
-    console.log("Line 26")
+    const userInTable = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+    })
+
     if (!(userInTable == null)) {
       return false;
     }
-    console.log("Line 30");
+
     // Check consultant code first, if code is not found
     // Return error
     if (educationConsultant) {
