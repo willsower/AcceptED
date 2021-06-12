@@ -7,7 +7,7 @@ function MyProfile({ profile }) {
     
     return (
         <>
-            {Object.entries(profile).map((user) => (
+            {profile.map((user) => (
                 <div className = 'border-1 border-gray-200 rounded pl-4 pt-3 pb-3 w-4/5 md:w-72 lg:w-96 relative flex flex-row bg-white shadow-md'>
                     <div className = 'w-2/5'>
                         {/* Outer Blue Circle */}

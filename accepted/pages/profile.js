@@ -9,33 +9,18 @@ import { PrismaClient } from '@prisma/client';
 import {signOut} from 'next-auth/client';
 import { useSession, getSession } from 'next-auth/client'
 
-// export async function getStaticProps() {
-//     const prisma = new PrismaClient()
-
-//     const prof = await prisma.user.findUnique({
-//         where: {
-//             email: 'taichen.rose0@gmail.com',
-//         },
-//     })
-
-//     const profile = JSON.stringify(prof);
-
-//     console.log("\n\n " + profile)
-//     console.log("\n\n " + Object.entries(profile))
-//     return {
-//       props : { profile }
-//     };
-// }
-
 export async function getStaticProps() {
     const prisma = new PrismaClient()
     const profile = await prisma.user.findMany({
         where: {
-            id: {
-                equals: 1
+            email: {
+                equals: 'taichen.rose0@gmail.com'
             }
         },
     })
+
+    console.log("\n\n" + profile)
+    console.log("\n\n" + JSON.stringify(profile))
     
     return {
       props : { profile }
@@ -123,7 +108,7 @@ export default function Profile({ profile }) {
                                 <div className = 'md:w-72 lg:w-96 mb-4'>
                                     {/* <MyProfile counselorID={counselorUserID} /> */}
                                     <MyProfile profile={profile}/>
-                                    {/* <MyInformation profile = {profile}/> */}
+                                    <MyInformation profile = {profile}/>
                                     <MyStudents />
 
                                     <h3 className = 'mb-3 mt-3 font-bold'>Directory</h3>
