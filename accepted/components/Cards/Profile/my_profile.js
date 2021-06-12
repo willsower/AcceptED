@@ -4,7 +4,7 @@ import React from 'react';
 
 function MyProfile({ profile }) {
     const [showModal, setShowModal] = React.useState(false);
-
+    
     return (
         <>
             {profile.map((user) => (

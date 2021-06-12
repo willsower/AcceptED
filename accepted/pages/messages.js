@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/Link';
 import React, { Component } from 'react'
 import { nav } from './helper'
+import {signOut} from 'next-auth/client';
 
 export default function Messages() {
     return(
@@ -48,7 +49,7 @@ export default function Messages() {
                                 {nav('/profile', '/images/Shell/profile_ico.svg', 'Profile')}
 
                                 {/* Logout*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer'>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer' onClick = {() => signOut({ callbackUrl: 'http://localhost:3000/login_signup' })}>
                                     <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                         <Image
                                             priority
