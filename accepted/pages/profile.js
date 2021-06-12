@@ -9,8 +9,14 @@ import { PrismaClient } from '@prisma/client';
 import {signOut} from 'next-auth/client';
 import { useSession, getSession } from 'next-auth/client'
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
     const prisma = new PrismaClient()
+
+    const session = getSession();
+
+    console.log("\n\n" + session)
+    console.log("\n" + JSON.stringify(session))
+
     const profile = await prisma.user.findMany({
         where: {
             email: {
@@ -18,9 +24,6 @@ export async function getStaticProps() {
             }
         },
     })
-
-    console.log("\n\n" + profile)
-    console.log("\n\n" + JSON.stringify(profile))
     
     return {
       props : { profile }
