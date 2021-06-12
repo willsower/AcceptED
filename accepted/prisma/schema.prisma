@@ -14,7 +14,7 @@ model User {
   id Int @id @default(autoincrement())
   fname String
   lname String
-  email String
+  email String @unique 
   password String
   universityCode Int
   profileImage Bytes?

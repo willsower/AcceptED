@@ -1,23 +1,23 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import React, { Component } from 'react'
 import MyStudents from '../components/Cards/Profile/my_students';
 import MyProfile from '../components/Cards/Profile/my_profile';
 import MyInformation from '../components/Cards/Profile/my_information';
 import StudentColleges from '../components/Cards/Profile/student_colleges';
 import { nav } from './helper'
 import { PrismaClient } from '@prisma/client';
+import {signOut} from 'next-auth/client';
+import { useSession, getSession } from 'next-auth/client'
 
 export async function getStaticProps() {
     const prisma = new PrismaClient()
-    const profile = await prisma.user.findMany({
+
+    const profile = await prisma.user.findUnique({
         where: {
-            id: {
-                equals: 1
-            }
+            email: 'taichen.rose0@gmail.com',
         },
     })
-    
+    console.log(" \n\n " + JSON.stringify(profile));
     return {
       props : { profile }
     };
@@ -67,7 +67,7 @@ export default function Profile({ profile }) {
                                 {nav('/profile', '/images/Shell/profile_blue_ico.svg', 'Profile')}
 
                                 {/* Logout*/}
-                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer'>
+                                <div className = 'w-full sm:h-12 p-2 sm:p-4 m-auto hover:bg-blue-50 active:bg-blue-50 hover:cursor-pointer' onClick = {() => signOut({ callbackUrl: 'http://localhost:3000/login_signup' })}>
                                     <div className = 'inline-block align-middle mr-1 sm:mr-3'>
                                         <Image
                                             priority
@@ -103,8 +103,8 @@ export default function Profile({ profile }) {
                             <div className = 'mt-12 md:flex md:flex-row ml-14'>
                                 <div className = 'md:w-72 lg:w-96 mb-4'>
                                     {/* <MyProfile counselorID={counselorUserID} /> */}
-                                    <MyProfile profile={profile}/>
-                                    <MyInformation profile = {profile}/>
+                                    {/* <MyProfile profile={profile}/>
+                                    <MyInformation profile = {profile}/> */}
                                     <MyStudents />
 
                                     <h3 className = 'mb-3 mt-3 font-bold'>Directory</h3>

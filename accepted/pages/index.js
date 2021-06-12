@@ -1,15 +1,15 @@
 import Head from 'next/head';
-import SignUp, { siteTitle } from './signup';
+import LoginSignup, { siteTitle } from './login_signup';
 import React, { Component } from 'react'
 
 export default function Home() {
   return (
     <div>
-      <SignUp home>
+      <LoginSignup home>
         <Head>
           <title> {siteTitle} </title>
         </Head>
-      </SignUp>
+      </LoginSignup>
     </div>
   )
 }
