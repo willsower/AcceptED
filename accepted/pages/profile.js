@@ -9,28 +9,55 @@ import { PrismaClient } from '@prisma/client';
 import {signOut} from 'next-auth/client';
 import { useSession, getSession } from 'next-auth/client'
 
-export async function getStaticProps(context) {
-    const prisma = new PrismaClient()
+// export async function getStaticProps(context) {
+//     const prisma = new PrismaClient()
 
-    const session = getSession();
+//     const session = await fetch('/api/userSession', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//     })
 
-    console.log("\n\n" + session)
-    console.log("\n" + JSON.stringify(session))
+//     console.log("\n\n" + session)
+//     console.log("\n" + JSON.stringify(session))
 
-    const profile = await prisma.user.findMany({
-        where: {
-            email: {
-                equals: 'taichen.rose0@gmail.com'
-            }
-        },
-    })
+//     const profile = await prisma.user.findMany({
+//         where: {
+//             email: {
+//                 equals: 'taichen.rose0@gmail.com'
+//             }
+//         },
+//     })
     
-    return {
-      props : { profile }
-    };
+//     return {
+//       props : { profile }
+//     };
+// }
+
+export async function getServerSideProps({ req, res }) {
+    // Get the user's session based on the request
+    const session = await getSession(req);
+  
+        console.log("\n\n" + session)
+    console.log("\n" + JSON.stringify(session))
+    if (!session) {
+      // If no user, redirect to login
+      return {
+        props: {},
+        // redirect: {
+        //   destination: '/login_signup',
+        //   permanent: false
+        // }
+      };
+    }
+
+    // If there is a user, return the current session
+    return { props: { session } };
 }
 
 export default function Profile({ profile }) {
+    const [session, loading] = useSession();
+    console.log("Here " + session);
+    console.log("NHEre " + JSON.stringify(session));
     return (
         <div>
             <Head>
