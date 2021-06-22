@@ -23,6 +23,12 @@ export default function CreateAccount ({children, home}) {
     const [educationConsultant, setEducationConsultant] = useState('');
     const [ session ] = useSession()
     const email = session.user.email;
+    // var nameErrorMsg = <p>No error</p>
+    // var schoolCodeErrorMsg = <p>No error </p>
+    const [nameErrorMsg, setNameErrorMsg] = useState(<p>No error</p>);
+    const [schoolCodeErrorMsg, setSchoolCodeErrorMsg] = useState(<p>No error </p>)
+    const [submitWarning, setSubmitWarning] = useState(<p> Click Sign Up to Submit Data</p>)
+
 
     const handleRadioChange = e => {
         const { value } = e.target;
@@ -34,8 +40,82 @@ export default function CreateAccount ({children, home}) {
         }
     };
 
+    function validateName (nameInput) {
+        var name = String(nameInput)
+        if(name.length == 0){ // INVALID: empty name field
+            setNameErrorMsg(<p>Name Field Can Not Be Empty</p>)
+            return false;
+        }
+        var stringArray = String(name).split(/(\s+)/);
+        if(stringArray.length > 1) { // INVALID whitespace in name or F/L name has multiple words
+            // nameErrorMsg = <p> Name Can Not Have White Space in Name, Or Name is More Than One Word</p>
+            setNameErrorMsg(<p> Name Can Not Have White Space in Name, Or Name is More Than One Word</p>)
+            return false;
+        }
+        for (var i = 0; i < name.length; i++){
+            var c = name[i];
+            if ( (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) { // VALID: every character is a alphabet
+                continue;
+            } else { // INVALID: name has non-alphabet characters 
+                // nameErrorMsg = <p>Name Can Not Have Non-Alphabet Characters</p>
+                setNameErrorMsg(<p>Name Can Not Have Non-Alphabet Characters</p>)
+                return false;
+            }
+        }
+
+        setNameErrorMsg(<p>No Error in Name! </p>)
+        return true; // reach here, VALID
+    }
+
+    function validateSchoolCode (schoolCode) {
+        var schoolCodeStr = String(schoolCode)
+        if(schoolCodeStr.length != 4){ // INVALID: school code is not length 4
+            // schoolCodeErrorMsg = <p>School Code is Not Length of 4. School Code Has To Be Length of 4</p>
+            setSchoolCodeErrorMsg(<p>School Code is Not Length of 4. School Code Has To Be Length of 4</p>)
+            return false;
+        }
+        var stringArray = schoolCodeStr.split(/(\s+)/);
+        if(stringArray.length > 1) { // INVALID whitespace in school Code
+            // schoolCodeErrorMsg = <p>School Code Can Not Contain White Space</p>
+            setSchoolCodeErrorMsg(<p>School Code Can Not Contain White Space</p>)
+            return false;
+        }
+
+        for (var i = 0; i < schoolCodeStr.length; i++){
+            var c = schoolCodeStr[i]
+            if ( c >= '0' && c <= '9') { // VALID: every character is a number
+                continue;
+            } else { // INVALID: name has non-alphabet characters 
+                // schoolCodeErrorMsg = <p>School Code Must Be All Numbers</p>
+                setSchoolCodeErrorMsg(<p>School Code Must Be All Numbers</p>)
+                return false;
+            }
+        }
+
+
+        setSchoolCodeErrorMsg(<p>No error! </p>)
+        return true; // reach here, VALID
+    }
+
+
+
+
     const submitSignUpData = async (e) => {
-        e.preventDefault();;
+        e.preventDefault();
+        console.log("Line 104")
+        setSubmitWarning(<p>Line 106</p>)
+
+
+        console.log("in submit SignUpDate")
+        if(!validateName(fName) || !(validateName(lName)) || !(validateSchoolCode(universityCode))){ // check if data are valid
+            setSubmitWarning(<p>There are error in the data you entered!</p>)
+            // return; 
+        }
+
+        console.log("Line 112")
+        
+
+
 
         try {
             const body = { fName, lName, email, universityCode, consultantCode, educationConsultant }
@@ -122,14 +202,19 @@ export default function CreateAccount ({children, home}) {
                         <div className = 'm-auto w-8/12'>
                             <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Sign Up</h3>
 
+                        {submitWarning}
+
                             {/* Sign-Up Form */}
                             <form className='flex flex-col mt-2' method = "POST" onSubmit={submitSignUpData}>
+                                {nameErrorMsg}
                                 <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
                                 <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter preferred first name' required/>
 
+                                {nameErrorMsg}
                                 <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
                                 <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter last name' required/>
 
+                                {schoolCodeErrorMsg}
                                 <p className = 'text-sm md:text-base font-semibold'>University Code</p>
                                 <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' required/>
 
