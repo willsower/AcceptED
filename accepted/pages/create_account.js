@@ -43,13 +43,13 @@ export default function CreateAccount ({children, home}) {
     function validateName (nameInput) {
         var name = String(nameInput)
         if(name.length == 0){ // INVALID: empty name field
-            setNameErrorMsg(<p>Name Field Can Not Be Empty</p>)
+            setNameErrorMsg(<p>There is an error in First or Last Name: Name Field Can Not Be Empty</p>)
             return false;
         }
         var stringArray = String(name).split(/(\s+)/);
         if(stringArray.length > 1) { // INVALID whitespace in name or F/L name has multiple words
             // nameErrorMsg = <p> Name Can Not Have White Space in Name, Or Name is More Than One Word</p>
-            setNameErrorMsg(<p> Name Can Not Have White Space in Name, Or Name is More Than One Word</p>)
+            setNameErrorMsg(<p> There is an error in First or Last Name: Name Can Not Have White Space in Name, Or Name is More Than One Word</p>)
             return false;
         }
         for (var i = 0; i < name.length; i++){
@@ -58,7 +58,7 @@ export default function CreateAccount ({children, home}) {
                 continue;
             } else { // INVALID: name has non-alphabet characters 
                 // nameErrorMsg = <p>Name Can Not Have Non-Alphabet Characters</p>
-                setNameErrorMsg(<p>Name Can Not Have Non-Alphabet Characters</p>)
+                setNameErrorMsg(<p>There is an error in First or Last Name: Name Can Not Have Non-Alphabet Characters or numbers</p>)
                 return false;
             }
         }
@@ -69,7 +69,7 @@ export default function CreateAccount ({children, home}) {
 
     function validateSchoolCode (schoolCode) {
         var schoolCodeStr = String(schoolCode)
-        if(schoolCodeStr.length != 4){ // INVALID: school code is not length 4
+        if(schoolCodeStr.length !== 4){ // INVALID: school code is not length 4
             // schoolCodeErrorMsg = <p>School Code is Not Length of 4. School Code Has To Be Length of 4</p>
             setSchoolCodeErrorMsg(<p>School Code is Not Length of 4. School Code Has To Be Length of 4</p>)
             return false;
@@ -106,13 +106,13 @@ export default function CreateAccount ({children, home}) {
         setSubmitWarning(<p>Line 106</p>)
 
 
-        console.log("in submit SignUpDate")
+        
         if(!validateName(fName) || !(validateName(lName)) || !(validateSchoolCode(universityCode))){ // check if data are valid
-            setSubmitWarning(<p>There are error in the data you entered!</p>)
-            // return; 
+            setSubmitWarning(<p >There are error in the data you entered!</p>)
+            return; 
         }
 
-        console.log("Line 112")
+        
         
 
 
@@ -210,7 +210,7 @@ export default function CreateAccount ({children, home}) {
                                 <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
                                 <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter preferred first name' required/>
 
-                                {nameErrorMsg}
+                                {/* {nameErrorMsg} */}
                                 <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
                                 <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter last name' required/>
 
