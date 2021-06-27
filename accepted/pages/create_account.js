@@ -16,6 +16,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function CreateAccount ({children, home}) {
+    // Set account information
     const [fName, setFirstName] = useState('');
     const [lName, setLastName] = useState('');
     const [universityCode, setUniversityCode] = useState('');
@@ -23,11 +24,11 @@ export default function CreateAccount ({children, home}) {
     const [educationConsultant, setEducationConsultant] = useState('');
     const [ session ] = useSession()
     const email = session.user.email;
-    // var nameErrorMsg = <p>No error</p>
-    // var schoolCodeErrorMsg = <p>No error </p>
-    const [nameErrorMsg, setNameErrorMsg] = useState(<p>No error</p>);
-    const [schoolCodeErrorMsg, setSchoolCodeErrorMsg] = useState(<p>No error </p>)
-    const [submitWarning, setSubmitWarning] = useState(<p> Click Sign Up to Submit Data</p>)
+
+    // State: Error messages for validation
+    const [nameErrorMsg, setNameErrorMsg] = useState('');
+    const [schoolCodeErrorMsg, setSchoolCodeErrorMsg] = useState('');
+    const [submitWarning, setSubmitWarning] = useState('');
 
 
     const handleRadioChange = e => {
