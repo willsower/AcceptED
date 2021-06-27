@@ -43,7 +43,6 @@ export default function CreateAccount ({children, home}) {
 
     // Function to validate first name and last name form fields
     function validateName(nameInput) {
-        var errCode = 0;
         var errMsg = '';
 
         // INVALID: empty name field
@@ -75,34 +74,23 @@ export default function CreateAccount ({children, home}) {
         return true; 
     }
 
+    // Function to validate school code field
     function validateSchoolCode (schoolCode) {
+        // INVALID: school code is empty
         var schoolCodeStr = String(schoolCode)
-        if(schoolCodeStr.length !== 4){ // INVALID: school code is not length 4
-            // schoolCodeErrorMsg = <p>School Code is Not Length of 4. School Code Has To Be Length of 4</p>
-            setSchoolCodeErrorMsg(<p>School Code is Not Length of 4. School Code Has To Be Length of 4</p>)
+        if (schoolCodeStr.length == 0) {
+            setSchoolCodeErrorMsg(<p>University Code cannot be empty</p>);
+            return false;
+
+        // INVALID: University Code is not length 4
+        } else if (schoolCodeStr.length < 4 || schoolCodeStr.length > 4) {
+            setSchoolCodeErrorMsg(<p>University Code must have 4 digits</p>);
             return false;
         }
-        var stringArray = schoolCodeStr.split(/(\s+)/);
-        if(stringArray.length > 1) { // INVALID whitespace in school Code
-            // schoolCodeErrorMsg = <p>School Code Can Not Contain White Space</p>
-            setSchoolCodeErrorMsg(<p>School Code Can Not Contain White Space</p>)
-            return false;
-        }
 
-        for (var i = 0; i < schoolCodeStr.length; i++){
-            var c = schoolCodeStr[i]
-            if ( c >= '0' && c <= '9') { // VALID: every character is a number
-                continue;
-            } else { // INVALID: name has non-alphabet characters 
-                // schoolCodeErrorMsg = <p>School Code Must Be All Numbers</p>
-                setSchoolCodeErrorMsg(<p>School Code Must Be All Numbers</p>)
-                return false;
-            }
-        }
-
-
-        setSchoolCodeErrorMsg(<p>No error! </p>)
-        return true; // reach here, VALID
+        // Valid University Code
+        setSchoolCodeErrorMsg('');
+        return true;
     }
 
 
