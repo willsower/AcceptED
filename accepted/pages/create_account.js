@@ -79,11 +79,11 @@ export default function CreateAccount ({children, home}) {
         // INVALID: school code is empty
         var schoolCodeStr = String(schoolCode)
         if (schoolCodeStr.length == 0) {
-            return "<p className = 'text-red-500'>University Code cannot be empty</p>";
+            return "University Code cannot be empty";
 
         // INVALID: University Code is not length 4
         } else if (schoolCodeStr.length < 4 || schoolCodeStr.length > 4) {
-            return "<p className = 'text-red-500'>University Code must have 4 digits</p>";
+            return "University Code must have 4 digits";
         }
 
         // Valid University Code
@@ -203,8 +203,8 @@ export default function CreateAccount ({children, home}) {
                                     </>
                                 :
                                     <>
-                                        {fnameErrorMsg}
                                         <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
+                                        <p className = 'text-red-500 text-sm'>{fnameErrorMsg}</p>
                                         <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter preferred first name' required/>
                                     </>
                                 }
@@ -217,8 +217,8 @@ export default function CreateAccount ({children, home}) {
                                     </>
                                 :
                                     <>
-                                        {lnameErrorMsg}
                                         <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
+                                        <p className = 'text-red-500 text-sm'>{lnameErrorMsg}</p>
                                         <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter last name' required/>
                                     </>
                                 }
@@ -231,8 +231,8 @@ export default function CreateAccount ({children, home}) {
                                     </>
                                 :
                                     <>
-                                        {schoolCodeErrorMsg}
                                         <p className = 'text-sm md:text-base font-semibold'>University Code</p>
+                                        <p className = 'text-red-500 text-sm'>{schoolCodeErrorMsg}</p>
                                         <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' required/>
                                     </>
                                 }
