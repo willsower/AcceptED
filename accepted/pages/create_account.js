@@ -69,9 +69,7 @@ export default function CreateAccount ({children, home}) {
         }
 
         // Valid Name
-        setfNameErrorMsg('');
-        setlNameErrorMsg('');
-        return true; 
+        return '';
     }
 
     // Function to validate school code field
@@ -79,22 +77,21 @@ export default function CreateAccount ({children, home}) {
         // INVALID: school code is empty
         var schoolCodeStr = String(schoolCode)
         if (schoolCodeStr.length == 0) {
-            return "University Code cannot be empty";
+            return 'University Code cannot be empty';
 
         // INVALID: University Code is not length 4
         } else if (schoolCodeStr.length < 4 || schoolCodeStr.length > 4) {
-            return "University Code must have 4 digits";
+            return 'University Code must have 4 digits';
         }
 
         // Valid University Code
-        setSchoolCodeErrorMsg('');
-        return true;
+        return '';
     }
 
     // Function to submit signup data and validate
     const submitSignUpData = async (e) => {
         e.preventDefault();
-        
+
         // Check if data is valid
         var fNameMsg = validateName(fName);
         var lNameMsg = validateName(lName);
@@ -198,12 +195,12 @@ export default function CreateAccount ({children, home}) {
                                 {/* First Name Field */}
                                 {fnameErrorMsg.length == 0 ?
                                     <>
-                                        <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
-                                        <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter preferred first name' required/>
+                                        <p className = 'text-sm md:text-base font-semibold'>Preferred First Name ab </p>
+                                        <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter preferred first name' value = {fName} required/>
                                     </>
                                 :
                                     <>
-                                        <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
+                                        <p className = 'text-sm md:text-base font-semibold'>Preferred First Name cc</p>
                                         <p className = 'text-red-500 text-sm'>{fnameErrorMsg}</p>
                                         <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter preferred first name' required/>
                                     </>
@@ -213,7 +210,7 @@ export default function CreateAccount ({children, home}) {
                                 {lnameErrorMsg.length == 0 ?
                                     <>
                                         <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
-                                        <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter last name' required/>
+                                        <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter last name' value = {lName} required/>
                                     </>
                                 :
                                     <>
@@ -227,7 +224,7 @@ export default function CreateAccount ({children, home}) {
                                 {schoolCodeErrorMsg.length == 0 ?
                                     <>
                                         <p className = 'text-sm md:text-base font-semibold'>University Code</p>
-                                        <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' required/>
+                                        <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' value = {universityCode} required/>
                                     </>
                                 :
                                     <>
