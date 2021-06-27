@@ -26,9 +26,9 @@ export default function CreateAccount ({children, home}) {
     const email = session.user.email;
 
     // State: Error messages for validation
-    const [nameErrorMsg, setNameErrorMsg] = useState('');
+    const [fnameErrorMsg, setfNameErrorMsg] = useState('');
+    const [lnameErrorMsg, setlNameErrorMsg] = useState('');
     const [schoolCodeErrorMsg, setSchoolCodeErrorMsg] = useState('');
-    const [submitWarning, setSubmitWarning] = useState('');
 
     // Function to handle radio button change
     const handleRadioChange = e => {
@@ -65,12 +65,12 @@ export default function CreateAccount ({children, home}) {
 
         // Concatenate all errors
         if (errMsg.length != 0) {
-            setNameErrorMsg(errMsg);
-            return false;
+            return errMsg;
         }
 
         // Valid Name
-        setNameErrorMsg('');
+        setfNameErrorMsg('');
+        setlNameErrorMsg('');
         return true; 
     }
 
@@ -79,13 +79,11 @@ export default function CreateAccount ({children, home}) {
         // INVALID: school code is empty
         var schoolCodeStr = String(schoolCode)
         if (schoolCodeStr.length == 0) {
-            setSchoolCodeErrorMsg(<p>University Code cannot be empty</p>);
-            return false;
+            return "<p className = 'text-red-500'>University Code cannot be empty</p>";
 
         // INVALID: University Code is not length 4
         } else if (schoolCodeStr.length < 4 || schoolCodeStr.length > 4) {
-            setSchoolCodeErrorMsg(<p>University Code must have 4 digits</p>);
-            return false;
+            return "<p className = 'text-red-500'>University Code must have 4 digits</p>";
         }
 
         // Valid University Code
@@ -93,25 +91,22 @@ export default function CreateAccount ({children, home}) {
         return true;
     }
 
-
-
-
+    // Function to submit signup data and validate
     const submitSignUpData = async (e) => {
         e.preventDefault();
-        console.log("Line 104")
-        setSubmitWarning(<p>Line 106</p>)
-
-
         
-        if(!validateName(fName) || !(validateName(lName)) || !(validateSchoolCode(universityCode))){ // check if data are valid
-            setSubmitWarning(<p >There are error in the data you entered!</p>)
-            return; 
+        // Check if data is valid
+        var fNameMsg = validateName(fName);
+        var lNameMsg = validateName(lName);
+        var schoolCodeMsg = validateSchoolCode(universityCode);
+
+        if (fNameMsg.length != 0 || lNameMsg != 0 || schoolCodeMsg.length != 0) {
+            setfNameErrorMsg(fNameMsg);
+            setlNameErrorMsg(lNameMsg);
+            setSchoolCodeErrorMsg(schoolCodeMsg);
+
+            return;
         }
-
-        
-        
-
-
 
         try {
             const body = { fName, lName, email, universityCode, consultantCode, educationConsultant }
@@ -198,21 +193,49 @@ export default function CreateAccount ({children, home}) {
                         <div className = 'm-auto w-8/12'>
                             <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Sign Up</h3>
 
-                        {submitWarning}
-
                             {/* Sign-Up Form */}
                             <form className='flex flex-col mt-2' method = "POST" onSubmit={submitSignUpData}>
-                                {nameErrorMsg}
-                                <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
-                                <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter preferred first name' required/>
+                                {/* First Name Field */}
+                                {fnameErrorMsg.length == 0 ?
+                                    <>
+                                        <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
+                                        <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter preferred first name' required/>
+                                    </>
+                                :
+                                    <>
+                                        {fnameErrorMsg}
+                                        <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
+                                        <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter preferred first name' required/>
+                                    </>
+                                }
 
-                                {/* {nameErrorMsg} */}
-                                <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
-                                <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter last name' required/>
+                                {/* Last Name Field */}
+                                {lnameErrorMsg.length == 0 ?
+                                    <>
+                                        <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
+                                        <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter last name' required/>
+                                    </>
+                                :
+                                    <>
+                                        {lnameErrorMsg}
+                                        <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
+                                        <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter last name' required/>
+                                    </>
+                                }
 
-                                {schoolCodeErrorMsg}
-                                <p className = 'text-sm md:text-base font-semibold'>University Code</p>
-                                <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' required/>
+                                {/* University Code Field */}
+                                {schoolCodeErrorMsg.length == 0 ?
+                                    <>
+                                        <p className = 'text-sm md:text-base font-semibold'>University Code</p>
+                                        <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' required/>
+                                    </>
+                                :
+                                    <>
+                                        {schoolCodeErrorMsg}
+                                        <p className = 'text-sm md:text-base font-semibold'>University Code</p>
+                                        <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' required/>
+                                    </>
+                                }
 
                                 <p className = 'text-sm md:text-base font-semibold'>Who are you?</p>
                                 <p className = 'text-xs md:text-sm mt-1 mb-1'>I am a(n)...</p>
