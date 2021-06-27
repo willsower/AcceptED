@@ -30,7 +30,7 @@ export default function CreateAccount ({children, home}) {
     const [schoolCodeErrorMsg, setSchoolCodeErrorMsg] = useState('');
     const [submitWarning, setSubmitWarning] = useState('');
 
-
+    // Function to handle radio button change
     const handleRadioChange = e => {
         const { value } = e.target;
 
@@ -41,31 +41,31 @@ export default function CreateAccount ({children, home}) {
         }
     };
 
-    function validateName (nameInput) {
+    // Function to validate first name and last name form fields
+    function validateName(nameInput) {
+        // INVALID: empty name field
         var name = String(nameInput)
-        if(name.length == 0){ // INVALID: empty name field
-            setNameErrorMsg(<p>There is an error in First or Last Name: Name Field Can Not Be Empty</p>)
+        if (name.length == 0) {
+            setNameErrorMsg(<p>Name cannot be empty</p>)
             return false;
-        }
-        var stringArray = String(name).split(/(\s+)/);
-        if(stringArray.length > 1) { // INVALID whitespace in name or F/L name has multiple words
-            // nameErrorMsg = <p> Name Can Not Have White Space in Name, Or Name is More Than One Word</p>
-            setNameErrorMsg(<p> There is an error in First or Last Name: Name Can Not Have White Space in Name, Or Name is More Than One Word</p>)
-            return false;
-        }
-        for (var i = 0; i < name.length; i++){
-            var c = name[i];
-            if ( (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) { // VALID: every character is a alphabet
-                continue;
-            } else { // INVALID: name has non-alphabet characters 
-                // nameErrorMsg = <p>Name Can Not Have Non-Alphabet Characters</p>
-                setNameErrorMsg(<p>There is an error in First or Last Name: Name Can Not Have Non-Alphabet Characters or numbers</p>)
-                return false;
-            }
         }
 
-        setNameErrorMsg(<p>No Error in Name! </p>)
-        return true; // reach here, VALID
+        // INVALID whitespace in name or F/L name has multiple words
+        var stringArray = String(name).split(/(\s+)/);
+        if (stringArray.length > 1) { 
+            setNameErrorMsg(<p>Invalid space in name</p>)
+            return false;
+        }
+
+        // INVALID: name has non-alphabet characters 
+        var letters = /^[A-Za-z]+$/;
+        if(!(name.value.match(letters))) {
+            setNameErrorMsg(<p>Name Can Not Have Non-Alphabet Characters or numbers</p>)
+            return false;
+        }
+
+        // Valid Name
+        return true; 
     }
 
     function validateSchoolCode (schoolCode) {
