@@ -43,28 +43,35 @@ export default function CreateAccount ({children, home}) {
 
     // Function to validate first name and last name form fields
     function validateName(nameInput) {
+        var errCode = 0;
+        var errMsg = '';
+
         // INVALID: empty name field
         var name = String(nameInput)
         if (name.length == 0) {
-            setNameErrorMsg(<p>Name cannot be empty</p>)
-            return false;
+            errMsg = 'Name cannot be empty. ';
         }
 
         // INVALID whitespace in name or F/L name has multiple words
         var stringArray = String(name).split(/(\s+)/);
         if (stringArray.length > 1) { 
-            setNameErrorMsg(<p>Invalid space in name</p>)
-            return false;
+            errMsg = errMsg + 'Invalid space in name. ';
         }
 
         // INVALID: name has non-alphabet characters 
         var letters = /^[A-Za-z]+$/;
-        if(!(name.value.match(letters))) {
-            setNameErrorMsg(<p>Name Can Not Have Non-Alphabet Characters or numbers</p>)
+        if(!(name.match(letters))) {
+            errMsg = errMsg + 'Name Can Not Have Non-Alphabet Characters or numbers';
+        }
+
+        // Concatenate all errors
+        if (errMsg.length != 0) {
+            setNameErrorMsg(errMsg);
             return false;
         }
 
         // Valid Name
+        setNameErrorMsg('');
         return true; 
     }
 
@@ -156,7 +163,7 @@ export default function CreateAccount ({children, home}) {
                             <h1 className = 'text-xl md:text-3xl lg:text-4xl text-gray-50 font-semibold'>Welcome Consultant!</h1>
                             <h3 className = 'text-base md:text-xl text-gray-50 mt-4 font-semibold'>Let's get you started!</h3>
 
-                            <div clasName = ''>
+                            <div className = ''>
                                 <div className = 'inline-block mr-4'>
                                     <Image
                                         src='/images/SignUp/FileText.svg'
