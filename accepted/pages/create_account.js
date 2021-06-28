@@ -29,6 +29,7 @@ export default function CreateAccount ({children, home}) {
     const [fnameErrorMsg, setfNameErrorMsg] = useState('');
     const [lnameErrorMsg, setlNameErrorMsg] = useState('');
     const [schoolCodeErrorMsg, setSchoolCodeErrorMsg] = useState('');
+    const [radioBttnErrorMsg, setRadioBttnErrorMsg] = useState('');
 
     // Function to handle radio button change
     const handleRadioChange = e => {
@@ -88,6 +89,17 @@ export default function CreateAccount ({children, home}) {
         return '';
     }
 
+    // Validate Radio
+    function validateRadio(ec) {
+        // Validate that radio was checked
+        if (ec == '') {
+            return 'Select option, cannot be empty';
+        }
+
+        // Valid
+        return '';
+    }
+
     // Function to submit signup data and validate
     const submitSignUpData = async (e) => {
         e.preventDefault();
@@ -96,24 +108,28 @@ export default function CreateAccount ({children, home}) {
         var fNameMsg = validateName(fName);
         var lNameMsg = validateName(lName);
         var schoolCodeMsg = validateSchoolCode(universityCode);
+        var radioMsg = validateRadio(educationConsultant);
 
-        if (fNameMsg.length != 0 || lNameMsg != 0 || schoolCodeMsg.length != 0) {
+        if (fNameMsg.length != 0 || lNameMsg != 0 || schoolCodeMsg.length != 0 || radioMsg.length != 0) {
             setfNameErrorMsg(fNameMsg);
             setlNameErrorMsg(lNameMsg);
             setSchoolCodeErrorMsg(schoolCodeMsg);
-
+            setRadioBttnErrorMsg(radioMsg);
+            console.log("ERR " + radioBttnErrorMsg);
             return;
         }
 
         try {
             const body = { fName, lName, email, universityCode, consultantCode, educationConsultant }
-            await fetch('/api/db_scripts/create_user', {
+            var msg = await fetch('/api/db_scripts/create_user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),
             }).then(json => {
                 window.location.href = '/onboarding'
             })
+
+            console.log("MSG " + msg);
         } catch (error) {
             console.error(error)
         }
@@ -188,19 +204,19 @@ export default function CreateAccount ({children, home}) {
                             LOGO
                         </div>
                         <div className = 'm-auto w-8/12'>
-                            <h3 className = 'text-base md:text-2xl font-semibold mb-8'>Sign Up</h3>
+                            <h3 className = 'text-base md:text-2xl font-semibold mb-2'>Sign Up</h3>
 
                             {/* Sign-Up Form */}
                             <form className='flex flex-col mt-2' method = "POST" onSubmit={submitSignUpData}>
                                 {/* First Name Field */}
                                 {fnameErrorMsg.length == 0 ?
                                     <>
-                                        <p className = 'text-sm md:text-base font-semibold'>Preferred First Name ab </p>
+                                        <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
                                         <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter preferred first name' value = {fName} required/>
                                     </>
                                 :
                                     <>
-                                        <p className = 'text-sm md:text-base font-semibold'>Preferred First Name cc</p>
+                                        <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
                                         <p className = 'text-red-500 text-sm'>{fnameErrorMsg}</p>
                                         <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter preferred first name' required/>
                                     </>
@@ -234,32 +250,68 @@ export default function CreateAccount ({children, home}) {
                                     </>
                                 }
 
+                                {/* Radio Button Field */}
                                 <p className = 'text-sm md:text-base font-semibold'>Who are you?</p>
                                 <p className = 'text-xs md:text-sm mt-1 mb-1'>I am a(n)...</p>
-                                <div className = 'radio-buttons mb-2'>
-                                    <input
-                                        value = 'student'
-                                        type = 'radio'
-                                        className = 'mr-2'
-                                        name = 'type'
-                                        onChange = {handleRadioChange}
-                                    />
-                                    Student 
-                                    <br/>
-                                    <input
-                                        value = 'ec'
-                                        type = 'radio'
-                                        className = 'mr-2'
-                                        name = 'type'
-                                        onChange = {handleRadioChange}
-                                    />
-                                    Education Consultant
-                                </div>
 
-                                {educationConsultant &&
+                                {radioBttnErrorMsg.length == 0 ?
                                     <>
-                                        <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
-                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' required/>
+                                        <div className = 'radio-buttons mb-2'>
+                                            <input
+                                                value = 'student'
+                                                type = 'radio'
+                                                className = 'mr-2'
+                                                name = 'type'
+                                                onChange = {handleRadioChange}
+                                            />
+                                            Student 
+                                            <br/>
+                                            <input
+                                                value = 'ec'
+                                                type = 'radio'
+                                                className = 'mr-2'
+                                                name = 'type'
+                                                onChange = {handleRadioChange}
+                                            />
+                                            Education Consultant
+                                        </div>
+
+                                        {educationConsultant &&
+                                            <>
+                                                <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
+                                                <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' required/>
+                                            </>
+                                        }
+                                    </>
+                                :
+                                    <>
+                                        <p className = 'text-red-500 text-sm'>{radioBttnErrorMsg}</p>
+                                        <div className = 'radio-buttons mb-2'>
+                                            <input
+                                                value = 'student'
+                                                type = 'radio'
+                                                className = 'mr-2'
+                                                name = 'type'
+                                                onChange = {handleRadioChange}
+                                            />
+                                            Student 
+                                            <br/>
+                                            <input
+                                                value = 'ec'
+                                                type = 'radio'
+                                                className = 'mr-2'
+                                                name = 'type'
+                                                onChange = {handleRadioChange}
+                                            />
+                                            Education Consultant
+                                        </div>
+
+                                        {educationConsultant &&
+                                            <>
+                                                <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
+                                                <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' required/>
+                                            </>
+                                        }
                                     </>
                                 }
 

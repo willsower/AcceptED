@@ -18,10 +18,11 @@ export default async function handle(req, res) {
       where: {
         email: email,
       },
-    })
+    });
 
     if (!(userInTable == null)) {
-      return false;
+      console.log("Userrrr err")
+      return 'This email is already associated with an account';
     }
 
     // Check consultant code first, if code is not found
@@ -30,8 +31,8 @@ export default async function handle(req, res) {
       // This depends on how we do it, are we going to have a table
       // Where admins can enter consultant codes?
       // Will admin just input the associated email ?
-      if (consultantCode == null || consultantCode == '') {
-        return false;
+      if (consultantCode == null || consultantCode == "") {
+        return 'Invalid education consultant code, contact the admin if this persists';
       }
     }
 
@@ -63,6 +64,6 @@ export default async function handle(req, res) {
       });
     }
   } catch (err) {
-    return false;
+    return 'Error in creating new user';
   }
 }
