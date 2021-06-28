@@ -102,9 +102,9 @@ export default function CreateAccount ({children, home}) {
     }
 
     // Validate EC code on client side
-    function validateECCode(ecCode) {
+    function validateECCode(ecCode, educationConsultant) {
         // INVALID: empty EC code field
-        if (ecCode.length == 0) {
+        if (ecCode.length == 0 && educationConsultant === true) {
             return 'Code cannot be empty.';
         }
 
@@ -120,7 +120,7 @@ export default function CreateAccount ({children, home}) {
         var lNameMsg = validateName(lName);
         var schoolCodeMsg = validateSchoolCode(universityCode);
         var radioMsg = validateRadio(educationConsultant);
-        var ecCodeMsg = validateECCode(consultantCode);
+        var ecCodeMsg = validateECCode(consultantCode, educationConsultant);
 
         if (fNameMsg.length != 0 || lNameMsg != 0 || schoolCodeMsg.length != 0 || radioMsg.length != 0 || ecCodeMsg.length != 0) {
             setfNameErrorMsg(fNameMsg);
@@ -131,7 +131,7 @@ export default function CreateAccount ({children, home}) {
             console.log("STUCK");
             return;
         }
-        console.log("TEST");
+
         try {
             console.log("FORM RUNNING");
             const body = { fName, lName, email, universityCode, consultantCode, educationConsultant }
