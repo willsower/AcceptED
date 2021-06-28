@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 export default async function handle(req, res) {
+  console.log("Line 4");
   try {
     const prisma = new PrismaClient();
     const {
@@ -19,7 +20,7 @@ export default async function handle(req, res) {
         email: email,
       },
     });
-
+    console.log("Line 22");
     if (!(userInTable == null)) {
       console.log("Userrrr err")
       return 'This email is already associated with an account';

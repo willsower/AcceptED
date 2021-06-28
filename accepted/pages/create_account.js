@@ -128,11 +128,12 @@ export default function CreateAccount ({children, home}) {
             setSchoolCodeErrorMsg(schoolCodeMsg);
             setRadioBttnErrorMsg(radioMsg);
             setECCodeErrorMsg(ecCodeMsg);
-
+            console.log("STUCK");
             return;
         }
-
+        console.log("TEST");
         try {
+            console.log("FORM RUNNING");
             const body = { fName, lName, email, universityCode, consultantCode, educationConsultant }
             var msg = await fetch('/api/db_scripts/create_user', {
             method: 'POST',
