@@ -272,6 +272,7 @@ export default function CreateAccount ({children, home}) {
                                         <div className = 'radio-buttons mb-2'>
                                             <input
                                                 value = 'student'
+                                                checked={educationConsultant === false}
                                                 type = 'radio'
                                                 className = 'mr-2'
                                                 name = 'type'
@@ -281,6 +282,7 @@ export default function CreateAccount ({children, home}) {
                                             <br/>
                                             <input
                                                 value = 'ec'
+                                                checked={educationConsultant === true}
                                                 type = 'radio'
                                                 className = 'mr-2'
                                                 name = 'type'
@@ -299,7 +301,7 @@ export default function CreateAccount ({children, home}) {
                                                 :
                                                     <>
                                                         <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
-                                                        {ecCodeErrorMsg}
+                                                        <p className = 'text-red-500 text-sm'>{ecCodeErrorMsg}</p>
                                                         <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter code given to you by admin' required/>
                                                     </>
                                                 }
@@ -312,6 +314,7 @@ export default function CreateAccount ({children, home}) {
                                         <div className = 'radio-buttons mb-2'>
                                             <input
                                                 value = 'student'
+                                                checked={educationConsultant === false}
                                                 type = 'radio'
                                                 className = 'mr-2'
                                                 name = 'type'
@@ -321,6 +324,7 @@ export default function CreateAccount ({children, home}) {
                                             <br/>
                                             <input
                                                 value = 'ec'
+                                                checked={educationConsultant === true}
                                                 type = 'radio'
                                                 className = 'mr-2'
                                                 name = 'type'
@@ -339,7 +343,7 @@ export default function CreateAccount ({children, home}) {
                                                 :
                                                     <>
                                                         <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
-                                                        {ecCodeErrorMsg}
+                                                        <p className = 'text-red-500 text-sm'>{ecCodeErrorMsg}</p>
                                                         <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter code given to you by admin' required/>
                                                     </>
                                                 }
