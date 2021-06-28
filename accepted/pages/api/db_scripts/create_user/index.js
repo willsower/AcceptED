@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 export default async function handle(req, res) {
-  console.log("Line 4");
+
   try {
     const prisma = new PrismaClient();
     const {
@@ -20,10 +20,10 @@ export default async function handle(req, res) {
         email: email,
       },
     });
-    console.log("Line 22");
+
     if (!(userInTable == null)) {
       console.log("Userrrr err")
-      return 'This email is already associated with an account';
+      res.json('This email is already associated with an account, please sign in instead');
     }
 
     // Check consultant code first, if code is not found
@@ -33,7 +33,7 @@ export default async function handle(req, res) {
       // Where admins can enter consultant codes?
       // Will admin just input the associated email ?
       if (consultantCode == null || consultantCode == "") {
-        return 'Invalid education consultant code, contact the admin if this persists';
+        res.json('Invalid education consultant code, contact the admin if this persists');
       }
     }
 
@@ -46,8 +46,6 @@ export default async function handle(req, res) {
         password: "temp",
       },
     });
-
-    res.json(newUser);
 
     // They are a student
     if (educationConsultant == false) {
@@ -64,6 +62,8 @@ export default async function handle(req, res) {
         },
       });
     }
+
+    res.json('User created');
   } catch (err) {
     return 'Error in creating new user';
   }

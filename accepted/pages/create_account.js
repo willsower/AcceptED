@@ -134,15 +134,15 @@ export default function CreateAccount ({children, home}) {
 
         try {
             const body = { fName, lName, email, universityCode, consultantCode, educationConsultant }
-            var msg = await fetch('/api/db_scripts/create_user', {
+            await fetch('/api/db_scripts/create_user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),
             }).then(json => {
                 window.location.href = '/onboarding'
             })
-
-            console.log("MSG " + msg);
+            const data = await res.json()
+            console.log("TESTING " + data);
         } catch (error) {
             console.error(error)
         }
