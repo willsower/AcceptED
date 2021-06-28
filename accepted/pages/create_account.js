@@ -30,6 +30,7 @@ export default function CreateAccount ({children, home}) {
     const [lnameErrorMsg, setlNameErrorMsg] = useState('');
     const [schoolCodeErrorMsg, setSchoolCodeErrorMsg] = useState('');
     const [radioBttnErrorMsg, setRadioBttnErrorMsg] = useState('');
+    const [ecCodeErrorMsg, setECCodeErrorMsg] = useState('');
 
     // Function to handle radio button change
     const handleRadioChange = e => {
@@ -90,13 +91,23 @@ export default function CreateAccount ({children, home}) {
     }
 
     // Validate Radio
-    function validateRadio(cheese) {
+    function validateRadio(radio) {
         // Validate that radio was checked
-        if (cheese.length == 0) {
+        if (radio.length == 0) {
             return 'Select option, cannot be empty';
         }
 
         // Valid
+        return '';
+    }
+
+    // Validate EC code on client side
+    function validateECCode(ecCode) {
+        // INVALID: empty EC code field
+        if (ecCode.length == 0) {
+            return 'Code cannot be empty.';
+        }
+
         return '';
     }
 
@@ -109,12 +120,14 @@ export default function CreateAccount ({children, home}) {
         var lNameMsg = validateName(lName);
         var schoolCodeMsg = validateSchoolCode(universityCode);
         var radioMsg = validateRadio(educationConsultant);
+        var ecCodeMsg = validateECCode(consultantCode);
 
-        if (fNameMsg.length != 0 || lNameMsg != 0 || schoolCodeMsg.length != 0 || radioMsg.length != 0) {
+        if (fNameMsg.length != 0 || lNameMsg != 0 || schoolCodeMsg.length != 0 || radioMsg.length != 0 || ecCodeMsg.length != 0) {
             setfNameErrorMsg(fNameMsg);
             setlNameErrorMsg(lNameMsg);
             setSchoolCodeErrorMsg(schoolCodeMsg);
             setRadioBttnErrorMsg(radioMsg);
+            setECCodeErrorMsg(ecCodeMsg);
 
             return;
         }
@@ -278,8 +291,18 @@ export default function CreateAccount ({children, home}) {
 
                                         {educationConsultant &&
                                             <>
-                                                <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
-                                                <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' required/>
+                                                {ecCodeErrorMsg.length == 0 ?
+                                                    <>
+                                                        <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
+                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' value = {consultantCode} required/>
+                                                    </>
+                                                :
+                                                    <>
+                                                        <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
+                                                        {ecCodeErrorMsg}
+                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter code given to you by admin' required/>
+                                                    </>
+                                                }
                                             </>
                                         }
                                     </>
@@ -308,8 +331,18 @@ export default function CreateAccount ({children, home}) {
 
                                         {educationConsultant &&
                                             <>
-                                                <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
-                                                <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' required/>
+                                                {ecCodeErrorMsg.length == 0 ?
+                                                    <>
+                                                        <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
+                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' value = {consultantCode} required/>
+                                                    </>
+                                                :
+                                                    <>
+                                                        <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
+                                                        {ecCodeErrorMsg}
+                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter code given to you by admin' required/>
+                                                    </>
+                                                }
                                             </>
                                         }
                                     </>
