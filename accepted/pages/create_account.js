@@ -151,6 +151,7 @@ export default function CreateAccount ({children, home}) {
             }
             
             setUserErrorMsg(data.msg);
+            console.log("ERROR???");
         } catch (error) {
             console.error(error)
         }

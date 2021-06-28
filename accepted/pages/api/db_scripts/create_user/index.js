@@ -22,7 +22,6 @@ export default async function handle(req, res) {
     });
 
     if (!(userInTable == null)) {
-      console.log("Userrrr err")
       res.status(200).json({msgCode: 1, msg: 'This email is already associated with an account, please sign in instead'});
     }
 
