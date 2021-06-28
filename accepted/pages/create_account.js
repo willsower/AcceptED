@@ -233,13 +233,13 @@ export default function CreateAccount ({children, home}) {
                                 {fnameErrorMsg.length == 0 ?
                                     <>
                                         <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
-                                        <input autoFocus onChange={(e) => setFirstName(e.target.value), validateName(fName)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter preferred first name' value = {fName} required/>
+                                        <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter preferred first name' value = {fName} required/>
                                     </>
                                 :
                                     <>
                                         <p className = 'text-sm md:text-base font-semibold'>Preferred First Name</p>
                                         <p className = 'text-red-500 text-sm'>{fnameErrorMsg}</p>
-                                        <input autoFocus onChange={(e) => setFirstName(e.target.value), validateName(fName)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter preferred first name' required/>
+                                        <input autoFocus onChange={(e) => setFirstName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter preferred first name' required/>
                                     </>
                                 }
 
@@ -247,13 +247,13 @@ export default function CreateAccount ({children, home}) {
                                 {lnameErrorMsg.length == 0 ?
                                     <>
                                         <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
-                                        <input autoFocus onChange={(e) => setLastName(e.target.value), validateName(lName)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter last name' value = {lName} required/>
+                                        <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter last name' value = {lName} required/>
                                     </>
                                 :
                                     <>
                                         <p className = 'text-sm md:text-base font-semibold'>Last Name</p>
                                         <p className = 'text-red-500 text-sm'>{lnameErrorMsg}</p>
-                                        <input autoFocus onChange={(e) => setLastName(e.target.value), validateName(lName)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter last name' required/>
+                                        <input autoFocus onChange={(e) => setLastName(e.target.value)} className='text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter last name' required/>
                                     </>
                                 }
 
@@ -261,13 +261,13 @@ export default function CreateAccount ({children, home}) {
                                 {schoolCodeErrorMsg.length == 0 ?
                                     <>
                                         <p className = 'text-sm md:text-base font-semibold'>University Code</p>
-                                        <input autoFocus onChange={(e) => setUniversityCode(e.target.value), validateName(universityCode)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' value = {universityCode} required/>
+                                        <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' value = {universityCode} required/>
                                     </>
                                 :
                                     <>
                                         <p className = 'text-sm md:text-base font-semibold'>University Code</p>
                                         <p className = 'text-red-500 text-sm'>{schoolCodeErrorMsg}</p>
-                                        <input autoFocus onChange={(e) => setUniversityCode(e.target.value), validateSchoolCode(universityCode)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' required/>
+                                        <input autoFocus onChange={(e) => setUniversityCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='number' placeholder='Enter 4 digit university code' pattern = '[0-9]' required/>
                                     </>
                                 }
 
@@ -304,13 +304,13 @@ export default function CreateAccount ({children, home}) {
                                                 {ecCodeErrorMsg.length == 0 ?
                                                     <>
                                                         <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
-                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value), validateECCode(consultantCode, educationConsultant)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' value = {consultantCode} required/>
+                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' value = {consultantCode} required/>
                                                     </>
                                                 :
                                                     <>
                                                         <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
                                                         <p className = 'text-red-500 text-sm'>{ecCodeErrorMsg}</p>
-                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value), validateECCode(consultantCode, educationConsultant)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter code given to you by admin' required/>
+                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter code given to you by admin' required/>
                                                     </>
                                                 }
                                             </>
@@ -346,13 +346,13 @@ export default function CreateAccount ({children, home}) {
                                                 {ecCodeErrorMsg.length == 0 ?
                                                     <>
                                                         <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
-                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value), validateECCode(consultantCode, educationConsultant)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' value = {consultantCode} required/>
+                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border' type='text' placeholder='Enter code given to you by admin' value = {consultantCode} required/>
                                                     </>
                                                 :
                                                     <>
                                                         <p className = 'text-sm md:text-base font-semibold mt-4'>Enter Consultant Code</p>
                                                         <p className = 'text-red-500 text-sm'>{ecCodeErrorMsg}</p>
-                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value), validateECCode(consultantCode, educationConsultant)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter code given to you by admin' required/>
+                                                        <input autoFocus onChange={(e) => setConsultantCode(e.target.value)} className=' text-xs md:text-sm bg-gray-50 rounded p-2 flex-1 mb-4 border border-red-500' type='text' placeholder='Enter code given to you by admin' required/>
                                                     </>
                                                 }
                                             </>
