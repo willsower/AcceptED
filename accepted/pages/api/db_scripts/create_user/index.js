@@ -65,6 +65,6 @@ export default async function handle(req, res) {
 
     res.status(200).json({msgCode: 3, msg: 'User created'});
   } catch (err) {
-    res.status(200).json({msgCode: 4, msg: 'Error in creating user'});
+    res.status(200).json({msgCode: 4, msg: 'Error in creating user, please try again'});
   }
 }
