@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 
 export default async function handle(req, res) {
+
   try {
     const prisma = new PrismaClient();
     const {
@@ -18,10 +19,11 @@ export default async function handle(req, res) {
       where: {
         email: email,
       },
-    })
+    });
 
     if (!(userInTable == null)) {
-      return false;
+      res.status(200).json({msgCode: 1, msg: 'This email is already associated with an account, please sign in instead'});
+      return;
     }
 
     // Check consultant code first, if code is not found
@@ -30,8 +32,9 @@ export default async function handle(req, res) {
       // This depends on how we do it, are we going to have a table
       // Where admins can enter consultant codes?
       // Will admin just input the associated email ?
-      if (consultantCode == null || consultantCode == '') {
-        return false;
+      if (consultantCode == null || consultantCode == "") {
+        res.status(200).json({msgCode: 2, msg: 'Invalid education consultant code, contact the admin if this persists'});
+        return;
       }
     }
 
@@ -45,24 +48,26 @@ export default async function handle(req, res) {
       },
     });
 
-    res.json(newUser);
+    // // They are a student
+    // if (educationConsultant == false) {
+    //   const newStudent = await prisma.student.create({
+    //     data: {
+    //       user: newUser,
+    //     },
+    //   });
+    //   // They are a education consultant
+    // } else {
+    //   const newEducationConsultant = await prisma.educationConsultant.create({
+    //     data: {
+    //       user: newUser,
+    //     },
+    //   });
+    // }
 
-    // They are a student
-    if (educationConsultant == false) {
-      const newStudent = await prisma.student.create({
-        data: {
-          user: newUser,
-        },
-      });
-      // They are a education consultant
-    } else {
-      const newEducationConsultant = await prisma.educationConsultant.create({
-        data: {
-          user: newUser,
-        },
-      });
-    }
+    res.status(200).json({msgCode: 3, msg: 'User created'});
+    return;
   } catch (err) {
-    return false;
+    res.status(200).json({msgCode: 4, msg: 'Error in creating user, please try again'});
+    return;
   }
 }
