@@ -1,0 +1,123 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  fname String
+  lname String
+  email String @unique 
+  password String
+  universityCode Int
+  profileImage Bytes?
+  joinDate DateTime @default(now())
+  educationConsultant EducationConsultant?
+  student Student?
+}
+
+model EducationConsultant {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+    userId Int
+  // majors String[]
+  tasks Task[]
+  students Student[]
+  documents Document[]
+}
+
+model Student {
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+    userId Int
+  educationConsultant EducationConsultant @relation(fields: [ecId], references: [id])
+    ecId Int
+  // preferredLanguage String
+  interests String[]
+  universityOptions UniversityOption[]
+
+  assignedTasks Task[]
+}
+
+model UniversityOption {
+  id Int @id @default(autoincrement())
+  student Student @relation(fields: [studentId], references: [id])
+    studentId Int
+  university University @relation(fields: [universityId], references: [id])
+    universityId Int
+  likelihood Likelihood
+  status UniversityStatus
+}
+enum Likelihood {
+  LIKELY
+  POSSIBLE
+  REACH
+}
+enum UniversityStatus {
+  WAITING
+  ACCEPTED
+  REJECTED
+}
+
+model University {
+  id Int @id @default(autoincrement())
+  universityOptions UniversityOption[]
+  name String
+}
+
+model Task {
+  id Int @id @default(autoincrement())
+  educationConsultants EducationConsultant[]
+  students Student[]
+  assignedDate DateTime
+  dueDate DateTime
+  status TaskStatus?
+  school String?
+  description String?
+  moduleNumber Int
+  type TaskType
+  document Document? @relation(fields: [docId], references: [id])
+    docId Int
+  subtasks Task[] @relation("TaskSubtasks")
+  superTask Task @relation("TaskSubtasks", fields: [superTaskId], references: [id])
+    superTaskId Int
+}
+enum TaskStatus {
+  NOTSTARTED
+  INPROGRESS
+  COMPLETE
+}
+enum TaskType {
+  FORM
+  ESSAY
+}
+
+model Material {
+  id Int @id @default(autoincrement())
+  document Document @relation(fields: [docId], references: [id])
+    docId Int
+  type MaterialType
+  description String?
+}
+enum MaterialType {
+  CIRRICULUM
+  RESOURCE
+}
+
+model Document {
+  id Int @id @default(autoincrement())
+  creator EducationConsultant @relation(fields: [creatorId], references: [id])
+    creatorId Int
+  tasks Task[]
+  materials Material[]
+  creationDate DateTime @default(now())
+  name String
+  link String
+}
