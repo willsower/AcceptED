@@ -23,7 +23,7 @@ export default async function handle(req, res) {
 
     if (!(userInTable == null)) {
       console.log("Userrrr err")
-      res.json('This email is already associated with an account, please sign in instead');
+      res.status(200).json({msgCode: 1, msg: 'This email is already associated with an account, please sign in instead'});
     }
 
     // Check consultant code first, if code is not found
@@ -33,7 +33,7 @@ export default async function handle(req, res) {
       // Where admins can enter consultant codes?
       // Will admin just input the associated email ?
       if (consultantCode == null || consultantCode == "") {
-        res.json('Invalid education consultant code, contact the admin if this persists');
+        res.status(200).json({msgCode: 2, msg: 'Invalid education consultant code, contact the admin if this persists'});
       }
     }
 
@@ -63,8 +63,8 @@ export default async function handle(req, res) {
       });
     }
 
-    res.json('User created');
+    res.status(200).json({msgCode: 3, msg: 'User created'});
   } catch (err) {
-    return 'Error in creating new user';
+    res.status(200).json({msgCode: 4, msg: 'Error in creating user'});
   }
 }

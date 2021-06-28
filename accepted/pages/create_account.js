@@ -134,15 +134,19 @@ export default function CreateAccount ({children, home}) {
 
         try {
             const body = { fName, lName, email, universityCode, consultantCode, educationConsultant }
-            await fetch('/api/db_scripts/create_user', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body),
-            }).then(json => {
+            const res = await fetch('/api/db_scripts/create_user', {
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify(body),
+                method: 'POST',
+            })/*.then(json => {
                 window.location.href = '/onboarding'
-            })
+            })*/
+            console.log("NOOP");
             const data = await res.json()
-            console.log("TESTING " + data);
+            console.log("HERE");
+            console.log("TESTING " + data + " " + data.user);
         } catch (error) {
             console.error(error)
         }
