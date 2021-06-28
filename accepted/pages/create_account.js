@@ -90,9 +90,9 @@ export default function CreateAccount ({children, home}) {
     }
 
     // Validate Radio
-    function validateRadio(ec) {
+    function validateRadio(cheese) {
         // Validate that radio was checked
-        if (ec == '') {
+        if (cheese.length == 0) {
             return 'Select option, cannot be empty';
         }
 
@@ -115,7 +115,7 @@ export default function CreateAccount ({children, home}) {
             setlNameErrorMsg(lNameMsg);
             setSchoolCodeErrorMsg(schoolCodeMsg);
             setRadioBttnErrorMsg(radioMsg);
-            console.log("ERR " + radioBttnErrorMsg);
+
             return;
         }
 
