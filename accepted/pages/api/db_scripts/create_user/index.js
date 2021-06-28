@@ -47,23 +47,23 @@ export default async function handle(req, res) {
         password: "temp",
       },
     });
-
+console.log("TEST");
     // They are a student
-    if (educationConsultant == false) {
-      const newStudent = await prisma.student.create({
-        data: {
-          user: newUser,
-        },
-      });
-      // They are a education consultant
-    } else {
-      const newEducationConsultant = await prisma.educationConsultant.create({
-        data: {
-          user: newUser,
-        },
-      });
-    }
-
+    // if (educationConsultant == false) {
+    //   const newStudent = await prisma.student.create({
+    //     data: {
+    //       user: newUser,
+    //     },
+    //   });
+    //   // They are a education consultant
+    // } else {
+    //   const newEducationConsultant = await prisma.educationConsultant.create({
+    //     data: {
+    //       user: newUser,
+    //     },
+    //   });
+    // }
+console.log("HERE??");
     res.status(200).json({msgCode: 3, msg: 'User created'});
     return;
   } catch (err) {
