@@ -48,21 +48,32 @@ export default async function handle(req, res) {
       },
     });
 
-    // // They are a student
-    // if (educationConsultant == false) {
-    //   const newStudent = await prisma.student.create({
-    //     data: {
-    //       user: newUser,
-    //     },
-    //   });
-    //   // They are a education consultant
-    // } else {
-    //   const newEducationConsultant = await prisma.educationConsultant.create({
-    //     data: {
-    //       user: newUser,
-    //     },
-    //   });
-    // }
+    // They are a student
+    if (educationConsultant == false) {
+      console.log(newUser.id)  // run successfully
+      const newStudent = await prisma.student.create({
+        data: {
+          user: {
+            connect: {
+              id: newUser.id
+            }
+          }
+        },
+      });
+
+
+    }  
+    else {    // They are a education consultant
+      const newEducationConsultant = await prisma.educationConsultant.create({
+        data: {
+          user: {
+            connect: {
+              id: newUser.id
+            }
+          }
+        },
+      });
+    }
 
     res.status(200).json({msgCode: 3, msg: 'User created'});
     return;
