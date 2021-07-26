@@ -37,8 +37,8 @@ model Student {
   id Int @id @default(autoincrement())
   user User @relation(fields: [userId], references: [id])
     userId Int
-  educationConsultant EducationConsultant @relation(fields: [ecId], references: [id])
-    ecId Int
+  educationConsultant EducationConsultant? @relation(fields: [ecId], references: [id])
+    ecId Int?
   // preferredLanguage String
   interests String[]
   universityOptions UniversityOption[]
